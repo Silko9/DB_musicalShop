@@ -74,6 +74,7 @@
             this.buttonAddRecord.TabIndex = 68;
             this.buttonAddRecord.Text = "Добавить";
             this.buttonAddRecord.UseVisualStyleBackColor = true;
+            this.buttonAddRecord.Click += new System.EventHandler(this.buttonAddRecord_Click);
             // 
             // buttonChange
             // 

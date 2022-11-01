@@ -22,5 +22,10 @@ namespace DB_musicalShop
             dataGridView1.Columns[1].HeaderText = "name role";
             dataGridView1.Columns[1].Width = 70;
         }
+
+        private void buttonAddRecord_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

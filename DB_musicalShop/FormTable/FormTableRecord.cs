@@ -16,5 +16,10 @@ namespace DB_musicalShop
         {
             InitializeComponent();
         }
+
+        private void buttonAddRecord_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

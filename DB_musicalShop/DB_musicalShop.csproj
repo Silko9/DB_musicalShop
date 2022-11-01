@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,8 +37,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Data.Sqlite, Version=6.0.10.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Data.Sqlite.Core.6.0.10\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.0.6.1341, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
       <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.6\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
@@ -51,7 +56,17 @@
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.116.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.116.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.116.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -79,123 +94,115 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTable.cs">
+    <Compile Include="FormTable\FormTableComposition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTable.Designer.cs">
-      <DependentUpon>FormTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTableComposition.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTableComposition.Designer.cs">
+    <Compile Include="FormTable\FormTableComposition.Designer.cs">
       <DependentUpon>FormTableComposition.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTableEnsemble.cs">
+    <Compile Include="FormTable\FormTableEnsemble.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableEnsemble.Designer.cs">
+    <Compile Include="FormTable\FormTableEnsemble.Designer.cs">
       <DependentUpon>FormTableEnsemble.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTableLogging.cs">
+    <Compile Include="FormTable\FormTableLogging.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableLogging.Designer.cs">
+    <Compile Include="FormTable\FormTableLogging.Designer.cs">
       <DependentUpon>FormTableLogging.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTableMusician.cs">
+    <Compile Include="FormTable\FormTableMusician.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableMusician.Designer.cs">
+    <Compile Include="FormTable\FormTableMusician.Designer.cs">
       <DependentUpon>FormTableMusician.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTablePerformance.cs">
+    <Compile Include="FormTable\FormTablePerformance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTablePerformance.Designer.cs">
+    <Compile Include="FormTable\FormTablePerformance.Designer.cs">
       <DependentUpon>FormTablePerformance.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTableRecord.cs">
+    <Compile Include="FormTable\FormTableRecord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableRecord.Designer.cs">
+    <Compile Include="FormTable\FormTableRecord.Designer.cs">
       <DependentUpon>FormTableRecord.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTableRelationRecordAndPerformance.cs">
+    <Compile Include="FormTable\FormTableRelationRecordAndPerformance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableRelationRecordAndPerformance.Designer.cs">
+    <Compile Include="FormTable\FormTableRelationRecordAndPerformance.Designer.cs">
       <DependentUpon>FormTableRelationRecordAndPerformance.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTableRelationRoleAndMusician.cs">
+    <Compile Include="FormTable\FormTableRelationRoleAndMusician.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableRelationRoleAndMusician.Designer.cs">
+    <Compile Include="FormTable\FormTableRelationRoleAndMusician.Designer.cs">
       <DependentUpon>FormTableRelationRoleAndMusician.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTableRole.cs">
+    <Compile Include="FormTable\FormTableRole.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableRole.Designer.cs">
+    <Compile Include="FormTable\FormTableRole.Designer.cs">
       <DependentUpon>FormTableRole.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTableTypeEnseble.cs">
+    <Compile Include="FormTable\FormTableTypeEnseble.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableTypeEnseble.Designer.cs">
+    <Compile Include="FormTable\FormTableTypeEnseble.Designer.cs">
       <DependentUpon>FormTableTypeEnseble.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTableTypeOfOperation.cs">
+    <Compile Include="FormTable\FormTableTypeOfOperation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableTypeOfOperation.Designer.cs">
+    <Compile Include="FormTable\FormTableTypeOfOperation.Designer.cs">
       <DependentUpon>FormTableTypeOfOperation.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManagerDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FormTableMusicialInstrument.cs">
+    <Compile Include="FormTable\FormTableMusicialInstrument.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTableMusicialInstrument.Designer.cs">
+    <Compile Include="FormTable\FormTableMusicialInstrument.Designer.cs">
       <DependentUpon>FormTableMusicialInstrument.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTable.resx">
-      <DependentUpon>FormTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTableComposition.resx">
+    <EmbeddedResource Include="FormTable\FormTableComposition.resx">
       <DependentUpon>FormTableComposition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTableEnsemble.resx">
+    <EmbeddedResource Include="FormTable\FormTableEnsemble.resx">
       <DependentUpon>FormTableEnsemble.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTableLogging.resx">
+    <EmbeddedResource Include="FormTable\FormTableLogging.resx">
       <DependentUpon>FormTableLogging.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTableMusician.resx">
+    <EmbeddedResource Include="FormTable\FormTableMusician.resx">
       <DependentUpon>FormTableMusician.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTablePerformance.resx">
+    <EmbeddedResource Include="FormTable\FormTablePerformance.resx">
       <DependentUpon>FormTablePerformance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTableRecord.resx">
+    <EmbeddedResource Include="FormTable\FormTableRecord.resx">
       <DependentUpon>FormTableRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTableRelationRecordAndPerformance.resx">
+    <EmbeddedResource Include="FormTable\FormTableRelationRecordAndPerformance.resx">
       <DependentUpon>FormTableRelationRecordAndPerformance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTableRelationRoleAndMusician.resx">
+    <EmbeddedResource Include="FormTable\FormTableRelationRoleAndMusician.resx">
       <DependentUpon>FormTableRelationRoleAndMusician.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTableRole.resx">
+    <EmbeddedResource Include="FormTable\FormTableRole.resx">
       <DependentUpon>FormTableRole.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTableTypeEnseble.resx">
+    <EmbeddedResource Include="FormTable\FormTableTypeEnseble.resx">
       <DependentUpon>FormTableTypeEnseble.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTableTypeOfOperation.resx">
+    <EmbeddedResource Include="FormTable\FormTableTypeOfOperation.resx">
       <DependentUpon>FormTableTypeOfOperation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -208,7 +215,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="FormTableMusicialInstrument.resx">
+    <EmbeddedResource Include="FormTable\FormTableMusicialInstrument.resx">
       <DependentUpon>FormTableMusicialInstrument.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -235,5 +242,11 @@
       <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.6\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.6\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.116.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
 </Project>
