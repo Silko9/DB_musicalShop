@@ -94,6 +94,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTable\FormReplacementTypeOfEnsemble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormReplacementTypeOfEnsemble.Designer.cs">
+      <DependentUpon>FormReplacementTypeOfEnsemble.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTable\FormTableComposition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     </Compile>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormReplacementTypeOfEnsemble.resx">
+      <DependentUpon>FormReplacementTypeOfEnsemble.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormTableComposition.resx">
       <DependentUpon>FormTableComposition.cs</DependentUpon>

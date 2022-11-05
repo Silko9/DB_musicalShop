@@ -9,6 +9,8 @@ using System.Data;
 using System.Runtime.Remoting.Contexts;
 using System.IO;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace DB_musicalShop
 {
@@ -57,7 +59,17 @@ namespace DB_musicalShop
             try
             {
                 connection = new SQLiteConnection($@"Data Source={path}; Version=3;");
-                string commandText = "SELECT * FROM [musicial_instrument];";
+                string commandText = "SELECT id_instrument FROM musicial_instrument ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT name_instrument FROM musicial_instrument ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT id_type_ensemble FROM type_ensemble ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT name_type_ensemble FROM type_ensemble ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT id_ensemble FROM ensemble ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT name_ensemble FROM ensemble ORDER BY rowid ASC LIMIT 1;";
                 Query(commandText);
                 return true;
             }
@@ -73,7 +85,7 @@ namespace DB_musicalShop
             Command.ExecuteNonQuery();
             connection.Close();
         }
-        public DataTable Select(string commandText)
+        public DataTable SelectTable(string commandText)
         {
             DataTable dt = new DataTable();
             SQLiteCommand Command = new SQLiteCommand(commandText, connection);
@@ -82,6 +94,40 @@ namespace DB_musicalShop
             dt.Load(sqlReader);
             connection.Close();
             return dt;
+        }
+        public List<string> SelectList(string commandText)
+        {
+            List<string> result = new List<string>();
+            SQLiteCommand Command = new SQLiteCommand(commandText, connection);
+            connection.Open();
+            SQLiteDataReader sqlReader = Command.ExecuteReader();
+            string lol;
+            while (sqlReader.Read())
+                result.Add(sqlReader.GetString(0).ToString());
+            connection.Close();
+            return result;
+        }
+        public int GetID(string str)
+        {
+            string id = "";
+            for (int i = 0; i < str.Length; i++)
+                if (str[i] == '[')
+                {
+                    i += 3;
+                    while (str[i] != ']')
+                    {
+                        id += str[i];
+                        i++;
+                    }
+                }
+            return Convert.ToInt32(id);
+        }
+        public bool IsMatch(string str)
+        {
+            Regex regex = new Regex(@"^[\w \s]+$");
+            if (!regex.IsMatch(str))
+                return false;
+            return true;
         }
     }
 }

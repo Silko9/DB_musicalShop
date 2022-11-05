@@ -42,7 +42,7 @@
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(12, 410);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(564, 352);
             this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
             this.buttonUpdateTable.Size = new System.Drawing.Size(243, 54);
@@ -53,7 +53,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(489, 116);
+            this.buttonAdd.Location = new System.Drawing.Point(564, 128);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(243, 54);
@@ -64,7 +64,7 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(489, 175);
+            this.buttonChange.Location = new System.Drawing.Point(564, 187);
             this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(243, 54);
@@ -75,7 +75,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(489, 234);
+            this.buttonDelete.Location = new System.Drawing.Point(564, 246);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(243, 54);
@@ -86,17 +86,17 @@
             // 
             // boxName
             // 
-            this.boxName.Location = new System.Drawing.Point(489, 28);
+            this.boxName.Location = new System.Drawing.Point(565, 29);
             this.boxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boxName.MaxLength = 20;
             this.boxName.Name = "boxName";
-            this.boxName.Size = new System.Drawing.Size(151, 22);
+            this.boxName.Size = new System.Drawing.Size(240, 22);
             this.boxName.TabIndex = 36;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(486, 10);
+            this.label1.Location = new System.Drawing.Point(562, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(139, 16);
             this.label1.TabIndex = 35;
@@ -108,16 +108,17 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 11);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(471, 395);
+            this.dataGridView1.Size = new System.Drawing.Size(546, 395);
             this.dataGridView1.TabIndex = 34;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(486, 66);
+            this.label2.Location = new System.Drawing.Point(564, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 16);
             this.label2.TabIndex = 41;
@@ -125,18 +126,19 @@
             // 
             // boxTypeEnsemble
             // 
+            this.boxTypeEnsemble.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxTypeEnsemble.FormattingEnabled = true;
-            this.boxTypeEnsemble.Location = new System.Drawing.Point(489, 86);
-            this.boxTypeEnsemble.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.boxTypeEnsemble.Location = new System.Drawing.Point(565, 87);
+            this.boxTypeEnsemble.Margin = new System.Windows.Forms.Padding(4);
             this.boxTypeEnsemble.Name = "boxTypeEnsemble";
-            this.boxTypeEnsemble.Size = new System.Drawing.Size(149, 24);
+            this.boxTypeEnsemble.Size = new System.Drawing.Size(239, 24);
             this.boxTypeEnsemble.TabIndex = 42;
             // 
             // FormTableEnsemble
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 471);
+            this.ClientSize = new System.Drawing.Size(816, 416);
             this.Controls.Add(this.boxTypeEnsemble);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonUpdateTable);
@@ -146,7 +148,7 @@
             this.Controls.Add(this.boxName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormTableEnsemble";
             this.Text = "Таблица ансамблей";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

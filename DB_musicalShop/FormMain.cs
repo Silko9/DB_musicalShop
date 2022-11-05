@@ -35,10 +35,10 @@ namespace DB_musicalShop
             saveFileDialog1.Filter = "db files (*.db)|*.db|All files (*.*)|*.*";
             ButtonEnabled(false);
             //для теста
-            if (!managerDB.CheckDB("C:\\SQLite\\data.db"))
+            if (!managerDB.CheckDB("C:\\SQLite\\j.db"))
             {
                 ButtonEnabled(false);
-                MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.");
+                MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             label2.Text = "C:\\SQLite\\data.db";
@@ -68,11 +68,11 @@ namespace DB_musicalShop
                 {
                     case 1:
                         ButtonEnabled(false);
-                        MessageBox.Show("Файл занят другим процессом.\nВыберите другое расположение.");
+                        MessageBox.Show("Файл занят другим процессом.\nВыберите другое расположение.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     case 2:
                         ButtonEnabled(false);
-                        MessageBox.Show("Ошибка создания базы данных.");
+                        MessageBox.Show("Ошибка создания базы данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                 }
                 label2.Text = saveFileDialog1.FileName;
@@ -84,7 +84,7 @@ namespace DB_musicalShop
             if (openFileDialog1.ShowDialog() != DialogResult.OK || !managerDB.CheckDB(openFileDialog1.FileName))
             {
                 ButtonEnabled(false);
-                MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.");
+                MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             label2.Text = openFileDialog1.FileName;
