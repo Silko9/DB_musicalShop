@@ -34,18 +34,31 @@ namespace DB_musicalShop
             try
             {
                 connection = new SQLiteConnection($@"Data Source={path}; Version=3;");
-                string commandText = "CREATE TABLE [musicial_instrument] (" +
-                    "[id_instrument] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "[name_instrument] VARCHAR(15) NOT NULL);";
+                connection.Open();
+                string commandText = "CREATE TABLE musicial_instrument (" +
+                    "id_instrument INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "name_instrument VARCHAR(15) NOT NULL);";
                 Query(commandText);
-                commandText = "CREATE TABLE [type_ensemble] (" +
-                    "[id_type_ensemble] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "[name_type_ensemble] VARCHAR(15) NOT NULL);";
+                commandText = "CREATE TABLE type_ensemble (" +
+                    "id_type_ensemble INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "name_type_ensemble VARCHAR(15) NOT NULL);";
                 Query(commandText);
-                commandText = "CREATE TABLE [ensemble] (" +
-                    "[id_ensemble] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "[name_ensemble] VARCHAR(20) NOT NULL," +
-                    "[id_type_ensemble] INTEGER NOT NULL);";
+                commandText = "CREATE TABLE ensemble (" +
+                    "id_ensemble INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "name_ensemble VARCHAR(20) NOT NULL," +
+                    "id_type_ensemble INTEGER NOT NULL);";
+                Query(commandText);
+                commandText = "CREATE TABLE role (" +
+                    "id_role INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "name_role VARCHAR(15) NOT NULL);";
+                Query(commandText);
+                commandText = "CREATE TABLE musician (" +
+                    "id_musician INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "name_musician VARCHAR(15) NOT NULL," +
+                    "surname_musician VARCHAR(20) NOT NULL," +
+                    "patronymic_musician VARCHAR(15)," +
+                    "phote_musician BLOB," +
+                    "id_ensemble INTEGER NOT NULL);";
                 Query(commandText);
                 return 0;
             }
@@ -59,6 +72,7 @@ namespace DB_musicalShop
             try
             {
                 connection = new SQLiteConnection($@"Data Source={path}; Version=3;");
+                connection.Open();
                 string commandText = "SELECT id_instrument FROM musicial_instrument ORDER BY rowid ASC LIMIT 1;";
                 Query(commandText);
                 commandText = "SELECT name_instrument FROM musicial_instrument ORDER BY rowid ASC LIMIT 1;";
@@ -71,6 +85,22 @@ namespace DB_musicalShop
                 Query(commandText);
                 commandText = "SELECT name_ensemble FROM ensemble ORDER BY rowid ASC LIMIT 1;";
                 Query(commandText);
+                commandText = "SELECT id_role FROM role ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT name_role FROM role ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT id_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT name_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT surname_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT patronymic_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT phote_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT id_ensemble FROM musician ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
                 return true;
             }
             catch
@@ -78,49 +108,57 @@ namespace DB_musicalShop
                 return false;
             }
         }
+        public void Open()
+        {
+            connection.Open();
+        }
+        public void Close()
+        {
+            connection.Close();
+        }
         public void Query(string commandText)
         {
             SQLiteCommand Command = new SQLiteCommand(commandText, connection);
-            connection.Open();
             Command.ExecuteNonQuery();
-            connection.Close();
         }
         public DataTable SelectTable(string commandText)
         {
             DataTable dt = new DataTable();
             SQLiteCommand Command = new SQLiteCommand(commandText, connection);
-            connection.Open();
             SQLiteDataReader sqlReader = Command.ExecuteReader();
             dt.Load(sqlReader);
-            connection.Close();
             return dt;
         }
         public List<string> SelectList(string commandText)
         {
             List<string> result = new List<string>();
             SQLiteCommand Command = new SQLiteCommand(commandText, connection);
-            connection.Open();
             SQLiteDataReader sqlReader = Command.ExecuteReader();
-            string lol;
             while (sqlReader.Read())
                 result.Add(sqlReader.GetString(0).ToString());
-            connection.Close();
             return result;
         }
         public int GetID(string str)
         {
-            string id = "";
-            for (int i = 0; i < str.Length; i++)
-                if (str[i] == '[')
-                {
-                    i += 3;
-                    while (str[i] != ']')
+            try
+            {
+                string id = "";
+                for (int i = 0; i < str.Length; i++)
+                    if (str[i] == '[')
                     {
-                        id += str[i];
-                        i++;
+                        i += 3;
+                        while (str[i] != ']')
+                        {
+                            id += str[i];
+                            i++;
+                        }
                     }
-                }
-            return Convert.ToInt32(id);
+                return Convert.ToInt32(id);
+            }
+            catch
+            {
+                return Convert.ToInt32(str);
+            }
         }
         public bool IsMatch(string str)
         {

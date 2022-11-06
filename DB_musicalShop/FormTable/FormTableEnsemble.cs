@@ -122,8 +122,11 @@ namespace DB_musicalShop
             {
                 DataRow row;
                 DataTable table = managerDB.SelectTable($"SELECT * FROM [type_ensemble] WHERE id_type_ensemble = {managerDB.GetID(dataGridView1.CurrentRow.Cells[2].Value.ToString())};");
-                row = table.Rows[0];
-                boxTypeEnsemble.Text = Convert.ToString($"{row["name_type_ensemble"]} [id{row["id_type_ensemble"]}]");
+                if (table.Rows.Count > 0)
+                {
+                    row = table.Rows[0];
+                    boxTypeEnsemble.Text = Convert.ToString($"{row["name_type_ensemble"]} [id{row["id_type_ensemble"]}]");
+                }
             }
             else boxTypeEnsemble.Text = "";
         }
