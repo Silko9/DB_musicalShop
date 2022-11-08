@@ -25,7 +25,7 @@ namespace DB_musicalShop
             dataGridView1.Columns.Add("", "Ансамбль");
             dataGridView1.Columns[0].Width = 70;
             dataGridView1.Columns[1].Width = 130;
-            dataGridView1.Columns[2].Width = 170;
+            dataGridView1.Columns[2].Width = 130;
             dataGridView1.Columns[3].Width = 130;
             dataGridView1.Columns[4].Width = 130;
             dataGridView1.Columns[5].Width = 200;
@@ -125,23 +125,11 @@ namespace DB_musicalShop
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count < 0)
-                return;
+            if (dataGridView1.Rows.Count < 0) return;
             boxName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             boxSurname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             boxPatronymic.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             boxEnsemble.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            if (dataGridView1.CurrentRow.Cells[5].Value.ToString() != "")
-            {
-                DataRow row;
-                DataTable table = managerDB.SelectTable($"SELECT * FROM ensemble WHERE id_ensemble = {managerDB.GetID(dataGridView1.CurrentRow.Cells[5].Value.ToString())};");
-                if (table.Rows.Count > 0)
-                {
-                    row = table.Rows[0];
-                    boxEnsemble.Text = Convert.ToString($"{row["name_ensemble"]} [id{row["id_ensemble"]}]");
-                }
-            }
-            else boxEnsemble.Text = "";
         }
     }
 }

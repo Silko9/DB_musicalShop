@@ -115,20 +115,9 @@ namespace DB_musicalShop
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count < 0)
-                return;
+            if (dataGridView1.Rows.Count < 0) return;
             boxName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            if (dataGridView1.CurrentRow.Cells[2].Value.ToString() != "")
-            {
-                DataRow row;
-                DataTable table = managerDB.SelectTable($"SELECT * FROM [type_ensemble] WHERE id_type_ensemble = {managerDB.GetID(dataGridView1.CurrentRow.Cells[2].Value.ToString())};");
-                if (table.Rows.Count > 0)
-                {
-                    row = table.Rows[0];
-                    boxTypeEnsemble.Text = Convert.ToString($"{row["name_type_ensemble"]} [id{row["id_type_ensemble"]}]");
-                }
-            }
-            else boxTypeEnsemble.Text = "";
+            boxTypeEnsemble.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
         }
     }
 }

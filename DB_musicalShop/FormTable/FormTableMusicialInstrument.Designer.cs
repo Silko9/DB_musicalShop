@@ -40,7 +40,7 @@
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(287, 352);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(368, 355);
             this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
             this.buttonUpdateTable.Size = new System.Drawing.Size(243, 54);
@@ -51,7 +51,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(288, 74);
+            this.buttonAdd.Location = new System.Drawing.Point(369, 77);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(243, 54);
@@ -62,7 +62,7 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(288, 133);
+            this.buttonChange.Location = new System.Drawing.Point(369, 136);
             this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(243, 54);
@@ -73,7 +73,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(288, 192);
+            this.buttonDelete.Location = new System.Drawing.Point(369, 195);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(243, 54);
@@ -84,17 +84,17 @@
             // 
             // boxName
             // 
-            this.boxName.Location = new System.Drawing.Point(288, 29);
+            this.boxName.Location = new System.Drawing.Point(369, 32);
             this.boxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.boxName.MaxLength = 15;
+            this.boxName.MaxLength = 20;
             this.boxName.Name = "boxName";
-            this.boxName.Size = new System.Drawing.Size(151, 22);
+            this.boxName.Size = new System.Drawing.Size(242, 22);
             this.boxName.TabIndex = 36;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(284, 11);
+            this.label1.Location = new System.Drawing.Point(365, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 16);
             this.label1.TabIndex = 35;
@@ -109,7 +109,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(270, 395);
+            this.dataGridView1.Size = new System.Drawing.Size(351, 395);
             this.dataGridView1.TabIndex = 34;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 417);
+            this.ClientSize = new System.Drawing.Size(619, 417);
             this.Controls.Add(this.buttonUpdateTable);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonChange);

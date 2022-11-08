@@ -56,7 +56,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1135, 395);
+            this.dataGridView1.Size = new System.Drawing.Size(1081, 395);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -124,7 +124,7 @@
             // boxSurname
             // 
             this.boxSurname.Location = new System.Drawing.Point(270, 492);
-            this.boxSurname.MaxLength = 20;
+            this.boxSurname.MaxLength = 15;
             this.boxSurname.Name = "boxSurname";
             this.boxSurname.Size = new System.Drawing.Size(242, 22);
             this.boxSurname.TabIndex = 9;
@@ -200,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1177, 714);
+            this.ClientSize = new System.Drawing.Size(1108, 714);
             this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.buttonUpdateTable);
             this.Controls.Add(this.buttonAdd);

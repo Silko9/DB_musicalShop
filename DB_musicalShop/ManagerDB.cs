@@ -37,7 +37,7 @@ namespace DB_musicalShop
                 connection.Open();
                 string commandText = "CREATE TABLE musicial_instrument (" +
                     "id_instrument INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "name_instrument VARCHAR(15) NOT NULL);";
+                    "name_instrument VARCHAR(20) NOT NULL);";
                 Query(commandText);
                 commandText = "CREATE TABLE type_ensemble (" +
                     "id_type_ensemble INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
@@ -55,10 +55,15 @@ namespace DB_musicalShop
                 commandText = "CREATE TABLE musician (" +
                     "id_musician INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     "name_musician VARCHAR(15) NOT NULL," +
-                    "surname_musician VARCHAR(20) NOT NULL," +
+                    "surname_musician VARCHAR(15) NOT NULL," +
                     "patronymic_musician VARCHAR(15)," +
                     "phote_musician BLOB," +
                     "id_ensemble INTEGER NOT NULL);";
+                Query(commandText);
+                commandText = "CREATE TABLE relation_musician_role (" +
+                    "id_musician INTEGER NOT NULL," +
+                    "id_role INTEGER NOT NULL, " +
+                    "CONSTRAINT id_relation_role_musician PRIMARY KEY (id_musician, id_role));";
                 Query(commandText);
                 return 0;
             }
@@ -157,7 +162,8 @@ namespace DB_musicalShop
             }
             catch
             {
-                return Convert.ToInt32(str);
+                if (str != "") return Convert.ToInt32(str);
+                else return 0;
             }
         }
         public bool IsMatch(string str)

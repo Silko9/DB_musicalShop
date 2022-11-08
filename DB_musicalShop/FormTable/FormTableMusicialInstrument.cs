@@ -27,6 +27,8 @@ namespace DB_musicalShop
             dataGridView1.DataSource = table;
             dataGridView1.Columns[0].HeaderText = "ID Инструмента";
             dataGridView1.Columns[1].HeaderText = "Название";
+            dataGridView1.Columns[0].Width = 70;
+            dataGridView1.Columns[1].Width = 170;
         }
         private void Query(string command)
         {
