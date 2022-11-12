@@ -1,5 +1,4 @@
-﻿using DB_musicalShop.FormTable;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +14,6 @@ namespace DB_musicalShop
     public partial class FormTableTypeEnseble : Form
     {
         ManagerDB managerDB = new ManagerDB();
-        FormReplacementTypeOfEnsemble formReplacementTypeOfEnsemble;
         public FormTableTypeEnseble(ManagerDB managerDB)
         {
             InitializeComponent();
@@ -70,10 +68,7 @@ namespace DB_musicalShop
             DataTable table = managerDB.SelectTable($"SELECT * FROM ensemble WHERE id_type_ensemble = {id};");
             if (table.Rows.Count > 0)
             {
-                formReplacementTypeOfEnsemble = new FormReplacementTypeOfEnsemble(managerDB);
-                formReplacementTypeOfEnsemble.type = managerDB.SelectTable("SELECT * FROM type_ensemble;");
-                formReplacementTypeOfEnsemble.id = id;
-                formReplacementTypeOfEnsemble.ShowDialog();
+                MessageBox.Show("Невозможно удалить запись \"тип данных\", пока она используется хотя бы в одной записи таблицы \"Ансамбли\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateTable();
             }
             else

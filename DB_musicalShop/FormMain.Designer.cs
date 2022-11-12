@@ -176,7 +176,7 @@
             this.buttonViewTableRelationRoleAndMusician.Name = "buttonViewTableRelationRoleAndMusician";
             this.buttonViewTableRelationRoleAndMusician.Size = new System.Drawing.Size(125, 58);
             this.buttonViewTableRelationRoleAndMusician.TabIndex = 27;
-            this.buttonViewTableRelationRoleAndMusician.Text = "Таблица отношений роли и музыканты";
+            this.buttonViewTableRelationRoleAndMusician.Text = "Таблица отношений музыканты и роли";
             this.buttonViewTableRelationRoleAndMusician.UseVisualStyleBackColor = true;
             this.buttonViewTableRelationRoleAndMusician.Click += new System.EventHandler(this.buttonViewTableRelationRoleAndMusician_Click);
             // 

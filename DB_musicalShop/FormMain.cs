@@ -35,7 +35,7 @@ namespace DB_musicalShop
             saveFileDialog1.Filter = "db files (*.db)|*.db|All files (*.*)|*.*";
             ButtonEnabled(false);
             //для теста
-            if (!managerDB.CheckDB("C:\\SQLite\\j.db"))
+            if (!managerDB.CheckDB("C:\\SQLite\\data.db"))
             {
                 ButtonEnabled(false);
                 MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -43,7 +43,7 @@ namespace DB_musicalShop
             }
             label2.Text = "C:\\SQLite\\data.db";
             ButtonEnabled(true);
-            //
+            ////
         }
         private void ButtonEnabled(bool enabled)
         {
@@ -143,7 +143,7 @@ namespace DB_musicalShop
         {
             if (formTableComposition != null)
                 formTableComposition.Close();
-            formTableComposition = new FormTableComposition();
+            formTableComposition = new FormTableComposition(managerDB);
             formTableComposition.Show();
         }
         private void buttonViewTableRecord_Click(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace DB_musicalShop
         {
             if (formTableRelationRecordAndPerformance != null)
                 formTableRelationRecordAndPerformance.Close();
-            formTableRelationRecordAndPerformance = new FormTableRelationRecordAndPerformance();
+            formTableRelationRecordAndPerformance = new FormTableRelationRecordAndPerformance(managerDB);
             formTableRelationRecordAndPerformance.Show();
         }
         private void buttonViewTableLogging_Click(object sender, EventArgs e)

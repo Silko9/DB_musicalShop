@@ -64,7 +64,7 @@ namespace DB_musicalShop
                     MessageBox.Show("В поле должны быть только буквы и цифры.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                string commandText = $"UPDATE [musicial_instrument] SET name_instrument = \"{boxName.Text}\" WHERE id_instrument = {dataGridView1.CurrentRow.Cells[0].Value};";
+                string commandText = $"UPDATE musicial_instrument SET name_instrument = \"{boxName.Text}\" WHERE id_instrument = {dataGridView1.CurrentRow.Cells[0].Value};";
                 Query(commandText);
             }
             else
@@ -73,8 +73,11 @@ namespace DB_musicalShop
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount == 0) return;
-            string commandText = $"DELETE FROM [musicial_instrument] WHERE id_instrument = {dataGridView1.CurrentRow.Cells[0].Value};";
+            string commandText = $"DELETE FROM musicial_instrument WHERE id_instrument = {dataGridView1.CurrentRow.Cells[0].Value};";
+            DataTable table = managerDB.SelectTable($"SELECT * FROM musician WHERE id_instrument = {dataGridView1.CurrentRow.Cells[0].Value}");
             Query(commandText);
+            if(table.Rows.Count > 0)
+                Query($"UPDATE musician SET id_instrument = \"\" WHERE id_instrument = {dataGridView1.CurrentRow.Cells[0].Value};");
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

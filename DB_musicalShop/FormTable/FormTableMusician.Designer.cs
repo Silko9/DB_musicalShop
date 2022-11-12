@@ -44,6 +44,8 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonUpdateTable = new System.Windows.Forms.Button();
             this.buttonSort = new System.Windows.Forms.Button();
+            this.boxInstrument = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +58,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1081, 395);
+            this.dataGridView1.Size = new System.Drawing.Size(1348, 395);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -149,7 +151,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(529, 562);
+            this.buttonDelete.Location = new System.Drawing.Point(529, 533);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(242, 54);
             this.buttonDelete.TabIndex = 13;
@@ -159,7 +161,7 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(529, 488);
+            this.buttonChange.Location = new System.Drawing.Point(529, 473);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(242, 54);
             this.buttonChange.TabIndex = 14;
@@ -179,7 +181,7 @@
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(529, 641);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(529, 593);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
             this.buttonUpdateTable.Size = new System.Drawing.Size(242, 58);
             this.buttonUpdateTable.TabIndex = 16;
@@ -189,18 +191,38 @@
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(270, 641);
+            this.buttonSort.Location = new System.Drawing.Point(529, 657);
             this.buttonSort.Name = "buttonSort";
             this.buttonSort.Size = new System.Drawing.Size(242, 58);
             this.buttonSort.TabIndex = 17;
             this.buttonSort.Text = "Сортировать";
             this.buttonSort.UseVisualStyleBackColor = true;
             // 
+            // boxInstrument
+            // 
+            this.boxInstrument.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.boxInstrument.FormattingEnabled = true;
+            this.boxInstrument.Location = new System.Drawing.Point(270, 657);
+            this.boxInstrument.Name = "boxInstrument";
+            this.boxInstrument.Size = new System.Drawing.Size(242, 24);
+            this.boxInstrument.TabIndex = 19;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(270, 638);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(179, 16);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Музыкальный инструмент";
+            // 
             // FormTableMusician
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1108, 714);
+            this.ClientSize = new System.Drawing.Size(1367, 728);
+            this.Controls.Add(this.boxInstrument);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.buttonUpdateTable);
             this.Controls.Add(this.buttonAdd);
@@ -244,5 +266,7 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonUpdateTable;
         private System.Windows.Forms.Button buttonSort;
+        private System.Windows.Forms.ComboBox boxInstrument;
+        private System.Windows.Forms.Label label4;
     }
 }

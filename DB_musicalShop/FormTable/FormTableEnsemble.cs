@@ -110,8 +110,18 @@ namespace DB_musicalShop
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount == 0) return;
-            string commandText = $"DELETE FROM [ensemble] WHERE id_ensemble = {dataGridView1.CurrentRow.Cells[0].Value};";
-            Query(commandText);
+            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            DataTable table = managerDB.SelectTable($"SELECT * FROM musician WHERE id_ensemble = {id};");
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Невозможно удалить запись \"Ансамбль\", пока она используется хотя бы в одной записи таблицы \"Музыкант\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateTable();
+            }
+            else
+            {
+                string commandText = $"DELETE FROM ensemble WHERE id_ensemble = {id};";
+                Query(commandText);
+            }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

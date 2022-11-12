@@ -153,7 +153,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormTableRelationRoleAndMusician";
-            this.Text = "Таблица отношений ролей и музыкантов";
+            this.Text = "Таблица отношений музыкантов и ролей";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -106,6 +106,7 @@ namespace DB_musicalShop
                 string commandText = $"INSERT INTO relation_musician_role (id_musician, id_role)" +
                 $"VALUES(\"{managerDB.GetID(boxMusician.Text)}\", \"{managerDB.GetID(boxRole.Text)}\");";
                 Query(commandText);
+                SelectRole();
             }
             else
                 MessageBox.Show("Заполните все поля.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -121,6 +122,7 @@ namespace DB_musicalShop
                 $"WHERE id_musician = {managerDB.GetID(dataGridView1.CurrentRow.Cells[0].Value.ToString())} AND " +
                 $"id_role = {managerDB.GetID(dataGridView1.CurrentRow.Cells[1].Value.ToString())};";
                 Query(commandText);
+                SelectRole();
             }
             else
                 MessageBox.Show("Заполните все поля.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -132,6 +134,7 @@ namespace DB_musicalShop
                 $"WHERE id_musician = {managerDB.GetID(dataGridView1.CurrentRow.Cells[0].Value.ToString())} AND " +
                 $"id_role = {managerDB.GetID(dataGridView1.CurrentRow.Cells[1].Value.ToString())};";
             Query(commandText);
+            SelectRole();
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

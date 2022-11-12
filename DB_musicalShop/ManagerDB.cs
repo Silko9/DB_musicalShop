@@ -58,12 +58,21 @@ namespace DB_musicalShop
                     "surname_musician VARCHAR(15) NOT NULL," +
                     "patronymic_musician VARCHAR(15)," +
                     "phote_musician BLOB," +
-                    "id_ensemble INTEGER NOT NULL);";
+                    "id_ensemble INTEGER NOT NULL," +
+                    "id_instrument INTEGER NOT NULL);";
                 Query(commandText);
                 commandText = "CREATE TABLE relation_musician_role (" +
                     "id_musician INTEGER NOT NULL," +
                     "id_role INTEGER NOT NULL, " +
                     "CONSTRAINT id_relation_role_musician PRIMARY KEY (id_musician, id_role));";
+                Query(commandText);
+                commandText = "CREATE TABLE composition (" +
+                    "id_composition INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "name_composition VARCHAR(20) NOT NULL, " +
+                    "name_author VARCHAR(15) NOT NULL, " +
+                    "surname_author VARCHAR(15) NOT NULL, " +
+                    "patronymic_author VARCHAR(15), " +
+                    "date_create TEXT NOT NULL);";
                 Query(commandText);
                 return 0;
             }
@@ -105,6 +114,8 @@ namespace DB_musicalShop
                 commandText = "SELECT phote_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
                 Query(commandText);
                 commandText = "SELECT id_ensemble FROM musician ORDER BY rowid ASC LIMIT 1;";
+                Query(commandText);
+                commandText = "SELECT id_instrument FROM musician ORDER BY rowid ASC LIMIT 1;";
                 Query(commandText);
                 return true;
             }
