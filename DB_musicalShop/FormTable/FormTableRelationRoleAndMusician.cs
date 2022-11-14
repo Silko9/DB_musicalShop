@@ -52,7 +52,7 @@ namespace DB_musicalShop
                     row = musician.Rows[i];
                     boxMusician.Items.Add(Convert.ToString($"{GetInitials(row["name_musician"].ToString(), row["surname_musician"].ToString(), row["patronymic_musician"].ToString())} [id{row["id_musician"]}]"));
                 }
-            if (boxRole.Text != "")
+            if (boxMusician.Text != "")
                 SelectRole();
             else
                 for (int i = 0; i < role.Rows.Count; i++)
@@ -87,8 +87,8 @@ namespace DB_musicalShop
                     dataGridView1.Rows.Add(" ", " ");
                 }
             }
-            boxMusician.Text = currentItemM;
-            boxRole.Text = currentItemR;
+            if(currentItemM != "") boxMusician.Text = currentItemM;
+            if(currentItemR != "") boxRole.Text = currentItemR;
         }
         private void Query(string command)
         {
@@ -138,7 +138,7 @@ namespace DB_musicalShop
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count < 0) return;
+            if (dataGridView1.Rows.Count == 0) return;
             boxMusician.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             boxRole.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
         }

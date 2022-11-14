@@ -152,7 +152,7 @@ namespace DB_musicalShop
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count < 0) return;
+            if (dataGridView1.Rows.Count == 0) return;
             boxName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             boxSurname.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             boxPatronymic.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();

@@ -17,101 +17,174 @@ namespace DB_musicalShop
         {
             InitializeComponent();
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Columns.Add("", "ID Музыкант");
-            dataGridView1.Columns.Add("", "ID Инструмент");
-            dataGridView1.Columns[0].Width = 180;
-            dataGridView1.Columns[1].Width = 160;
             dataGridView1.AllowUserToAddRows = false;
             this.managerDB = managerDB;
-            //UpdateTable();
+            UpdateTable();
         }
-        //private string GetInitials(string name, string surname, string patronymic)
-        //{
-        //    return $"{surname} {name[0]}. {patronymic[0]}.";
-        //}
-        //private void UpdateTable()
-        //{
-        //    dataGridView1.Rows.Clear();
-        //    DataTable musician = managerDB.SelectTable("SELECT * FROM musician;");
-        //    DataRow row;
-        //    DataRow rowMusician;
-        //    DataRow row;
-        //    DataTable role = managerDB.SelectTable("SELECT * FROM role");
-        //    string currentItemM = boxMusician.Text;
-        //    string currentItemR = boxRole.Text;
-        //    boxMusician.Items.Clear();
-        //    boxRole.Items.Clear();
-        //    boxMusician.Items.Add("");
-        //    boxRole.Items.Add("");
-        //    if (boxRole.Text != "")
-        //        SelectMusician();
-        //    else
-        //        for (int i = 0; i < musician.Rows.Count; i++)
-        //        {
-        //            row = musician.Rows[i];
-        //            boxMusician.Items.Add(Convert.ToString($"{GetInitials(row["name_musician"].ToString(), row["surname_musician"].ToString(), row["patronymic_musician"].ToString())} [id{row["id_musician"]}]"));
-        //        }
-        //    if (boxRole.Text != "")
-        //        SelectRole();
-        //    else
-        //        for (int i = 0; i < role.Rows.Count; i++)
-        //        {
-        //            rowRole = role.Rows[i];
-        //            boxRole.Items.Add(Convert.ToString($"{rowRole["name_role"]} [id{rowRole["id_role"]}]"));
-        //        }
-        //    DataTable table = managerDB.SelectTable("SELECT * FROM relation_musician_role");
-        //    for (int i = 0; i < table.Rows.Count; i++)
-        //    {
-        //        row = table.Rows[i];
-        //        try
-        //        {
-        //            rowMusician = musician.Rows[0];
-        //            for (int j = 0; j < musician.Rows.Count; j++)
-        //            {
-        //                rowMusician = musician.Rows[j];
-        //                if (rowMusician["id_musician"].ToString() == row["id_musician"].ToString())
-        //                    break;
-        //            }
-        //            rowRole = role.Rows[0];
-        //            for (int j = 0; j < role.Rows.Count; j++)
-        //            {
-        //                rowRole = role.Rows[j];
-        //                if (rowRole["id_role"].ToString() == row["id_role"].ToString())
-        //                    break;
-        //            }
-        //            dataGridView1.Rows.Add($"{GetInitials(rowMusician["name_musician"].ToString(), rowMusician["surname_musician"].ToString(), rowMusician["patronymic_musician"].ToString())} [id{rowMusician["id_musician"]}]", $"{rowRole["name_role"]} [id{rowRole["id_role"]}]");
-        //        }
-        //        catch
-        //        {
-        //            dataGridView1.Rows.Add(" ", " ");
-        //        }
-        //    }
-        //    boxMusician.Text = currentItemM;
-        //    boxRole.Text = currentItemR;
-        //}
+        private void UpdateTable()
+        {
+            DataTable record = managerDB.SelectTable("SELECT * FROM record;");
+            DataRow rowRecord;
+            DataRow rowPerformance;
+            DataTable performance = managerDB.SelectTable("SELECT * FROM performance");
+            string currentItemR = boxRecord.Text;
+            string currentItemP = boxPerformance.Text;
+            boxRecord.Items.Clear();
+            boxPerformance.Items.Clear();
+            boxRecord.Items.Add("");
+            boxPerformance.Items.Add("");
+            if (boxPerformance.Text != "")
+                SelectRecord();
+            else
+                for (int i = 0; i < record.Rows.Count; i++)
+                {
+                    rowRecord = record.Rows[i];
+                    boxRecord.Items.Add(rowRecord["number_record"]);
+                }
+            if (boxRecord.Text != "")
+                SelectPerformance();
+            else
+                for (int i = 0; i < performance.Rows.Count; i++)
+                {
+                    rowPerformance = performance.Rows[i];
+                    boxPerformance.Items.Add(rowPerformance["id_performance"]);
+                }
+            DataTable table = managerDB.SelectTable("SELECT * FROM relation_record_performance");
+            dataGridView1.DataSource = table;
+            if (currentItemR != "") boxRecord.Text = currentItemR;
+            if (currentItemP != "") boxPerformance.Text = currentItemP;
+            dataGridView1.Columns[0].Width = 110;
+            dataGridView1.Columns[1].Width = 110;
+            dataGridView1.Columns[0].HeaderText = "Номер пластинки";
+            dataGridView1.Columns[1].HeaderText = "ID исполнения";
+        }
+        private void SelectRecord()
+        {
+            string currentItem = boxRecord.Text;
+            boxRecord.Items.Clear();
+            boxRecord.Items.Add("");
+            int idPerformance;
+            if (boxPerformance.Text == "") idPerformance = 0;
+            else idPerformance = Convert.ToInt32(boxPerformance.Text);
+            DataTable table = managerDB.SelectTable("SELECT * FROM relation_record_performance " +
+                $"WHERE id_performance = {idPerformance};");
+            DataTable record = managerDB.SelectTable("SELECT number_record FROM record");
+            DataRow row;
+            DataRow rowRecord;
+            bool flag;
+            for (int i = 0; i < record.Rows.Count; i++)
+            {
+                rowRecord = record.Rows[i];
+                flag = true;
+                for (int j = 0; j < table.Rows.Count; j++)
+                {
+                    row = table.Rows[j];
+                    if (row["number_record"].ToString() == rowRecord["number_record"].ToString())
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                    boxRecord.Items.Add(rowRecord["number_record"]);
+            }
+            boxRecord.Text = currentItem;
+        }
+        private void SelectPerformance()
+        {
+            string currentItem = boxPerformance.Text;
+            boxPerformance.Items.Clear();
+            boxPerformance.Items.Add("");
+            
+            DataTable table = managerDB.SelectTable("SELECT * FROM relation_record_performance " +
+                $"WHERE number_record = \"{boxRecord.Text}\";");
+            DataTable performance = managerDB.SelectTable("SELECT id_performance FROM performance;");
+            DataRow row;
+            DataRow rowPerformance;
+            bool flag;
+            for (int i = 0; i < performance.Rows.Count; i++)
+            {
+                rowPerformance = performance.Rows[i];
+                flag = true;
+                for (int j = 0; j < table.Rows.Count; j++)
+                {
+                    row = table.Rows[j];
+                    if (row["id_performance"].ToString() == rowPerformance["id_performance"].ToString())
+                    {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag)
+                    boxPerformance.Items.Add(rowPerformance["id_performance"]);
+            }
+            boxPerformance.Text = currentItem;
+        }
         private void Query(string command)
         {
             managerDB.Query(command);
-            //UpdateTable();
+            UpdateTable();
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-
+            if (boxRecord.Text != "" && boxPerformance.Text != "")
+            {
+                string commandText = $"INSERT INTO relation_record_performance (number_record, id_performance)" +
+                $"VALUES(\"{boxRecord.Text}\", {boxPerformance.Text});";
+                Query(commandText);
+                SelectPerformance();
+            }
+            else
+                MessageBox.Show("Заполните все поля.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.RowCount == 0) return;
+            if (boxRecord.Text != "" && boxPerformance.Text != "")
+            {
+                string commandText = $"UPDATE relation_record_performance SET " +
+                $"number_record = \"{boxRecord.Text}\", " +
+                $"id_performance = {boxPerformance.Text} " +
+                $"WHERE number_record = \"{dataGridView1.CurrentRow.Cells[0].Value}\" AND " +
+                $"id_performance = {dataGridView1.CurrentRow.Cells[1].Value};";
+                Query(commandText);
+                SelectPerformance();
+            }
+            else
+                MessageBox.Show("Заполните все поля.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.RowCount == 0) return;
+            string commandText = $"DELETE FROM relation_record_performance " +
+                $"WHERE number_record = \"{dataGridView1.CurrentRow.Cells[0].Value}\" AND " +
+                $"id_performance = {dataGridView1.CurrentRow.Cells[1].Value};";
+            Query(commandText);
+            SelectPerformance();
         }
 
         private void buttonUpdateTable_Click(object sender, EventArgs e)
         {
+            UpdateTable();
+        }
 
+        private void boxRecord_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            SelectPerformance();
+        }
+
+        private void boxPerformance_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            SelectRecord();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0) return;
+            boxRecord.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            boxPerformance.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
         }
     }
 }

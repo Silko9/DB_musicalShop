@@ -74,6 +74,24 @@ namespace DB_musicalShop
                     "patronymic_author VARCHAR(15), " +
                     "date_create TEXT NOT NULL);";
                 Query(commandText);
+                commandText = "CREATE TABLE performance (" +
+                    "id_performance INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "date_performance TEXT NOT NULL, " +
+                    "id_ensemble INTEGER NOT NULL, " +
+                    "id_composition INTEGER NOT NULL, " +
+                    "circumstances_execution VARCHAR(200));";
+                Query(commandText);
+                commandText = "CREATE TABLE record (" +
+                    "number_record VARCHAR(10) PRIMARY KEY NOT NULL," +
+                    "retail_price DOUBLE NOT NULL, " +
+                    "wholesale_price DOUBLE NOT NULL, " +
+                    "id_composition INTEGER NOT NULL);";
+                Query(commandText);
+                commandText = "CREATE TABLE relation_record_performance (" +
+                    "number_record VARCHAR(10) NOT NULL," +
+                    "id_performance INTEGER NOT NULL, " +
+                    "CONSTRAINT id_relation_record_performance PRIMARY KEY (number_record, id_performance));";
+                Query(commandText);
                 return 0;
             }
             catch

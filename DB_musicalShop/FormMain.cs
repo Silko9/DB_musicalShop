@@ -136,7 +136,7 @@ namespace DB_musicalShop
         {
             if (formTablePerformance != null)
                 formTablePerformance.Close();
-            formTablePerformance = new FormTablePerformance();
+            formTablePerformance = new FormTablePerformance(managerDB);
             formTablePerformance.Show();
         }
         private void buttonViewTableComposition_Click(object sender, EventArgs e)
@@ -150,7 +150,7 @@ namespace DB_musicalShop
         {
             if (formTableRecord != null)
                 formTableRecord.Close();
-            formTableRecord = new FormTableRecord();
+            formTableRecord = new FormTableRecord(managerDB);
             formTableRecord.Show();
         }
         private void buttonViewTableRelationRecordAndPerformance_Click(object sender, EventArgs e)
