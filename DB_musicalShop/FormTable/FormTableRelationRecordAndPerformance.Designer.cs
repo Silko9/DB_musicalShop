@@ -115,7 +115,7 @@
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(268, 360);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(268, 365);
             this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
             this.buttonUpdateTable.Size = new System.Drawing.Size(182, 44);
@@ -133,7 +133,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(255, 395);
+            this.dataGridView1.Size = new System.Drawing.Size(255, 400);
             this.dataGridView1.TabIndex = 51;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 408);
+            this.ClientSize = new System.Drawing.Size(459, 415);
             this.Controls.Add(this.boxPerformance);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.boxRecord);

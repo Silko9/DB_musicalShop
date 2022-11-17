@@ -58,8 +58,8 @@
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(466, 360);
-            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(466, 365);
+            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
             this.buttonUpdateTable.Size = new System.Drawing.Size(182, 44);
             this.buttonUpdateTable.TabIndex = 69;
@@ -70,7 +70,7 @@
             // buttonAdd
             // 
             this.buttonAdd.Location = new System.Drawing.Point(466, 185);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(182, 44);
             this.buttonAdd.TabIndex = 68;
@@ -81,7 +81,7 @@
             // buttonChange
             // 
             this.buttonChange.Location = new System.Drawing.Point(466, 233);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(2);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(182, 44);
             this.buttonChange.TabIndex = 67;
@@ -92,7 +92,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Location = new System.Drawing.Point(466, 281);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(182, 44);
             this.buttonDelete.TabIndex = 66;
@@ -104,19 +104,19 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(9, 9);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(453, 395);
+            this.dataGridView1.Size = new System.Drawing.Size(453, 400);
             this.dataGridView1.TabIndex = 65;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // boxNumberRecord
             // 
             this.boxNumberRecord.Location = new System.Drawing.Point(466, 24);
-            this.boxNumberRecord.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.boxNumberRecord.Margin = new System.Windows.Forms.Padding(2);
             this.boxNumberRecord.MaxLength = 10;
             this.boxNumberRecord.Name = "boxNumberRecord";
             this.boxNumberRecord.Size = new System.Drawing.Size(183, 20);
@@ -156,7 +156,7 @@
             // 
             this.numericRetailPrice.DecimalPlaces = 2;
             this.numericRetailPrice.Location = new System.Drawing.Point(466, 67);
-            this.numericRetailPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericRetailPrice.Margin = new System.Windows.Forms.Padding(2);
             this.numericRetailPrice.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -170,7 +170,7 @@
             // 
             this.numericWholesalePrice.DecimalPlaces = 2;
             this.numericWholesalePrice.Location = new System.Drawing.Point(466, 111);
-            this.numericWholesalePrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numericWholesalePrice.Margin = new System.Windows.Forms.Padding(2);
             this.numericWholesalePrice.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -185,7 +185,7 @@
             this.boxComposition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxComposition.FormattingEnabled = true;
             this.boxComposition.Location = new System.Drawing.Point(466, 156);
-            this.boxComposition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.boxComposition.Margin = new System.Windows.Forms.Padding(2);
             this.boxComposition.Name = "boxComposition";
             this.boxComposition.Size = new System.Drawing.Size(183, 21);
             this.boxComposition.TabIndex = 79;
@@ -208,9 +208,9 @@
             this.Controls.Add(this.buttonChange);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormTableRecord";
-            this.Text = "FormTableRecord";
+            this.Text = "Таблица пластинки";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericRetailPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericWholesalePrice)).EndInit();

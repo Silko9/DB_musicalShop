@@ -70,17 +70,18 @@ namespace DB_musicalShop
         {
             if (dataGridView1.RowCount == 0) return;
             string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            //DataTable table = managerDB.SelectTable($"SELECT * FROM composition WHERE id_composition = {id};");
-            //if (table.Rows.Count > 0)
-            //{
-            //    MessageBox.Show("Невозможно удалить запись \"тип данных\", пока она используется хотя бы в одной записи таблицы \"Ансамбли\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    UpdateTable();
-            //}
-            //else
-            //{
+            DataTable performance = managerDB.SelectTable($"SELECT * FROM performance WHERE id_composition = {id};");
+            DataTable record = managerDB.SelectTable($"SELECT * FROM record WHERE id_composition = {id};");
+            if (performance.Rows.Count > 0 || record.Rows.Count > 0)
+            {
+                MessageBox.Show("Невозможно удалить запись \"Произведение\", пока она используется хотя бы в одной записи таблиц \"Исполнения\" и \"Пластинки\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateTable();
+            }
+            else
+            {
                 string commandText = $"DELETE FROM composition WHERE id_composition = {id};";
                 Query(commandText);
-            //} доделать когда будут таблицы исполнение и пластинки
+            }
         }
         private void buttonUpdateTable_Click(object sender, EventArgs e)
         {

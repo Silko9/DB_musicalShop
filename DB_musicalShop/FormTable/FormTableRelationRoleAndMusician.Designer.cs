@@ -42,10 +42,10 @@
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(499, 355);
-            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(374, 367);
+            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
-            this.buttonUpdateTable.Size = new System.Drawing.Size(243, 54);
+            this.buttonUpdateTable.Size = new System.Drawing.Size(182, 44);
             this.buttonUpdateTable.TabIndex = 35;
             this.buttonUpdateTable.Text = "Обновить таблицу";
             this.buttonUpdateTable.UseVisualStyleBackColor = true;
@@ -54,13 +54,13 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 14);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 11);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(480, 395);
+            this.dataGridView1.Size = new System.Drawing.Size(360, 400);
             this.dataGridView1.TabIndex = 34;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -68,28 +68,28 @@
             // 
             this.boxMusician.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxMusician.FormattingEnabled = true;
-            this.boxMusician.Location = new System.Drawing.Point(500, 34);
-            this.boxMusician.Margin = new System.Windows.Forms.Padding(4);
+            this.boxMusician.Location = new System.Drawing.Point(375, 28);
             this.boxMusician.Name = "boxMusician";
-            this.boxMusician.Size = new System.Drawing.Size(239, 24);
+            this.boxMusician.Size = new System.Drawing.Size(180, 21);
             this.boxMusician.TabIndex = 48;
             this.boxMusician.SelectionChangeCommitted += new System.EventHandler(this.boxMusician_SelectionChangeCommitted);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(499, 14);
+            this.label2.Location = new System.Drawing.Point(374, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 16);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 47;
             this.label2.Text = "Музыкант";
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(499, 155);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAdd.Location = new System.Drawing.Point(374, 126);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(243, 54);
+            this.buttonAdd.Size = new System.Drawing.Size(182, 44);
             this.buttonAdd.TabIndex = 45;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -97,10 +97,10 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(499, 214);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonChange.Location = new System.Drawing.Point(374, 174);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(243, 54);
+            this.buttonChange.Size = new System.Drawing.Size(182, 44);
             this.buttonChange.TabIndex = 44;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
@@ -108,10 +108,10 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(499, 273);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDelete.Location = new System.Drawing.Point(374, 222);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(243, 54);
+            this.buttonDelete.Size = new System.Drawing.Size(182, 44);
             this.buttonDelete.TabIndex = 43;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -121,27 +121,27 @@
             // 
             this.boxRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.boxRole.FormattingEnabled = true;
-            this.boxRole.Location = new System.Drawing.Point(502, 89);
-            this.boxRole.Margin = new System.Windows.Forms.Padding(4);
+            this.boxRole.Location = new System.Drawing.Point(376, 72);
             this.boxRole.Name = "boxRole";
-            this.boxRole.Size = new System.Drawing.Size(239, 24);
+            this.boxRole.Size = new System.Drawing.Size(180, 21);
             this.boxRole.TabIndex = 50;
             this.boxRole.SelectionChangeCommitted += new System.EventHandler(this.boxRole_SelectionChangeCommitted);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(501, 69);
+            this.label1.Location = new System.Drawing.Point(376, 56);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 16);
+            this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 49;
             this.label1.Text = "Роль";
             // 
             // FormTableRelationRoleAndMusician
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 418);
+            this.ClientSize = new System.Drawing.Size(565, 418);
             this.Controls.Add(this.boxRole);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.boxMusician);
@@ -151,7 +151,6 @@
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonUpdateTable);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormTableRelationRoleAndMusician";
             this.Text = "Таблица отношений музыкантов и ролей";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

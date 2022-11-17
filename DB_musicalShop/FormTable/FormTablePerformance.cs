@@ -24,10 +24,12 @@ namespace DB_musicalShop
             dataGridView1.Columns.Add("", "Дата исполнения");
             dataGridView1.Columns.Add("", "ID Ансамбля");
             dataGridView1.Columns.Add("", "ID Произведения");
+            dataGridView1.Columns.Add("", "Обстоятельства исполнения");
             dataGridView1.Columns[0].Width = 80;
             dataGridView1.Columns[1].Width = 110;
             dataGridView1.Columns[2].Width = 200;
             dataGridView1.Columns[3].Width = 200;
+            dataGridView1.Columns[4].Width = 110;
             dataGridView1.AllowUserToAddRows = false;
             UpdateTable();
         }
@@ -73,11 +75,11 @@ namespace DB_musicalShop
                         if (rowComposition["id_composition"].ToString() == row["id_composition"].ToString())
                             break;
                     }
-                    dataGridView1.Rows.Add(row["id_performance"], row["date_performance"], $"{rowEnsemble["name_ensemble"]} [id{rowEnsemble["id_ensemble"]}]", $"{rowComposition["name_composition"]} [id{rowComposition["id_composition"]}]");
+                    dataGridView1.Rows.Add(row["id_performance"], row["date_performance"], $"{rowEnsemble["name_ensemble"]} [id{rowEnsemble["id_ensemble"]}]", $"{rowComposition["name_composition"]} [id{rowComposition["id_composition"]}]", row["circumstances_execution"]);
                 }
                 catch
                 {
-                    dataGridView1.Rows.Add(row["id_performance"], row["date_performance"], row["id_ensemble"], row["id_composition"]);
+                    dataGridView1.Rows.Add(row["id_performance"], row["date_performance"], row["id_ensemble"], row["id_composition"], row["circumstances_execution"]);
                 }
             }
             boxEnsemble.Text = currentItemE;
@@ -92,8 +94,8 @@ namespace DB_musicalShop
         {
             if (boxComposition.Text != "" && boxEnsemble.Text != "")
             {
-                string commandText = $"INSERT INTO performance (date_performance, id_ensemble, id_composition)" +
-                $"VALUES(\"{dateCreate.Text}\", {managerDB.GetID(boxEnsemble.Text)},{managerDB.GetID(boxComposition.Text)});";
+                string commandText = $"INSERT INTO performance (date_performance, id_ensemble, id_composition, circumstances_execution)" +
+                $"VALUES(\"{dateCreate.Text}\", {managerDB.GetID(boxEnsemble.Text)},{managerDB.GetID(boxComposition.Text)}, \"{boxCircumstances_execution.Text}\");";
                 Query(commandText);
             }
             else
@@ -107,7 +109,8 @@ namespace DB_musicalShop
                 string commandText = $"UPDATE performance SET " +
                 $"id_ensemble = \"{managerDB.GetID(boxEnsemble.Text)}\", " +
                 $"id_composition = {managerDB.GetID(boxComposition.Text)}, " +
-                $"date_performance = \"{dateCreate.Text}\" " +
+                $"date_performance = \"{dateCreate.Text}\", " +
+                $"circumstances_execution = \"{boxCircumstances_execution.Text}\" " +
                 $"WHERE id_performance = {dataGridView1.CurrentRow.Cells[0].Value};";
                 Query(commandText);
             }
@@ -118,17 +121,17 @@ namespace DB_musicalShop
         {
             if (dataGridView1.RowCount == 0) return;
             string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            //DataTable table = managerDB.SelectTable($"SELECT * FROM record WHERE id_record = {id};");
-            //if (table.Rows.Count > 0)
-            //{
-            //    MessageBox.Show("Невозможно удалить запись \"Ансамбль\", пока она используется хотя бы в одной записи таблицы \"Музыкант\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    UpdateTable();
-            //}
-            //else
-            //{
+            DataTable table = managerDB.SelectTable($"SELECT * FROM relation_record_performance WHERE id_performance = {id};");
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Невозможно удалить запись \"Исполнение\", пока она используется хотя бы в одной записи таблицы \"Отношения пластинок и исполнений\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateTable();
+            }
+            else
+            {
                 string commandText = $"DELETE FROM performance WHERE id_performance = {id};";
                 Query(commandText);
-            //}
+            }
         }
         private void buttonUpdateTable_Click(object sender, EventArgs e)
         {
@@ -140,6 +143,7 @@ namespace DB_musicalShop
             boxEnsemble.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             boxComposition.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             dateCreate.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            boxCircumstances_execution.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
         }
     }
 }

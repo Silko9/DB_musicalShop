@@ -26,7 +26,6 @@ namespace DB_musicalShop
         FormTableRecord formTableRecord;
         FormTableRelationRecordAndPerformance formTableRelationRecordAndPerformance;
         FormTableLogging formTableLogging;
-        FormTableTypeOfOperation formTableTypeOfOperation;
         public FormMain()
         {
             InitializeComponent();
@@ -58,7 +57,6 @@ namespace DB_musicalShop
             buttonViewTableRelationRoleAndMusician.Enabled = enabled;
             buttonViewTableRole.Enabled = enabled;
             buttonTypeEnseble.Enabled = enabled;
-            buttonViewTableTypeOfAction.Enabled = enabled;
         }
         private void buttonCreateNewDB_Click(object sender, EventArgs e)
         {
@@ -164,15 +162,8 @@ namespace DB_musicalShop
         {
             if (formTableLogging != null)
                 formTableLogging.Close();
-            formTableLogging = new FormTableLogging();
+            formTableLogging = new FormTableLogging(managerDB);
             formTableLogging.Show();
-        }
-        private void buttonViewTableTypeOfAction_Click(object sender, EventArgs e)
-        {
-            if (formTableTypeOfOperation != null)
-                formTableTypeOfOperation.Close();
-            formTableTypeOfOperation = new FormTableTypeOfOperation();
-            formTableTypeOfOperation.Show();
         }
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {

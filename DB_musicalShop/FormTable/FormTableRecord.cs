@@ -117,17 +117,18 @@ namespace DB_musicalShop
         {
             if (dataGridView1.RowCount == 0) return;
             string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            //DataTable table = managerDB.SelectTable($"SELECT * FROM musician WHERE id_ensemble = {id};");
-            //if (table.Rows.Count > 0)
-            //{
-            //    MessageBox.Show("Невозможно удалить запись \"Ансамбль\", пока она используется хотя бы в одной записи таблицы \"Музыкант\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    UpdateTable();
-            //}
-            //else
-            //{
-            string commandText = $"DELETE FROM record WHERE number_record = \"{id}\";";
+            DataTable log = managerDB.SelectTable($"SELECT * FROM logging WHERE number_record = \"{id}\";");
+            DataTable relation = managerDB.SelectTable($"SELECT * FROM relation_record_performance WHERE number_record = \"{id}\";");
+            if (log.Rows.Count > 0 || relation.Rows.Count > 0)
+            {
+                MessageBox.Show("Невозможно удалить запись \"Пластинка\", пока она используется хотя бы в одной записи таблиц \"Учет\" и \"Отношения пластинок и исполнений\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateTable();
+            }
+            else
+            {
+                string commandText = $"DELETE FROM record WHERE number_record = \"{id}\";";
             Query(commandText);
-            //} исправить когда будет таблица учет
+            }
         }
 
         private void buttonUpdateTable_Click(object sender, EventArgs e)

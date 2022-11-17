@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 
 namespace DB_musicalShop
 {
     public partial class FormTableMusician : Form
     {
         ManagerDB managerDB;
+        Bitmap image;
+        byte[] imageBytes;
         public FormTableMusician(ManagerDB managerDB)
         {
             InitializeComponent();
@@ -32,8 +37,12 @@ namespace DB_musicalShop
             dataGridView1.Columns[5].Width = 200;
             dataGridView1.Columns[6].Width = 200;
             dataGridView1.AllowUserToAddRows = false;
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             this.managerDB = managerDB;
+            image = new Bitmap(pictureBox1.Image);
+            openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP; *.JPG;*.GIF; *.PNG | All files(*.*) | *.* ";
+            ImageConverter converter = new ImageConverter();
+            imageBytes = (byte[])converter.ConvertTo(image, typeof(byte[]));
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             UpdateTable();
         }
         private void UpdateTable()
@@ -147,8 +156,18 @@ namespace DB_musicalShop
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount == 0) return;
-            string commandText = $"DELETE FROM musician WHERE id_musician = {dataGridView1.CurrentRow.Cells[0].Value};";
-            Query(commandText);
+            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            DataTable table = managerDB.SelectTable($"SELECT * FROM relation_musician_role WHERE id_musician = {id};");
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Невозможно удалить запись \"Музыкант\", пока она используется хотя бы в одной записи таблицы \"Отношения музыкантов и ролей\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateTable();
+            }
+            else
+            {
+                string commandText = $"DELETE FROM musician WHERE id_musician = {dataGridView1.CurrentRow.Cells[0].Value};";
+                Query(commandText);
+            }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -158,6 +177,26 @@ namespace DB_musicalShop
             boxPatronymic.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             boxEnsemble.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
             boxInstrument.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+        }
+        private void buttonOpenImage_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    image = new Bitmap(openFileDialog.FileName);
+                    pictureBox1.Size = image.Size;
+                    pictureBox1.Image = image;
+                    pictureBox1.Invalidate();
+                    ImageConverter converter = new ImageConverter();
+                    imageBytes = (byte[])converter.ConvertTo(image, typeof(byte[]));
+                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+                catch
+                {
+                    DialogResult rezult = MessageBox.Show("Невозможно открыть выбранный файл", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

@@ -92,6 +92,21 @@ namespace DB_musicalShop
                     "id_performance INTEGER NOT NULL, " +
                     "CONSTRAINT id_relation_record_performance PRIMARY KEY (number_record, id_performance));";
                 Query(commandText);
+                commandText = "CREATE TABLE operation (" +
+                    "id_operation INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "name_operation VARCHAR(15) NOT NULL);";
+                Query(commandText);
+                commandText = "INSERT INTO operation (name_operation) VALUES(\"Поступление\");";
+                Query(commandText);
+                commandText = "INSERT INTO operation (name_operation) VALUES(\"Продажа\");";
+                Query(commandText);
+                commandText = "CREATE TABLE logging (" +
+                    "id_log INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                    "number_record VARCHAR(10) NOT NULL, " +
+                    "id_operation VARCHAR(10) NOT NULL, " +
+                    "date_log TEXT NOT NULL, " +
+                    "amount INTEGER NOT NULL);";
+                Query(commandText);
                 return 0;
             }
             catch

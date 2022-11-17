@@ -58,8 +58,18 @@ namespace DB_musicalShop
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount == 0) return;
-            string commandText = $"DELETE FROM role WHERE id_role = {dataGridView1.CurrentRow.Cells[0].Value};";
-            Query(commandText);
+            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            DataTable table = managerDB.SelectTable($"SELECT * FROM relation_musician_role WHERE id_role = {id};");
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Невозможно удалить запись \"Роль\", пока она используется хотя бы в одной записи таблицы \"Отношения музыкантов и ролей\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateTable();
+            }
+            else
+            {
+                string commandText = $"DELETE FROM role WHERE id_role = {dataGridView1.CurrentRow.Cells[0].Value};";
+                Query(commandText);
+            }
         }
         private void buttonChange_Click(object sender, EventArgs e)
         {

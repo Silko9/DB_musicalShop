@@ -68,12 +68,12 @@ namespace DB_musicalShop
             DataTable table = managerDB.SelectTable($"SELECT * FROM ensemble WHERE id_type_ensemble = {id};");
             if (table.Rows.Count > 0)
             {
-                MessageBox.Show("Невозможно удалить запись \"тип данных\", пока она используется хотя бы в одной записи таблицы \"Ансамбли\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Невозможно удалить запись \"тип ансамбля\", пока она используется хотя бы в одной записи таблицы \"Ансамбли\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateTable();
             }
             else
             {
-                string commandText = $"DELETE FROM [type_ensemble] WHERE id_type_ensemble = {id};";
+                string commandText = $"DELETE FROM type_ensemble WHERE id_type_ensemble = {id};";
                 Query(commandText);
             }
         }

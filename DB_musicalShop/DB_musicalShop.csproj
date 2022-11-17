@@ -18,7 +18,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -154,12 +155,6 @@
     <Compile Include="FormTable\FormTableTypeEnseble.Designer.cs">
       <DependentUpon>FormTableTypeEnseble.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTable\FormTableTypeOfOperation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTable\FormTableTypeOfOperation.Designer.cs">
-      <DependentUpon>FormTableTypeOfOperation.cs</DependentUpon>
-    </Compile>
     <Compile Include="ManagerDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -201,9 +196,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormTableTypeEnseble.resx">
       <DependentUpon>FormTableTypeEnseble.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTable\FormTableTypeOfOperation.resx">
-      <DependentUpon>FormTableTypeOfOperation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
