@@ -16,13 +16,16 @@ namespace DB_musicalShop
 {
     public class ManagerDB
     {
-        SQLiteConnection connection;
+        public SQLiteConnection connection;
+        public string path;
+        
         public ManagerDB()
         {
 
         }
         public int CreateDB(string path)
         {
+            this.path = path;
             try
             {
                 SQLiteConnection.CreateFile(path);
@@ -116,6 +119,7 @@ namespace DB_musicalShop
         }
         public bool CheckDB(string path)
         {
+            this.path = path;
             try
             {
                 connection = new SQLiteConnection($@"Data Source={path}; Version=3;");

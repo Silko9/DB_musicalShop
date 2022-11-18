@@ -75,10 +75,10 @@ namespace DB_musicalShop
             if (dataGridView1.RowCount == 0) return;
             string commandText = $"DELETE FROM musicial_instrument WHERE id_instrument = {dataGridView1.CurrentRow.Cells[0].Value};";
             DataTable table = managerDB.SelectTable($"SELECT * FROM musician WHERE id_instrument = {dataGridView1.CurrentRow.Cells[0].Value}");
-            Query(commandText);
-            if(table.Rows.Count > 0)
+            if (table.Rows.Count > 0)
                 Query($"UPDATE musician SET id_instrument = \"\" WHERE id_instrument = {dataGridView1.CurrentRow.Cells[0].Value};");
-        }
+            Query(commandText);
+            }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)

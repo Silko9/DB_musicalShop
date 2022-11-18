@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
+using System.Drawing.Imaging;
+using System.Data.SQLite;
+using System.Runtime.Remoting.Contexts;
+using Image = System.Drawing.Image;
 
 namespace DB_musicalShop
 {
@@ -42,7 +46,6 @@ namespace DB_musicalShop
             openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP; *.JPG;*.GIF; *.PNG | All files(*.*) | *.* ";
             ImageConverter converter = new ImageConverter();
             imageBytes = (byte[])converter.ConvertTo(image, typeof(byte[]));
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             UpdateTable();
         }
         private void UpdateTable()
@@ -75,7 +78,6 @@ namespace DB_musicalShop
                 try
                 {
                     rowType = type.Rows[0];
-                    rowInstrument = instrument.Rows[0];
                     for (int j = 0; j < type.Rows.Count; j++)
                     {
                         rowType = type.Rows[j];
@@ -83,14 +85,21 @@ namespace DB_musicalShop
                             break;
                     }
                     bool flag = true;
-                    for (int j = 0; j < instrument.Rows.Count; j++)
+                    if (instrument.Rows.Count > 0)
+                        rowInstrument = instrument.Rows[0];
+                    else
                     {
-                        rowInstrument = instrument.Rows[j];
-                        if (rowInstrument["id_instrument"].ToString() == row["id_instrument"].ToString())
-                            break;
-                        if (j == instrument.Rows.Count - 1)
-                            flag = false;
+                        rowInstrument = null;
+                        flag = false;
                     }
+                        for (int j = 0; j < instrument.Rows.Count; j++)
+                        {
+                            rowInstrument = instrument.Rows[j];
+                            if (rowInstrument["id_instrument"].ToString() == row["id_instrument"].ToString())
+                                break;
+                            if (j == instrument.Rows.Count - 1)
+                                flag = false;
+                        }
                     if(flag)
                         dataGridView1.Rows.Add(row["id_musician"], row["name_musician"], row["surname_musician"], row["patronymic_musician"], row["phote_musician"], $"{rowType["name_ensemble"]} [id{rowType["id_ensemble"]}]", $"{rowInstrument["name_instrument"]} [id{rowInstrument["id_instrument"]}]");
                     else
@@ -119,10 +128,14 @@ namespace DB_musicalShop
                     MessageBox.Show("В полях должны быть только буквы и цифры.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+
                 string commandText = $"INSERT INTO musician " +
-                    "(name_musician, surname_musician, patronymic_musician, id_ensemble, id_instrument)" +
-                    $"VALUES(\"{boxName.Text}\",\"{boxSurname.Text}\",\"{boxPatronymic.Text}\",{managerDB.GetID(boxEnsemble.Text)}, {managerDB.GetID(boxInstrument.Text)});";
-                Query(commandText);
+                    "(name_musician, surname_musician, patronymic_musician, phote_musician, id_ensemble, id_instrument)" +
+                    $"VALUES(\"{boxName.Text}\",\"{boxSurname.Text}\",\"{boxPatronymic.Text}\", @phote, {managerDB.GetID(boxEnsemble.Text)}, {managerDB.GetID(boxInstrument.Text)});";
+                SQLiteCommand Command = new SQLiteCommand(commandText, managerDB.connection);
+                Command.Parameters.AddWithValue("@phote", imageBytes);
+                Command.ExecuteNonQuery();
+                UpdateTable();
             }
             else
                 MessageBox.Show("Заполните поля: Имя, Фамилия, Ансамбль", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -145,10 +158,14 @@ namespace DB_musicalShop
                 $"name_musician = \"{boxName.Text}\", " +
                 $"surname_musician = \"{boxSurname.Text}\", " +
                 $"patronymic_musician = \"{boxPatronymic.Text}\", " +
+                $"phote_musician = @phote, " +
                 $"id_ensemble = {managerDB.GetID(boxEnsemble.Text)}, " +
                 $"id_instrument = {managerDB.GetID(boxInstrument.Text)} " +
                 $"WHERE id_musician = {dataGridView1.CurrentRow.Cells[0].Value};";
-                Query(commandText);
+                SQLiteCommand Command = new SQLiteCommand(commandText, managerDB.connection);
+                Command.Parameters.AddWithValue("@phote", imageBytes);
+                Command.ExecuteNonQuery();
+                UpdateTable();
             }
             else
                 MessageBox.Show("Заполните поля: Имя, Фамилия, Отчество, Ансамбль", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -177,7 +194,63 @@ namespace DB_musicalShop
             boxPatronymic.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             boxEnsemble.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
             boxInstrument.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+            byte[] bytes = rgbytedreaderExecute(managerDB.path, $"SELECT phote_musician FROM musician WHERE id_musician = {dataGridView1.CurrentRow.Cells[0].Value};");
+            pictureBox1.Image = ToImage(bytes);
         }
+        public static Image ToImage(byte[] data)
+        {
+            if (data == null)
+            {
+                return null;
+            }
+            Image img;
+            using (MemoryStream stream = new MemoryStream(data))
+            {
+                using (Image temp = Image.FromStream(stream))
+                {
+                    img = new Bitmap(temp);
+                }
+            }
+            return img;
+        }
+        public byte[] rgbytedreaderExecute(string FileData, string sSql)
+        {
+            byte[] data = null;
+            SQLiteDataReader dr = null;
+                using (SQLiteConnection con = new SQLiteConnection())
+                {
+                    con.ConnectionString = @"Data Source=" + FileData;
+                    con.Open();
+                    using (SQLiteCommand sqlCommand = con.CreateCommand())
+                    {
+                        sqlCommand.CommandText = sSql;
+                        dr = sqlCommand.ExecuteReader();
+                    }
+                    dr.Read();
+                    data = GetBytes(dr);
+                    dr.Close();
+                    con.Close();
+                }
+            return data;
+        }
+        static byte[] GetBytes(SQLiteDataReader reader)
+        {
+            byte[] bDate = new byte[1024];
+            long lRead = 0;
+            long lOffset = 0;
+            using (MemoryStream memorystream = new MemoryStream())
+            {
+            while ((lRead = reader.GetBytes(0, lOffset, bDate, 0,bDate.Length)) > 0)
+                {
+                    byte[] bRead = new byte[lRead];
+                    Buffer.BlockCopy(bDate, 0, bRead, 0, (int)lRead);
+                    memorystream.Write(bRead, 0, bRead.Length); lOffset +=
+                    lRead;
+                }
+                return memorystream.ToArray();
+            }
+        }
+
         private void buttonOpenImage_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -185,12 +258,10 @@ namespace DB_musicalShop
                 try
                 {
                     image = new Bitmap(openFileDialog.FileName);
-                    pictureBox1.Size = image.Size;
                     pictureBox1.Image = image;
                     pictureBox1.Invalidate();
                     ImageConverter converter = new ImageConverter();
                     imageBytes = (byte[])converter.ConvertTo(image, typeof(byte[]));
-                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
                 catch
                 {

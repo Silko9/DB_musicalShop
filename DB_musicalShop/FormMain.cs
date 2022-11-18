@@ -34,14 +34,14 @@ namespace DB_musicalShop
             saveFileDialog1.Filter = "db files (*.db)|*.db|All files (*.*)|*.*";
             ButtonEnabled(false);
             //для теста
-            if (!managerDB.CheckDB("C:\\SQLite\\data.db"))
-            {
-                ButtonEnabled(false);
-                MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            label2.Text = "C:\\SQLite\\data.db";
-            ButtonEnabled(true);
+            //if (!managerDB.CheckDB("C:\\SQLite\\s.db"))
+            //{
+            //    ButtonEnabled(false);
+            //    MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+            //label2.Text = "C:\\SQLite\\data.db";
+            //ButtonEnabled(true);
             ////
         }
         private void ButtonEnabled(bool enabled)
