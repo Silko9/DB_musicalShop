@@ -38,11 +38,7 @@ namespace DB_musicalShop
             {
                 connection = new SQLiteConnection($@"Data Source={path}; Version=3;");
                 connection.Open();
-                string commandText = "CREATE TABLE musicial_instrument (" +
-                    "id_instrument INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "name_instrument VARCHAR(20) NOT NULL);";
-                Query(commandText);
-                commandText = "CREATE TABLE type_ensemble (" +
+                string commandText = "CREATE TABLE type_ensemble (" +
                     "id_type_ensemble INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     "name_type_ensemble VARCHAR(15) NOT NULL);";
                 Query(commandText);
@@ -60,14 +56,17 @@ namespace DB_musicalShop
                     "name_musician VARCHAR(15) NOT NULL," +
                     "surname_musician VARCHAR(15) NOT NULL," +
                     "patronymic_musician VARCHAR(15)," +
-                    "phote_musician BLOB," +
-                    "id_ensemble INTEGER NOT NULL," +
-                    "id_instrument INTEGER NOT NULL);";
+                    "phote_musician BLOB);";
                 Query(commandText);
                 commandText = "CREATE TABLE relation_musician_role (" +
                     "id_musician INTEGER NOT NULL," +
                     "id_role INTEGER NOT NULL, " +
                     "CONSTRAINT id_relation_role_musician PRIMARY KEY (id_musician, id_role));";
+                Query(commandText);
+                commandText = "CREATE TABLE relation_musician_ensemble (" +
+                    "id_musician INTEGER NOT NULL," +
+                    "id_ensemble INTEGER NOT NULL, " +
+                    "CONSTRAINT id_relation_ensemble_musician PRIMARY KEY (id_musician, id_ensemble));";
                 Query(commandText);
                 commandText = "CREATE TABLE composition (" +
                     "id_composition INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
@@ -124,11 +123,7 @@ namespace DB_musicalShop
             {
                 connection = new SQLiteConnection($@"Data Source={path}; Version=3;");
                 connection.Open();
-                string commandText = "SELECT id_instrument FROM musicial_instrument ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT name_instrument FROM musicial_instrument ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT id_type_ensemble FROM type_ensemble ORDER BY rowid ASC LIMIT 1;";
+                string commandText = "SELECT id_type_ensemble FROM type_ensemble ORDER BY rowid ASC LIMIT 1;";
                 Query(commandText);
                 commandText = "SELECT name_type_ensemble FROM type_ensemble ORDER BY rowid ASC LIMIT 1;";
                 Query(commandText);
@@ -150,10 +145,6 @@ namespace DB_musicalShop
                 Query(commandText);
                 commandText = "SELECT phote_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
                 Query(commandText);
-                commandText = "SELECT id_ensemble FROM musician ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT id_instrument FROM musician ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
                 return true;
             }
             catch
@@ -173,6 +164,49 @@ namespace DB_musicalShop
         {
             SQLiteCommand Command = new SQLiteCommand(commandText, connection);
             Command.ExecuteNonQuery();
+        }
+        public void QueryImg(string commandText, byte[] imageBytes)
+        {
+            SQLiteCommand Command = new SQLiteCommand(commandText, connection);
+            Command.Parameters.AddWithValue("@phote", imageBytes);
+            Command.ExecuteNonQuery();
+        }
+        public byte[] rgbytedreaderExecute(string FileData, string sSql)
+        {
+            byte[] data = null;
+            SQLiteDataReader dr = null;
+            using (SQLiteConnection con = new SQLiteConnection())
+            {
+                con.ConnectionString = @"Data Source=" + FileData;
+                con.Open();
+                using (SQLiteCommand sqlCommand = con.CreateCommand())
+                {
+                    sqlCommand.CommandText = sSql;
+                    dr = sqlCommand.ExecuteReader();
+                }
+                dr.Read();
+                data = GetBytes(dr);
+                dr.Close();
+                con.Close();
+            }
+            return data;
+        }
+        static byte[] GetBytes(SQLiteDataReader reader)
+        {
+            byte[] bDate = new byte[1024];
+            long lRead = 0;
+            long lOffset = 0;
+            using (MemoryStream memorystream = new MemoryStream())
+            {
+                while ((lRead = reader.GetBytes(0, lOffset, bDate, 0, bDate.Length)) > 0)
+                {
+                    byte[] bRead = new byte[lRead];
+                    Buffer.BlockCopy(bDate, 0, bRead, 0, (int)lRead);
+                    memorystream.Write(bRead, 0, bRead.Length); lOffset +=
+                    lRead;
+                }
+                return memorystream.ToArray();
+            }
         }
         public DataTable SelectTable(string commandText)
         {
