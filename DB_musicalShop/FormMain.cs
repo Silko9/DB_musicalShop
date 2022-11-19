@@ -18,7 +18,6 @@ namespace DB_musicalShop
         FormTableMusician formTableMusician;
         FormTableRole formTableRole;
         FormTableRelationRoleAndMusician formTableRelationRoleAndMusician;
-        FormTableMusicialInstrument formTableMusicialInstrument;
         FormTableEnsemble formTableEnsemble;
         FormTableTypeEnseble formTableTypeEnseble;
         FormTableComposition formTableComposition;
@@ -49,7 +48,6 @@ namespace DB_musicalShop
             buttonViewTableComposition.Enabled = enabled;
             buttonViewTableEnsemble.Enabled = enabled;
             buttonViewTableLogging.Enabled = enabled;
-            buttonViewTableMusicialInstrument.Enabled = enabled;
             buttonViewTableMusician.Enabled = enabled;
             buttonViewTablePerformance.Enabled = enabled;
             buttonViewTableRecord.Enabled = enabled;
@@ -108,13 +106,6 @@ namespace DB_musicalShop
                 formTableRelationRoleAndMusician.Close();
             formTableRelationRoleAndMusician = new FormTableRelationRoleAndMusician(managerDB);
             formTableRelationRoleAndMusician.Show();
-        }
-        private void buttonViewTableMusicialInstrument_Click(object sender, EventArgs e)
-        {
-            if (formTableMusicialInstrument != null)
-                formTableMusicialInstrument.Close();
-            formTableMusicialInstrument = new FormTableMusicialInstrument(managerDB);
-            formTableMusicialInstrument.Show();
         }
         private void buttonViewTableEnsemble_Click(object sender, EventArgs e)
         {
