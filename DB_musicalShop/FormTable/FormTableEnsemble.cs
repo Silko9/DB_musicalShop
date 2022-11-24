@@ -14,19 +14,29 @@ namespace DB_musicalShop
     public partial class FormTableEnsemble : Form
     {
         ManagerDB managerDB = new ManagerDB();
+        Table[] dataTable = new Table[3] { new Table("ID Ансамбль", 60), new Table("Название", 170), new Table("Тип Ансамбля", 160) };
         public FormTableEnsemble(ManagerDB managerDB)
         {
             InitializeComponent();
             this.managerDB = managerDB;
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Columns.Add("", "ID Ансамбль");
-            dataGridView1.Columns.Add("", "Название");
-            dataGridView1.Columns.Add("", "Тип Ансамбля");
-            dataGridView1.Columns[0].Width = 60;
-            dataGridView1.Columns[1].Width = 170;
-            dataGridView1.Columns[2].Width = 160;
             dataGridView1.AllowUserToAddRows = false;
+            for (int i = 0; i < dataTable.Length; i++)
+            {
+                dataGridView1.Columns.Add("", dataTable[i].name);
+                dataGridView1.Columns[i].Width = dataTable[i].width;
+            }
             UpdateTable();
+        }
+        private struct Table
+        {
+            public string name;
+            public int width;
+            public Table(string name, int width)
+            {
+                this.name = name;
+                this.width = width;
+            }
         }
         private void UpdateTable()
         {
@@ -39,7 +49,7 @@ namespace DB_musicalShop
             for (int i = 0; i < type.Rows.Count; i++)
             {
                 row = type.Rows[i];
-                boxTypeEnsemble.Items.Add(Convert.ToString($"{row["name_type_ensemble"]} [id{row["id_type_ensemble"]}]"));
+                boxTypeEnsemble.Items.Add(Convert.ToString(row["name_type_ensemble"]));
             }
             DataTable table = managerDB.SelectTable("SELECT * FROM [ensemble]");
             for (int i = 0; i < table.Rows.Count; i++)
@@ -54,7 +64,7 @@ namespace DB_musicalShop
                         if (rowType["id_type_ensemble"].ToString() == row["id_type_ensemble"].ToString())
                             break;
                     }
-                    dataGridView1.Rows.Add(row["id_ensemble"], row["name_ensemble"], $"{rowType["name_type_ensemble"]} [id{rowType["id_type_ensemble"]}]");
+                    dataGridView1.Rows.Add(row["id_ensemble"], row["name_ensemble"], rowType["name_type_ensemble"]);
                 }
                 catch
                 {
@@ -70,19 +80,27 @@ namespace DB_musicalShop
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (boxName.Text != "" && boxTypeEnsemble.Text != "")
+            if (boxName.Text == "" || boxTypeEnsemble.Text == "")
             {
-                if (!managerDB.IsMatch(boxName.Text))
-                {
-                    MessageBox.Show("В поле должны быть только буквы и цифры.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                string commandText = $"INSERT INTO [ensemble] ([name_ensemble], [id_type_ensemble])" +
-                $"VALUES(\"{boxName.Text}\",\"{managerDB.GetID(boxTypeEnsemble.Text)}\");";
-                Query(commandText);
-            }
-            else
                 MessageBox.Show("Заполните все поля.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable table = managerDB.SelectTable($"SELECT name_ensemble FROM ensemble WHERE name_ensemble = \"{boxName.Text}\"");
+            if (table.Rows.Count != 0)
+            {
+                MessageBox.Show("Уже есть такой Ансамбль", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            table = managerDB.SelectTable($"SELECT * FROM type_ensemble WHERE name_type_ensemble = \"{boxTypeEnsemble.Text}\"");
+            if (table.Rows.Count == 0)
+            {
+                MessageBox.Show("Нету такого типа ансамбля, выберите из списка.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataRow row = table.Rows[0];
+            string commandText = $"INSERT INTO ensemble (name_ensemble, id_type_ensemble)" +
+            $"VALUES(\"{boxName.Text}\", {row["id_type_ensemble"]});";
+            Query(commandText);
         }
         private void buttonUpdateTable_Click(object sender, EventArgs e)
         {
@@ -91,37 +109,38 @@ namespace DB_musicalShop
         private void buttonChange_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount == 0) return;
-            if (boxName.Text != "" && boxTypeEnsemble.Text != "")
+            if (boxName.Text == "" || boxTypeEnsemble.Text == "")
             {
-                if (!managerDB.IsMatch(boxName.Text))
-                {
-                    MessageBox.Show("В поле должны быть только буквы и цифры.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                string commandText = $"UPDATE [ensemble] SET " +
-                $"name_ensemble = \"{boxName.Text}\", " +
-                $"id_type_ensemble = {managerDB.GetID(boxTypeEnsemble.Text)} " +
-                $"WHERE id_ensemble = {dataGridView1.CurrentRow.Cells[0].Value};";
-                Query(commandText);
-            }
-            else
                 MessageBox.Show("Заполните все поля.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataTable table = managerDB.SelectTable($"SELECT * FROM type_ensemble WHERE name_type_ensemble = \"{boxTypeEnsemble.Text}\"");
+            if (table.Rows.Count == 0)
+            {
+                MessageBox.Show("Нету такого типа ансамбля, выберите из списка.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            table = managerDB.SelectTable($"SELECT name_ensemble FROM ensemble WHERE name_ensemble = \"{boxName.Text}\"");
+            if (table.Rows.Count != 0)
+            {
+                MessageBox.Show("Уже есть такой Ансамбль", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataRow row = table.Rows[0];
+            string commandText = $"UPDATE [ensemble] SET " +
+            $"name_ensemble = \"{boxName.Text}\", " +
+            $"id_type_ensemble = {row["id_type_ensemble"]} " +
+            $"WHERE id_ensemble = {dataGridView1.CurrentRow.Cells[0].Value};";
+            Query(commandText);
         }
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.RowCount == 0) return;
             string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            DataTable table = managerDB.SelectTable($"SELECT * FROM musician WHERE id_ensemble = {id};");
-            if (table.Rows.Count > 0)
-            {
-                MessageBox.Show("Невозможно удалить запись \"Ансамбль\", пока она используется хотя бы в одной записи таблицы \"Музыкант\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                UpdateTable();
-            }
-            else
-            {
-                string commandText = $"DELETE FROM ensemble WHERE id_ensemble = {id};";
-                Query(commandText);
-            }
+            string commandText = $"DELETE FROM relation_musician_ensemble WHERE id_ensemble = {id};";
+            Query(commandText);
+            commandText = $"DELETE FROM ensemble WHERE id_ensemble = {id};";
+            Query(commandText);
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

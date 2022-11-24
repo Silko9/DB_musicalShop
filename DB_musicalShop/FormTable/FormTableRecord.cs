@@ -17,21 +17,25 @@ namespace DB_musicalShop
         {
             InitializeComponent();
             this.managerDB = managerDB;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Columns.Add("", "Номер пластинки");
-            dataGridView1.Columns.Add("", "Розничная цена");
-            dataGridView1.Columns.Add("", "Оптовая цена");
-            dataGridView1.Columns.Add("", "ID Произведения");
-            dataGridView1.Columns[0].Width = 90;
-            dataGridView1.Columns[1].Width = 70;
-            dataGridView1.Columns[2].Width = 70;
-            dataGridView1.Columns[3].Width = 200;
-            dataGridView1.AllowUserToAddRows = false;
+            dataRecord.RowHeadersVisible = false;
+            dataTopRecord.RowHeadersVisible = false;
+            dataRecord.Columns.Add("", "Номер пластинки");
+            dataRecord.Columns.Add("", "Розничная цена");
+            dataRecord.Columns.Add("", "Оптовая цена");
+            dataRecord.Columns.Add("", "ID Произведения");
+            dataRecord.Columns[0].Width = 90;
+            dataRecord.Columns[1].Width = 70;
+            dataRecord.Columns[2].Width = 70;
+            dataRecord.Columns[3].Width = 200;
+            dataRecord.AllowUserToAddRows = false;
+            dataTopRecord.AllowUserToAddRows = false;
+            dataTopRecord.Columns.Add("", "Номер пластинки");
+            dataTopRecord.Columns.Add("", "Продано");
             UpdateTable();
         }
         private void UpdateTable()
         {
-            dataGridView1.Rows.Clear();
+            dataRecord.Rows.Clear();
             DataTable composition = managerDB.SelectTable("SELECT * FROM composition;");
             DataRow row;
             DataRow rowComposition;
@@ -55,11 +59,11 @@ namespace DB_musicalShop
                         if (rowComposition["id_composition"].ToString() == row["id_composition"].ToString())
                             break;
                     }
-                    dataGridView1.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], $"{rowComposition["name_composition"]} [id{rowComposition["id_composition"]}]");
+                    dataRecord.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], $"{rowComposition["name_composition"]} [id{rowComposition["id_composition"]}]");
                 }
                 catch
                 {
-                    dataGridView1.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], row["id_composition"]);
+                    dataRecord.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], row["id_composition"]);
                 }
             }
             boxComposition.Text = currentItem;
@@ -90,7 +94,7 @@ namespace DB_musicalShop
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.RowCount == 0) return;
+            if (dataRecord.RowCount == 0) return;
             if (boxNumberRecord.Text != "" && numericRetailPrice.Text != "" && numericWholesalePrice.Text != "" && boxComposition.Text != "")
             {
                 try
@@ -100,7 +104,7 @@ namespace DB_musicalShop
                     $"retail_price = {numericRetailPrice.Text.Replace(",", ".")}, " +
                     $"wholesale_price = {numericWholesalePrice.Text.Replace(",", ".")}, " +
                     $"id_composition = {managerDB.GetID(boxComposition.Text)} " +
-                    $"WHERE number_record = \"{dataGridView1.CurrentRow.Cells[0].Value}\";";
+                    $"WHERE number_record = \"{dataRecord.CurrentRow.Cells[0].Value}\";";
                     Query(commandText);
                 }
                 catch
@@ -115,8 +119,8 @@ namespace DB_musicalShop
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.RowCount == 0) return;
-            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            if (dataRecord.RowCount == 0) return;
+            string id = dataRecord.CurrentRow.Cells[0].Value.ToString();
             DataTable log = managerDB.SelectTable($"SELECT * FROM logging WHERE number_record = \"{id}\";");
             DataTable relation = managerDB.SelectTable($"SELECT * FROM relation_record_performance WHERE number_record = \"{id}\";");
             if (log.Rows.Count > 0 || relation.Rows.Count > 0)
@@ -138,11 +142,36 @@ namespace DB_musicalShop
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0) return;
-            boxNumberRecord.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            numericRetailPrice.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            numericWholesalePrice.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            boxComposition.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            if (dataRecord.Rows.Count == 0) return;
+            boxNumberRecord.Text = dataRecord.CurrentRow.Cells[0].Value.ToString();
+            numericRetailPrice.Text = dataRecord.CurrentRow.Cells[1].Value.ToString();
+            numericWholesalePrice.Text = dataRecord.CurrentRow.Cells[2].Value.ToString();
+            boxComposition.Text = dataRecord.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            //DataTable table = managerDB.SelectTable($"SELECT id_record, number_record, SUM(SELECT amount FROM logging WHERE id_operation = 1 AND logging.number_record = record.number_record) AS top FROM record;");
+            DataTable table = managerDB.SelectTable("SELECT number_record FROM record;");
+            DataTable countT;
+            DataRow row;
+            DataRow rowCount;
+            int count;
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                try
+                {
+                    row = table.Rows[i];
+                    countT = managerDB.SelectTable($"SELECT SUM(amount) AS top FROM logging WHERE id_operation = 2 AND number_record = \"{row["number_record"]}\"");
+                    rowCount = countT.Rows[0];
+                    count = Convert.ToInt32(rowCount["top"].ToString());
+                    dataTopRecord.Rows.Add(row["number_record"], count);
+                }
+                catch
+                {
+
+                }
+            }
         }
     }
 }

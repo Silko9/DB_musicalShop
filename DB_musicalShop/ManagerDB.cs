@@ -109,6 +109,22 @@ namespace DB_musicalShop
                     "date_log TEXT NOT NULL, " +
                     "amount INTEGER NOT NULL);";
                 Query(commandText);
+                commandText = "CREATE TRIGGER delete_musician BEFORE DELETE ON musician " +
+                    "BEGIN " +
+                    "DELETE FROM relation_musician_role WHERE id_musician = OLD.id_musician; " +
+                    "DELETE FROM relation_musician_ensemble WHERE id_musician = OLD.id_musician; " +
+                    "END;";
+                Query(commandText);
+                commandText = "CREATE TRIGGER delete_role BEFORE DELETE ON role " +
+                    "BEGIN " +
+                    "DELETE FROM relation_musician_role WHERE id_role = OLD.id_role; " +
+                    "END;";
+                Query(commandText);
+                commandText = "CREATE TRIGGER delete_ensemble BEFORE DELETE ON ensemble " +
+                    "BEGIN " +
+                    "DELETE FROM relation_musician_ensemble WHERE id_ensemble = OLD.id_ensemble; " +
+                    "END;";
+                Query(commandText);
                 return 0;
             }
             catch
