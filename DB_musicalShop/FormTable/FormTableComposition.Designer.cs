@@ -42,8 +42,12 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.boxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataComposition = new System.Windows.Forms.DataGridView();
+            this.dataRecord = new System.Windows.Forms.DataGridView();
+            this.dataPerformance = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataComposition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataRecord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataPerformance)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -59,7 +63,7 @@
             // dateCreate
             // 
             this.dateCreate.Location = new System.Drawing.Point(799, 193);
-            this.dateCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateCreate.Margin = new System.Windows.Forms.Padding(2);
             this.dateCreate.Name = "dateCreate";
             this.dateCreate.Size = new System.Drawing.Size(180, 20);
             this.dateCreate.TabIndex = 76;
@@ -67,7 +71,7 @@
             // boxPatronymic
             // 
             this.boxPatronymic.Location = new System.Drawing.Point(798, 150);
-            this.boxPatronymic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.boxPatronymic.Margin = new System.Windows.Forms.Padding(2);
             this.boxPatronymic.MaxLength = 15;
             this.boxPatronymic.Name = "boxPatronymic";
             this.boxPatronymic.Size = new System.Drawing.Size(181, 20);
@@ -86,7 +90,7 @@
             // boxNameAuthor
             // 
             this.boxNameAuthor.Location = new System.Drawing.Point(798, 64);
-            this.boxNameAuthor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.boxNameAuthor.Margin = new System.Windows.Forms.Padding(2);
             this.boxNameAuthor.MaxLength = 15;
             this.boxNameAuthor.Name = "boxNameAuthor";
             this.boxNameAuthor.Size = new System.Drawing.Size(180, 20);
@@ -105,7 +109,7 @@
             // boxSurname
             // 
             this.boxSurname.Location = new System.Drawing.Point(798, 108);
-            this.boxSurname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.boxSurname.Margin = new System.Windows.Forms.Padding(2);
             this.boxSurname.MaxLength = 15;
             this.boxSurname.Name = "boxSurname";
             this.boxSurname.Size = new System.Drawing.Size(180, 20);
@@ -124,7 +128,7 @@
             // buttonUpdateTable
             // 
             this.buttonUpdateTable.Location = new System.Drawing.Point(796, 367);
-            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
             this.buttonUpdateTable.Size = new System.Drawing.Size(182, 44);
             this.buttonUpdateTable.TabIndex = 69;
@@ -135,7 +139,7 @@
             // buttonAdd
             // 
             this.buttonAdd.Location = new System.Drawing.Point(796, 223);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(182, 44);
             this.buttonAdd.TabIndex = 68;
@@ -146,7 +150,7 @@
             // buttonChange
             // 
             this.buttonChange.Location = new System.Drawing.Point(796, 271);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(2);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(182, 44);
             this.buttonChange.TabIndex = 67;
@@ -157,7 +161,7 @@
             // buttonDelete
             // 
             this.buttonDelete.Location = new System.Drawing.Point(796, 319);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(182, 44);
             this.buttonDelete.TabIndex = 66;
@@ -168,7 +172,7 @@
             // boxName
             // 
             this.boxName.Location = new System.Drawing.Point(798, 22);
-            this.boxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.boxName.Margin = new System.Windows.Forms.Padding(2);
             this.boxName.MaxLength = 20;
             this.boxName.Name = "boxName";
             this.boxName.Size = new System.Drawing.Size(179, 20);
@@ -184,24 +188,50 @@
             this.label1.TabIndex = 64;
             this.label1.Text = "Название произведение";
             // 
-            // dataGridView1
+            // dataComposition
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 9);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(781, 400);
-            this.dataGridView1.TabIndex = 63;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataComposition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataComposition.Location = new System.Drawing.Point(9, 9);
+            this.dataComposition.Margin = new System.Windows.Forms.Padding(2);
+            this.dataComposition.Name = "dataComposition";
+            this.dataComposition.ReadOnly = true;
+            this.dataComposition.RowHeadersWidth = 51;
+            this.dataComposition.RowTemplate.Height = 24;
+            this.dataComposition.Size = new System.Drawing.Size(781, 400);
+            this.dataComposition.TabIndex = 63;
+            this.dataComposition.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // dataRecord
+            // 
+            this.dataRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataRecord.Location = new System.Drawing.Point(982, 11);
+            this.dataRecord.Margin = new System.Windows.Forms.Padding(2);
+            this.dataRecord.Name = "dataRecord";
+            this.dataRecord.ReadOnly = true;
+            this.dataRecord.RowHeadersWidth = 51;
+            this.dataRecord.RowTemplate.Height = 24;
+            this.dataRecord.Size = new System.Drawing.Size(153, 199);
+            this.dataRecord.TabIndex = 34;
+            // 
+            // dataPerformance
+            // 
+            this.dataPerformance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataPerformance.Location = new System.Drawing.Point(982, 212);
+            this.dataPerformance.Margin = new System.Windows.Forms.Padding(2);
+            this.dataPerformance.Name = "dataPerformance";
+            this.dataPerformance.ReadOnly = true;
+            this.dataPerformance.RowHeadersWidth = 51;
+            this.dataPerformance.RowTemplate.Height = 24;
+            this.dataPerformance.Size = new System.Drawing.Size(153, 199);
+            this.dataPerformance.TabIndex = 34;
             // 
             // FormTableComposition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(986, 417);
+            this.ClientSize = new System.Drawing.Size(1150, 417);
+            this.Controls.Add(this.dataPerformance);
+            this.Controls.Add(this.dataRecord);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateCreate);
             this.Controls.Add(this.boxPatronymic);
@@ -216,11 +246,13 @@
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.boxName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Controls.Add(this.dataComposition);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormTableComposition";
             this.Text = "Произведения";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataComposition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataRecord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataPerformance)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,6 +274,8 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.TextBox boxName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataComposition;
+        private System.Windows.Forms.DataGridView dataRecord;
+        private System.Windows.Forms.DataGridView dataPerformance;
     }
 }

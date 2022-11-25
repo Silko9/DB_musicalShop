@@ -44,8 +44,6 @@
             this.dataRole = new System.Windows.Forms.DataGridView();
             this.dataEnsemble = new System.Windows.Forms.DataGridView();
             this.boxRole = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.boxEnsemble = new System.Windows.Forms.ComboBox();
             this.buttonAddRole = new System.Windows.Forms.Button();
             this.buttonAddEnsemble = new System.Windows.Forms.Button();
@@ -53,32 +51,36 @@
             this.buttonDeleteEnsemble = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSort = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataMusician)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataRole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataEnsemble)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataMusician
             // 
             this.dataMusician.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataMusician.Location = new System.Drawing.Point(12, 12);
-            this.dataMusician.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataMusician.Location = new System.Drawing.Point(9, 10);
+            this.dataMusician.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataMusician.Name = "dataMusician";
             this.dataMusician.ReadOnly = true;
             this.dataMusician.RowHeadersWidth = 51;
             this.dataMusician.RowTemplate.Height = 24;
-            this.dataMusician.Size = new System.Drawing.Size(643, 395);
+            this.dataMusician.Size = new System.Drawing.Size(482, 321);
             this.dataMusician.TabIndex = 0;
             this.dataMusician.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DB_musicalShop.Properties.Resources.noname;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 430);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 349);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(243, 222);
+            this.pictureBox1.Size = new System.Drawing.Size(182, 180);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -86,63 +88,66 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(261, 463);
+            this.label1.Location = new System.Drawing.Point(196, 376);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 16);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Имя";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(261, 517);
+            this.label2.Location = new System.Drawing.Point(196, 420);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 16);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Фамилия";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(261, 572);
+            this.label3.Location = new System.Drawing.Point(196, 465);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 16);
+            this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Отчество";
             // 
             // boxName
             // 
-            this.boxName.Location = new System.Drawing.Point(261, 479);
-            this.boxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.boxName.Location = new System.Drawing.Point(196, 389);
+            this.boxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.boxName.MaxLength = 15;
             this.boxName.Name = "boxName";
-            this.boxName.Size = new System.Drawing.Size(241, 22);
+            this.boxName.Size = new System.Drawing.Size(182, 20);
             this.boxName.TabIndex = 7;
             // 
             // boxPatronymic
             // 
-            this.boxPatronymic.Location = new System.Drawing.Point(261, 590);
-            this.boxPatronymic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.boxPatronymic.Location = new System.Drawing.Point(196, 479);
+            this.boxPatronymic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.boxPatronymic.MaxLength = 15;
             this.boxPatronymic.Name = "boxPatronymic";
-            this.boxPatronymic.Size = new System.Drawing.Size(241, 22);
+            this.boxPatronymic.Size = new System.Drawing.Size(182, 20);
             this.boxPatronymic.TabIndex = 8;
             // 
             // boxSurname
             // 
-            this.boxSurname.Location = new System.Drawing.Point(261, 535);
-            this.boxSurname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.boxSurname.Location = new System.Drawing.Point(196, 435);
+            this.boxSurname.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.boxSurname.MaxLength = 15;
             this.boxSurname.Name = "boxSurname";
-            this.boxSurname.Size = new System.Drawing.Size(241, 22);
+            this.boxSurname.Size = new System.Drawing.Size(182, 20);
             this.boxSurname.TabIndex = 9;
             // 
             // buttonOpenImage
             // 
-            this.buttonOpenImage.Location = new System.Drawing.Point(12, 656);
-            this.buttonOpenImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonOpenImage.Location = new System.Drawing.Point(9, 533);
+            this.buttonOpenImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOpenImage.Name = "buttonOpenImage";
-            this.buttonOpenImage.Size = new System.Drawing.Size(243, 54);
+            this.buttonOpenImage.Size = new System.Drawing.Size(182, 44);
             this.buttonOpenImage.TabIndex = 12;
             this.buttonOpenImage.Text = "Открыть картинку";
             this.buttonOpenImage.UseVisualStyleBackColor = true;
@@ -150,10 +155,10 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(508, 586);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDelete.Location = new System.Drawing.Point(381, 476);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(243, 54);
+            this.buttonDelete.Size = new System.Drawing.Size(182, 44);
             this.buttonDelete.TabIndex = 13;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -161,10 +166,10 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(508, 517);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonChange.Location = new System.Drawing.Point(381, 420);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(243, 54);
+            this.buttonChange.Size = new System.Drawing.Size(182, 44);
             this.buttonChange.TabIndex = 14;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
@@ -172,10 +177,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(508, 447);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAdd.Location = new System.Drawing.Point(381, 363);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(243, 54);
+            this.buttonAdd.Size = new System.Drawing.Size(182, 44);
             this.buttonAdd.TabIndex = 15;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -188,67 +193,51 @@
             // dataRole
             // 
             this.dataRole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataRole.Location = new System.Drawing.Point(661, 11);
-            this.dataRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataRole.Location = new System.Drawing.Point(5, 15);
+            this.dataRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataRole.Name = "dataRole";
             this.dataRole.ReadOnly = true;
             this.dataRole.RowHeadersWidth = 51;
             this.dataRole.RowTemplate.Height = 24;
-            this.dataRole.Size = new System.Drawing.Size(204, 196);
+            this.dataRole.Size = new System.Drawing.Size(153, 131);
             this.dataRole.TabIndex = 18;
             // 
             // dataEnsemble
             // 
             this.dataEnsemble.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataEnsemble.Location = new System.Drawing.Point(661, 211);
-            this.dataEnsemble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataEnsemble.Location = new System.Drawing.Point(5, 16);
+            this.dataEnsemble.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataEnsemble.Name = "dataEnsemble";
             this.dataEnsemble.ReadOnly = true;
             this.dataEnsemble.RowHeadersWidth = 51;
             this.dataEnsemble.RowTemplate.Height = 24;
-            this.dataEnsemble.Size = new System.Drawing.Size(204, 196);
+            this.dataEnsemble.Size = new System.Drawing.Size(153, 131);
             this.dataEnsemble.TabIndex = 19;
             // 
             // boxRole
             // 
             this.boxRole.FormattingEnabled = true;
-            this.boxRole.Location = new System.Drawing.Point(871, 31);
+            this.boxRole.Location = new System.Drawing.Point(162, 15);
+            this.boxRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.boxRole.Name = "boxRole";
-            this.boxRole.Size = new System.Drawing.Size(241, 24);
+            this.boxRole.Size = new System.Drawing.Size(182, 21);
             this.boxRole.TabIndex = 20;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(871, 211);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 16);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Ансамбль";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(871, 12);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 16);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Роль";
             // 
             // boxEnsemble
             // 
             this.boxEnsemble.FormattingEnabled = true;
-            this.boxEnsemble.Location = new System.Drawing.Point(871, 230);
+            this.boxEnsemble.Location = new System.Drawing.Point(162, 16);
+            this.boxEnsemble.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.boxEnsemble.Name = "boxEnsemble";
-            this.boxEnsemble.Size = new System.Drawing.Size(241, 24);
+            this.boxEnsemble.Size = new System.Drawing.Size(182, 21);
             this.boxEnsemble.TabIndex = 23;
             // 
             // buttonAddRole
             // 
-            this.buttonAddRole.Location = new System.Drawing.Point(871, 60);
-            this.buttonAddRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAddRole.Location = new System.Drawing.Point(162, 40);
+            this.buttonAddRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAddRole.Name = "buttonAddRole";
-            this.buttonAddRole.Size = new System.Drawing.Size(243, 54);
+            this.buttonAddRole.Size = new System.Drawing.Size(182, 44);
             this.buttonAddRole.TabIndex = 24;
             this.buttonAddRole.Text = "Добавить";
             this.buttonAddRole.UseVisualStyleBackColor = true;
@@ -256,10 +245,10 @@
             // 
             // buttonAddEnsemble
             // 
-            this.buttonAddEnsemble.Location = new System.Drawing.Point(871, 259);
-            this.buttonAddEnsemble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAddEnsemble.Location = new System.Drawing.Point(162, 41);
+            this.buttonAddEnsemble.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAddEnsemble.Name = "buttonAddEnsemble";
-            this.buttonAddEnsemble.Size = new System.Drawing.Size(243, 54);
+            this.buttonAddEnsemble.Size = new System.Drawing.Size(182, 44);
             this.buttonAddEnsemble.TabIndex = 25;
             this.buttonAddEnsemble.Text = "Добавить";
             this.buttonAddEnsemble.UseVisualStyleBackColor = true;
@@ -267,10 +256,10 @@
             // 
             // buttonDeleteRole
             // 
-            this.buttonDeleteRole.Location = new System.Drawing.Point(871, 118);
-            this.buttonDeleteRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDeleteRole.Location = new System.Drawing.Point(162, 88);
+            this.buttonDeleteRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonDeleteRole.Name = "buttonDeleteRole";
-            this.buttonDeleteRole.Size = new System.Drawing.Size(243, 54);
+            this.buttonDeleteRole.Size = new System.Drawing.Size(182, 44);
             this.buttonDeleteRole.TabIndex = 26;
             this.buttonDeleteRole.Text = "Удалить";
             this.buttonDeleteRole.UseVisualStyleBackColor = true;
@@ -278,10 +267,10 @@
             // 
             // buttonDeleteEnsemble
             // 
-            this.buttonDeleteEnsemble.Location = new System.Drawing.Point(871, 317);
-            this.buttonDeleteEnsemble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDeleteEnsemble.Location = new System.Drawing.Point(162, 89);
+            this.buttonDeleteEnsemble.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonDeleteEnsemble.Name = "buttonDeleteEnsemble";
-            this.buttonDeleteEnsemble.Size = new System.Drawing.Size(243, 54);
+            this.buttonDeleteEnsemble.Size = new System.Drawing.Size(182, 44);
             this.buttonDeleteEnsemble.TabIndex = 27;
             this.buttonDeleteEnsemble.Text = "Удалить";
             this.buttonDeleteEnsemble.UseVisualStyleBackColor = true;
@@ -289,10 +278,10 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(261, 656);
-            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonUpdate.Location = new System.Drawing.Point(196, 533);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(243, 54);
+            this.buttonUpdate.Size = new System.Drawing.Size(182, 44);
             this.buttonUpdate.TabIndex = 28;
             this.buttonUpdate.Text = "Обновить таблицу";
             this.buttonUpdate.UseVisualStyleBackColor = true;
@@ -300,31 +289,49 @@
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(508, 656);
-            this.buttonSort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonSort.Location = new System.Drawing.Point(381, 533);
+            this.buttonSort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonSort.Name = "buttonSort";
-            this.buttonSort.Size = new System.Drawing.Size(243, 54);
+            this.buttonSort.Size = new System.Drawing.Size(182, 44);
             this.buttonSort.TabIndex = 29;
             this.buttonSort.Text = "Сортировка";
             this.buttonSort.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataRole);
+            this.groupBox1.Controls.Add(this.boxRole);
+            this.groupBox1.Controls.Add(this.buttonAddRole);
+            this.groupBox1.Controls.Add(this.buttonDeleteRole);
+            this.groupBox1.Location = new System.Drawing.Point(496, 10);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(351, 155);
+            this.groupBox1.TabIndex = 30;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Роли";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataEnsemble);
+            this.groupBox2.Controls.Add(this.boxEnsemble);
+            this.groupBox2.Controls.Add(this.buttonAddEnsemble);
+            this.groupBox2.Controls.Add(this.buttonDeleteEnsemble);
+            this.groupBox2.Location = new System.Drawing.Point(496, 171);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(351, 160);
+            this.groupBox2.TabIndex = 31;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Ансамбли";
+            // 
             // FormTableMusician
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 725);
+            this.ClientSize = new System.Drawing.Size(854, 589);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.buttonUpdate);
-            this.Controls.Add(this.buttonDeleteEnsemble);
-            this.Controls.Add(this.buttonDeleteRole);
-            this.Controls.Add(this.buttonAddEnsemble);
-            this.Controls.Add(this.buttonAddRole);
-            this.Controls.Add(this.boxEnsemble);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.boxRole);
-            this.Controls.Add(this.dataEnsemble);
-            this.Controls.Add(this.dataRole);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonChange);
             this.Controls.Add(this.buttonDelete);
@@ -337,13 +344,15 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataMusician);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormTableMusician";
             this.Text = "Таблица музыканты";
             ((System.ComponentModel.ISupportInitialize)(this.dataMusician)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataRole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataEnsemble)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -367,8 +376,6 @@
         private System.Windows.Forms.DataGridView dataRole;
         private System.Windows.Forms.DataGridView dataEnsemble;
         private System.Windows.Forms.ComboBox boxRole;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox boxEnsemble;
         private System.Windows.Forms.Button buttonAddRole;
         private System.Windows.Forms.Button buttonAddEnsemble;
@@ -376,5 +383,7 @@
         private System.Windows.Forms.Button buttonDeleteEnsemble;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonSort;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

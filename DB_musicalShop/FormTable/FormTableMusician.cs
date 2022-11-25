@@ -135,7 +135,6 @@ namespace DB_musicalShop
                 }
                 if (flag) boxRole.Items.Add(rowRole["name_role"].ToString());
             }
-
             //загрузка асамблей в data
             dataEnsemble.Rows.Clear();
             table = managerDB.SelectTable($"SELECT id_ensemble FROM relation_musician_ensemble WHERE id_musician = {dataMusician.CurrentRow.Cells[0].Value}");

@@ -34,16 +34,18 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.boxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataTypeEnsemble = new System.Windows.Forms.DataGridView();
+            this.dataEnsemble = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTypeEnsemble)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataEnsemble)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(311, 452);
-            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(234, 343);
+            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
-            this.buttonUpdateTable.Size = new System.Drawing.Size(243, 54);
+            this.buttonUpdateTable.Size = new System.Drawing.Size(182, 44);
             this.buttonUpdateTable.TabIndex = 40;
             this.buttonUpdateTable.Text = "Обновить таблицу";
             this.buttonUpdateTable.UseVisualStyleBackColor = true;
@@ -51,10 +53,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(311, 62);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAdd.Location = new System.Drawing.Point(234, 200);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(243, 54);
+            this.buttonAdd.Size = new System.Drawing.Size(182, 44);
             this.buttonAdd.TabIndex = 39;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -62,10 +64,10 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(311, 121);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonChange.Location = new System.Drawing.Point(234, 248);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(2);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(243, 54);
+            this.buttonChange.Size = new System.Drawing.Size(182, 44);
             this.buttonChange.TabIndex = 38;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
@@ -73,10 +75,10 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(311, 178);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDelete.Location = new System.Drawing.Point(234, 295);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(243, 54);
+            this.buttonDelete.Size = new System.Drawing.Size(182, 44);
             this.buttonDelete.TabIndex = 37;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -84,51 +86,65 @@
             // 
             // boxName
             // 
-            this.boxName.Location = new System.Drawing.Point(311, 31);
-            this.boxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.boxName.Location = new System.Drawing.Point(234, 175);
+            this.boxName.Margin = new System.Windows.Forms.Padding(2);
             this.boxName.MaxLength = 15;
             this.boxName.Name = "boxName";
-            this.boxName.Size = new System.Drawing.Size(241, 22);
+            this.boxName.Size = new System.Drawing.Size(182, 20);
             this.boxName.TabIndex = 36;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(307, 14);
+            this.label1.Location = new System.Drawing.Point(231, 161);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 16);
+            this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 35;
             this.label1.Text = "Тип ансамбля";
             // 
-            // dataGridView1
+            // dataTypeEnsemble
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 14);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(293, 492);
-            this.dataGridView1.TabIndex = 34;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataTypeEnsemble.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataTypeEnsemble.Location = new System.Drawing.Point(9, 11);
+            this.dataTypeEnsemble.Margin = new System.Windows.Forms.Padding(2);
+            this.dataTypeEnsemble.Name = "dataTypeEnsemble";
+            this.dataTypeEnsemble.ReadOnly = true;
+            this.dataTypeEnsemble.RowHeadersWidth = 51;
+            this.dataTypeEnsemble.RowTemplate.Height = 24;
+            this.dataTypeEnsemble.Size = new System.Drawing.Size(220, 400);
+            this.dataTypeEnsemble.TabIndex = 34;
+            this.dataTypeEnsemble.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // dataEnsemble
+            // 
+            this.dataEnsemble.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataEnsemble.Location = new System.Drawing.Point(234, 11);
+            this.dataEnsemble.Margin = new System.Windows.Forms.Padding(2);
+            this.dataEnsemble.Name = "dataEnsemble";
+            this.dataEnsemble.ReadOnly = true;
+            this.dataEnsemble.RowHeadersWidth = 51;
+            this.dataEnsemble.RowTemplate.Height = 24;
+            this.dataEnsemble.Size = new System.Drawing.Size(182, 131);
+            this.dataEnsemble.TabIndex = 34;
             // 
             // FormTableTypeEnseble
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 514);
+            this.ClientSize = new System.Drawing.Size(431, 418);
+            this.Controls.Add(this.dataEnsemble);
             this.Controls.Add(this.buttonUpdateTable);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonChange);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.boxName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.dataTypeEnsemble);
             this.Name = "FormTableTypeEnseble";
             this.Text = "Таблица типы ансамблей";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTypeEnsemble)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataEnsemble)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,6 +158,7 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.TextBox boxName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataTypeEnsemble;
+        private System.Windows.Forms.DataGridView dataEnsemble;
     }
 }

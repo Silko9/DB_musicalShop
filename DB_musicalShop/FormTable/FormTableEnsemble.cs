@@ -19,13 +19,21 @@ namespace DB_musicalShop
         {
             InitializeComponent();
             this.managerDB = managerDB;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.AllowUserToAddRows = false;
+            dataEnsemble.RowHeadersVisible = false;
+            dataEnsemble.AllowUserToAddRows = false;
             for (int i = 0; i < dataTable.Length; i++)
             {
-                dataGridView1.Columns.Add("", dataTable[i].name);
-                dataGridView1.Columns[i].Width = dataTable[i].width;
+                dataEnsemble.Columns.Add("", dataTable[i].name);
+                dataEnsemble.Columns[i].Width = dataTable[i].width;
             }
+            dataMusician.RowHeadersVisible = false;
+            dataMusician.AllowUserToAddRows = false;
+            dataMusician.Columns.Add("", "Музыкант");
+            dataMusician.Columns[0].Width = 200;
+            dataPerformance.RowHeadersVisible = false;
+            dataPerformance.AllowUserToAddRows = false;
+            dataPerformance.Columns.Add("", "Исполнение");
+            dataPerformance.Columns[0].Width = 200;
             UpdateTable();
         }
         private struct Table
@@ -40,7 +48,7 @@ namespace DB_musicalShop
         }
         private void UpdateTable()
         {
-            dataGridView1.Rows.Clear();
+            dataEnsemble.Rows.Clear();
             DataTable type = managerDB.SelectTable("SELECT * FROM [type_ensemble];");
             DataRow row;
             DataRow rowType;
@@ -64,14 +72,16 @@ namespace DB_musicalShop
                         if (rowType["id_type_ensemble"].ToString() == row["id_type_ensemble"].ToString())
                             break;
                     }
-                    dataGridView1.Rows.Add(row["id_ensemble"], row["name_ensemble"], rowType["name_type_ensemble"]);
+                    dataEnsemble.Rows.Add(row["id_ensemble"], row["name_ensemble"], rowType["name_type_ensemble"]);
                 }
                 catch
                 {
-                    dataGridView1.Rows.Add(row["id_ensemble"], row["name_ensemble"], "");
+                    dataEnsemble.Rows.Add(row["id_ensemble"], row["name_ensemble"], "");
                 }
             }
             boxTypeEnsemble.Text = currentItem;
+            dataMusician.Rows.Clear();
+            dataPerformance.Rows.Clear();
         }
         private void Query(string command)
         {
@@ -108,7 +118,7 @@ namespace DB_musicalShop
         }
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.RowCount == 0) return;
+            if (dataEnsemble.RowCount == 0) return;
             if (boxName.Text == "" || boxTypeEnsemble.Text == "")
             {
                 MessageBox.Show("Заполните все поля.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -120,23 +130,27 @@ namespace DB_musicalShop
                 MessageBox.Show("Нету такого типа ансамбля, выберите из списка.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            table = managerDB.SelectTable($"SELECT name_ensemble FROM ensemble WHERE name_ensemble = \"{boxName.Text}\"");
-            if (table.Rows.Count != 0)
+            if (dataEnsemble.CurrentRow.Cells[1].Value.ToString() != boxName.Text)
             {
-                MessageBox.Show("Уже есть такой Ансамбль", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                table = managerDB.SelectTable("SELECT * FROM ensemble WHERE " +
+                    $"name_ensemble = \"{boxName.Text}\";");
+                if (table.Rows.Count >= 0)
+                {
+                    MessageBox.Show("Уже есть такой Ансамбль", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
             }
             DataRow row = table.Rows[0];
             string commandText = $"UPDATE [ensemble] SET " +
             $"name_ensemble = \"{boxName.Text}\", " +
             $"id_type_ensemble = {row["id_type_ensemble"]} " +
-            $"WHERE id_ensemble = {dataGridView1.CurrentRow.Cells[0].Value};";
+            $"WHERE id_ensemble = {dataEnsemble.CurrentRow.Cells[0].Value};";
             Query(commandText);
         }
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.RowCount == 0) return;
-            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            if (dataEnsemble.RowCount == 0) return;
+            string id = dataEnsemble.CurrentRow.Cells[0].Value.ToString();
             string commandText = $"DELETE FROM relation_musician_ensemble WHERE id_ensemble = {id};";
             Query(commandText);
             commandText = $"DELETE FROM ensemble WHERE id_ensemble = {id};";
@@ -144,9 +158,133 @@ namespace DB_musicalShop
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0) return;
-            boxName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            boxTypeEnsemble.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            if (dataEnsemble.Rows.Count == 0) return;
+            boxName.Text = dataEnsemble.CurrentRow.Cells[1].Value.ToString();
+            boxTypeEnsemble.Text = dataEnsemble.CurrentRow.Cells[2].Value.ToString();
+            dataMusician.Rows.Clear();//загрузка музыкантов в data
+            DataTable table = managerDB.SelectTable($"SELECT id_musician FROM relation_musician_ensemble WHERE id_ensemble = {dataEnsemble.CurrentRow.Cells[0].Value}");
+            DataTable musician = managerDB.SelectTable("SELECT * FROM musician");
+            DataRow row;
+            DataRow rowMusician;
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                row = table.Rows[i];
+                for (int j = 0; j < musician.Rows.Count; j++)
+                {
+                    rowMusician = musician.Rows[j];
+                    if (row["id_musician"].ToString() == rowMusician["id_musician"].ToString())
+                        dataMusician.Rows.Add($"{rowMusician["name_musician"]} {rowMusician["surname_musician"]} {rowMusician["patronymic_musician"]}");
+                }
+            }
+            boxMusician.Items.Clear();//загрузка музыкантов в box
+            bool flag;
+            for (int i = 0; i < musician.Rows.Count; i++)
+            {
+                rowMusician = musician.Rows[i];
+                flag = true;
+                for (int j = 0; j < table.Rows.Count; j++)
+                {
+                    row = table.Rows[j];
+                    if (rowMusician["id_musician"].ToString() == row["id_musician"].ToString())
+                        flag = false;
+                }
+                if (flag) boxMusician.Items.Add($"{rowMusician["name_musician"]} {rowMusician["surname_musician"]} {rowMusician["patronymic_musician"]}");
+            }
+            dataPerformance.Rows.Clear();//загрузка исполнений в data
+            table = managerDB.SelectTable($"SELECT id_composition, date_performance FROM performance WHERE id_ensemble = {dataEnsemble.CurrentRow.Cells[0].Value}");
+            DataTable composition = managerDB.SelectTable("SELECT * FROM composition");
+            DataRow rowComposition;
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                row = table.Rows[i];
+                for (int j = 0; j < composition.Rows.Count; j++)
+                {
+                    rowComposition = composition.Rows[j];
+                    if (row["id_composition"].ToString() == rowComposition["id_composition"].ToString())
+                        dataPerformance.Rows.Add($"{rowComposition["name_composition"]} {row["date_performance"]}");
+                }
+            }
+            boxComposition.Items.Clear();//загрузка происзведений в box
+            for (int i = 0; i < composition.Rows.Count; i++)
+            {
+                rowComposition = composition.Rows[i];
+                boxComposition.Items.Add(rowComposition["name_composition"]);
+            }
+        }
+
+        private void buttonAddMusician_Click(object sender, EventArgs e)
+        {
+            string[] musician = boxMusician.Text.Split(' ');
+            DataTable table = managerDB.SelectTable("SELECT * FROM musician WHERE " +
+                $"name_musician = \"{musician[0]}\" AND " +
+                $"surname_musician = \"{musician[1]}\" AND " +
+                $"patronymic_musician = \"{musician[2]}\";");
+            if (table.Rows.Count == 0)
+            {
+                MessageBox.Show("Такого музыканта нет в базе данных, добавьте его или выберите из списка существующего.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataRow row = table.Rows[0];
+            table = managerDB.SelectTable($"SELECT * FROM relation_musician_ensemble WHERE id_ensemble = {dataEnsemble.CurrentRow.Cells[0].Value} AND id_musician = {row["id_musician"]}");
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Данный музыкант уже состоит в этом ансамбле.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            Query("INSERT INTO relation_musician_ensemble " +
+                "(id_ensemble, id_musician) " +
+                $"VALUES ({dataEnsemble.CurrentRow.Cells[0].Value}, {row["id_musician"]})");
+        }
+
+        private void buttonDeleteMusician_Click(object sender, EventArgs e)
+        {
+            if (dataMusician.RowCount == 0 || dataEnsemble.RowCount == 0) return;
+            string[] musician = dataMusician.CurrentRow.Cells[0].Value.ToString().Split(' ');
+            DataTable table = managerDB.SelectTable("SELECT * FROM musician WHERE " +
+                $"name_musician = \"{musician[0]}\" AND " +
+                $"surname_musician = \"{musician[1]}\" AND " +
+                $"patronymic_musician = \"{musician[2]}\";");
+            DataRow row = table.Rows[0];
+            string commandText = $"DELETE FROM relation_musician_ensemble WHERE id_ensemble = {dataEnsemble.CurrentRow.Cells[0].Value} AND id_musician = {row["id_musician"]};";
+            Query(commandText);
+        }
+
+        private void buttonAddPerformance_Click(object sender, EventArgs e)
+        {
+            DataTable table = managerDB.SelectTable("SELECT * FROM composition WHERE " +
+                $"name_composition = \"{boxComposition.Text}\";");
+            if (table.Rows.Count == 0)
+            {
+                MessageBox.Show("Такого произведения нет в базе данных, добавьте его или выберите из списка существующего.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DataRow row = table.Rows[0];
+            table = managerDB.SelectTable("SELECT * FROM performance WHERE " +
+                $"date_performance = \"{datePerformance.Text}\" AND " +
+                $"id_ensemble = {dataEnsemble.CurrentRow.Cells[0].Value} AND " +
+                $"id_composition = {row["id_composition"]};");
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Уже есть исполнение с такими параметрами.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            Query("INSERT INTO performance " +
+                "(id_ensemble, date_performance, id_composition) " +
+                $"VALUES ({dataEnsemble.CurrentRow.Cells[0].Value}, \"{datePerformance.Text}\", {row["id_composition"]})");
+        }
+
+        private void buttonDeletePerformance_Click(object sender, EventArgs e)
+        {
+            if (dataPerformance.RowCount == 0 || dataEnsemble.RowCount == 0) return;
+            string[] performance = dataPerformance.CurrentRow.Cells[0].Value.ToString().Split(' ');
+            DataTable table = managerDB.SelectTable($"SELECT id_composition FROM composition WHERE name_composition = \"{performance[0]}\"");
+            DataRow row = table.Rows[0];
+            table = managerDB.SelectTable("SELECT * FROM performance WHERE " +
+                $"id_ensemble = \"{dataEnsemble.CurrentRow.Cells[0].Value}\" AND " +
+                $"id_composition = \"{row["id_composition"]}\";");
+            row = table.Rows[0];
+            string commandText = $"DELETE FROM performance WHERE id_performance = {row["id_performance"]};";
+            Query(commandText);
         }
     }
 }

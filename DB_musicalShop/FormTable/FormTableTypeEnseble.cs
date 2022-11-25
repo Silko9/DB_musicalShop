@@ -19,8 +19,12 @@ namespace DB_musicalShop
         {
             InitializeComponent();
             this.managerDB = managerDB;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.AllowUserToAddRows = false;
+            dataTypeEnsemble.RowHeadersVisible = false;
+            dataTypeEnsemble.AllowUserToAddRows = false;
+            dataEnsemble.RowHeadersVisible = false;
+            dataEnsemble.AllowUserToAddRows = false;
+            dataEnsemble.Columns.Add("", "Ансамбли");
+            dataEnsemble.Columns[0].Width = 130;
             UpdateTable();
         }
         private struct Table
@@ -36,12 +40,13 @@ namespace DB_musicalShop
         private void UpdateTable()
         {
             DataTable table = managerDB.SelectTable("SELECT * FROM [type_ensemble];");
-            dataGridView1.DataSource = table;
+            dataTypeEnsemble.DataSource = table;
             for (int i = 0; i < dataTable.Length; i++)
             {
-                dataGridView1.Columns[i].HeaderText = dataTable[i].name;
-                dataGridView1.Columns[i].Width = dataTable[i].width;
+                dataTypeEnsemble.Columns[i].HeaderText = dataTable[i].name;
+                dataTypeEnsemble.Columns[i].Width = dataTable[i].width;
             }
+            dataEnsemble.Rows.Clear();
         }
         private void Query(string command)
         {
@@ -60,15 +65,15 @@ namespace DB_musicalShop
         }
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.RowCount == 0) return;
+            if (dataTypeEnsemble.RowCount == 0) return;
             if (CheckRecord()) return;
-            string commandText = $"UPDATE type_ensemble SET name_type_ensemble = \"{boxName.Text}\" WHERE id_type_ensemble = {dataGridView1.CurrentRow.Cells[0].Value};";
+            string commandText = $"UPDATE type_ensemble SET name_type_ensemble = \"{boxName.Text}\" WHERE id_type_ensemble = {dataTypeEnsemble.CurrentRow.Cells[0].Value};";
             Query(commandText);
         }
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.RowCount == 0) return;
-            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            if (dataTypeEnsemble.RowCount == 0) return;
+            string id = dataTypeEnsemble.CurrentRow.Cells[0].Value.ToString();
             DataTable table = managerDB.SelectTable($"SELECT * FROM ensemble WHERE id_type_ensemble = {id};");
             if (table.Rows.Count > 0)
             {
@@ -81,8 +86,16 @@ namespace DB_musicalShop
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dataGridView1.Rows.Count > 0)
-                boxName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            if(dataTypeEnsemble.Rows.Count > 0)
+                boxName.Text = dataTypeEnsemble.CurrentRow.Cells[1].Value.ToString();
+            dataEnsemble.Rows.Clear();//загрузка ансамблей в data
+            DataTable table = managerDB.SelectTable($"SELECT name_ensemble FROM ensemble WHERE id_type_ensemble = {dataTypeEnsemble.CurrentRow.Cells[0].Value}");
+            DataRow row;
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                row = table.Rows[i];
+                dataEnsemble.Rows.Add(row["name_ensemble"]);
+            }
         }
         private bool CheckRecord()
         {

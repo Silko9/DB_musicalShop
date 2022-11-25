@@ -107,6 +107,7 @@ namespace DB_musicalShop
                     "number_record VARCHAR(10) NOT NULL, " +
                     "id_operation VARCHAR(10) NOT NULL, " +
                     "date_log TEXT NOT NULL, " +
+                    "year TEXT NOT NULL, " +
                     "amount INTEGER NOT NULL);";
                 Query(commandText);
                 commandText = "CREATE TRIGGER delete_musician BEFORE DELETE ON musician " +
@@ -123,6 +124,22 @@ namespace DB_musicalShop
                 commandText = "CREATE TRIGGER delete_ensemble BEFORE DELETE ON ensemble " +
                     "BEGIN " +
                     "DELETE FROM relation_musician_ensemble WHERE id_ensemble = OLD.id_ensemble; " +
+                    "END;";
+                Query(commandText);
+                commandText = "CREATE TRIGGER delete_record BEFORE DELETE ON record " +
+                    "BEGIN " +
+                    "DELETE FROM relation_record_performance WHERE number_record = OLD.number_record; " +
+                    "END;";
+                Query(commandText);
+                commandText = "CREATE TRIGGER delete_performance BEFORE DELETE ON performance " +
+                    "BEGIN " +
+                    "DELETE FROM relation_record_performance WHERE id_performance = OLD.id_performance; " +
+                    "END;";
+                Query(commandText);
+                commandText = "CREATE TRIGGER update_record AFTER UPDATE ON record " +
+                    "BEGIN " +
+                    "UPDATE relation_record_performance SET number_record = NEW.number_record WHERE number_record = OLD.number_record; " +
+                    "UPDATE logging SET number_record = NEW.number_record WHERE number_record = OLD.number_record; " +
                     "END;";
                 Query(commandText);
                 return 0;

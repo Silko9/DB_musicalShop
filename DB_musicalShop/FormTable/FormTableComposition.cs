@@ -18,9 +18,17 @@ namespace DB_musicalShop
         public FormTableComposition(ManagerDB managerDB)
         {
             InitializeComponent();
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.AllowUserToAddRows = false;
+            dataComposition.RowHeadersVisible = false;
+            dataComposition.AllowUserToAddRows = false;
             this.managerDB = managerDB;
+            dataRecord.RowHeadersVisible = false;
+            dataRecord.AllowUserToAddRows = false;
+            dataRecord.Columns.Add("", "Пластинки");
+            dataRecord.Columns[0].Width = 130;
+            dataPerformance.RowHeadersVisible = false;
+            dataPerformance.AllowUserToAddRows = false;
+            dataPerformance.Columns.Add("", "Исполнения");
+            dataPerformance.Columns[0].Width = 130;
             UpdateTable();
         }
         private struct Table
@@ -36,12 +44,14 @@ namespace DB_musicalShop
         private void UpdateTable()
         {
             DataTable table = managerDB.SelectTable("SELECT * FROM composition;");
-            dataGridView1.DataSource = table;
+            dataComposition.DataSource = table;
             for (int i = 0; i < dataTable.Length; i++)
             {
-                dataGridView1.Columns[i].HeaderText = dataTable[i].name;
-                dataGridView1.Columns[i].Width = dataTable[i].width;
+                dataComposition.Columns[i].HeaderText = dataTable[i].name;
+                dataComposition.Columns[i].Width = dataTable[i].width;
             }
+            dataRecord.Rows.Clear();
+            dataPerformance.Rows.Clear();
         }
         private void Query(string command)
         {
@@ -57,7 +67,7 @@ namespace DB_musicalShop
         }
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.RowCount == 0) return;
+            if (dataComposition.RowCount == 0) return;
             if (CheckRecord()) return;
             Query("UPDATE composition SET " +
                 $"name_composition = \"{boxName.Text}\", " +
@@ -65,12 +75,12 @@ namespace DB_musicalShop
                 $"surname_author = \"{boxSurname.Text}\", " +
                 $"patronymic_author = \"{boxPatronymic.Text}\", " +
                 $"date_create = \"{dateCreate.Text}\" " +
-                $"WHERE id_composition = {dataGridView1.CurrentRow.Cells[0].Value};");
+                $"WHERE id_composition = {dataComposition.CurrentRow.Cells[0].Value};");
         }
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.RowCount == 0) return;
-            string id = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            if (dataComposition.RowCount == 0) return;
+            string id = dataComposition.CurrentRow.Cells[0].Value.ToString();
             DataTable performance = managerDB.SelectTable($"SELECT * FROM performance WHERE id_composition = {id};");
             DataTable record = managerDB.SelectTable($"SELECT * FROM record WHERE id_composition = {id};");
             if (performance.Rows.Count > 0 || record.Rows.Count > 0)
@@ -87,13 +97,33 @@ namespace DB_musicalShop
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows.Count > 0)
+            if (dataComposition.Rows.Count == 0) return;
+            boxName.Text = dataComposition.CurrentRow.Cells[1].Value.ToString();
+            boxNameAuthor.Text = dataComposition.CurrentRow.Cells[2].Value.ToString();
+            boxSurname.Text = dataComposition.CurrentRow.Cells[3].Value.ToString();
+            boxPatronymic.Text = dataComposition.CurrentRow.Cells[4].Value.ToString();
+            dateCreate.Text = dataComposition.CurrentRow.Cells[5].Value.ToString();
+            dataRecord.Rows.Clear();//загрузка пластинок в data
+            DataTable table = managerDB.SelectTable($"SELECT number_record FROM record WHERE id_composition = {dataComposition.CurrentRow.Cells[0].Value}");
+            DataRow row;
+            for (int i = 0; i < table.Rows.Count; i++)
             {
-                boxName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                boxNameAuthor.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                boxSurname.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-                boxPatronymic.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-                dateCreate.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+                row = table.Rows[i];
+                dataRecord.Rows.Add(row["number_record"]);
+            }
+            dataPerformance.Rows.Clear();//загрузка исполнений в data
+            table = managerDB.SelectTable($"SELECT id_ensemble, date_performance FROM performance WHERE id_composition = {dataComposition.CurrentRow.Cells[0].Value}");
+            DataTable ensemble = managerDB.SelectTable("SELECT * FROM ensemble;");
+            DataRow rowEnsemble;
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                row = table.Rows[i];
+                for (int j = 0; j < ensemble.Rows.Count; j++)
+                {
+                    rowEnsemble = ensemble.Rows[j];
+                    if (row["id_ensemble"].ToString() == rowEnsemble["id_ensemble"].ToString())
+                        dataPerformance.Rows.Add($"{rowEnsemble["name_ensemble"]} {row["date_performance"]}");
+                }
             }
         }
         private bool CheckRecord()
