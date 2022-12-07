@@ -14,8 +14,6 @@ namespace DB_musicalShop
     public partial class FormTableRecord : Form
     {
         ManagerDB managerDB = new ManagerDB();
-        Table[] dataTable = new Table[4] {  new Table("Номер пластинки", 90), new Table("Розничная цена", 70),
-                                            new Table("Оптовая цена", 70), new Table("Произведения", 200) };
         public FormTableRecord(ManagerDB managerDB)
         {
             InitializeComponent();
@@ -23,11 +21,6 @@ namespace DB_musicalShop
             dataRecord.RowHeadersVisible = false;
             dataTopRecord.RowHeadersVisible = false;
             dataPerformance.RowHeadersVisible = false;
-            for (int i = 0; i < dataTable.Length; i++)
-            {
-                dataRecord.Columns.Add("", dataTable[i].name);
-                dataRecord.Columns[i].Width = dataTable[i].width;
-            }
             dataRecord.AllowUserToAddRows = false;
             dataTopRecord.AllowUserToAddRows = false;
             dataPerformance.AllowUserToAddRows = false;
@@ -39,22 +32,17 @@ namespace DB_musicalShop
             dataPerformance.Columns[0].Width = 300;
             UpdateTable();
         }
-        private struct Table
-        {
-            public string name;
-            public int width;
-            public Table(string name, int width)
-            {
-                this.name = name;
-                this.width = width;
-            }
-        }
         private void UpdateTable()
         {
             dataRecord.Rows.Clear();
             DataTable composition = managerDB.SelectTable("SELECT * FROM composition;");
             DataRow row;
             DataRow rowComposition;
+            DataTable count;
+            DataRow sellLastRow;
+            DataRow sellCurrentRow;
+            DataRow sellRow;
+            DataRow receiptsRow;
             string currentItem = boxComposition.Text;
             boxComposition.Items.Clear();
             for (int i = 0; i < composition.Rows.Count; i++)
@@ -75,7 +63,34 @@ namespace DB_musicalShop
                         if (rowComposition["id_composition"].ToString() == row["id_composition"].ToString())
                             break;
                     }
-                    dataRecord.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], rowComposition["name_composition"]);
+                    int year = DateTime.Now.Year;
+                    count = managerDB.SelectTable("SELECT SUM(amount) AS count FROM logging WHERE " +
+                        $"number_record = \"{row["number_record"]}\" AND " +
+                        "id_operation = 2 AND " +
+                        $"year = \"{year - 1}\"");
+                    sellLastRow = count.Rows[0];
+                    if (sellLastRow["count"] == DBNull.Value)
+                        sellLastRow["count"] = "0";
+                    count = managerDB.SelectTable("SELECT SUM(amount) AS count FROM logging WHERE " +
+                        $"number_record = \"{row["number_record"]}\" AND " +
+                        "id_operation = 2 AND " +
+                        $"year = \"{year}\"");
+                    sellCurrentRow = count.Rows[0];
+                    if (sellCurrentRow["count"] == DBNull.Value)
+                        sellCurrentRow["count"] = "0";
+                    count = managerDB.SelectTable("SELECT SUM(amount) AS count FROM logging WHERE " +
+                        $"number_record = \"{row["number_record"]}\" AND " +
+                        "id_operation = 2");
+                    sellRow = count.Rows[0];
+                    if (sellRow["count"] == DBNull.Value)
+                        sellRow["count"] = "0";
+                    count = managerDB.SelectTable("SELECT SUM(amount) AS count FROM logging WHERE " +
+                        $"number_record = \"{row["number_record"]}\" AND " +
+                        "id_operation = 1");
+                    receiptsRow = count.Rows[0];
+                    if (receiptsRow["count"] == DBNull.Value)
+                        receiptsRow["count"] = "0";
+                    dataRecord.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], rowComposition["name_composition"], sellLastRow["count"], sellCurrentRow["count"], Convert.ToInt32(receiptsRow["count"]) - Convert.ToInt32(sellRow["count"]));
                 }
                 catch
                 {
@@ -145,7 +160,6 @@ namespace DB_musicalShop
                 $"wholesale_price = {numericWholesalePrice.Text.Replace(",", ".")}, " +
                 $"id_composition = {row["id_composition"]} " +
                 $"WHERE number_record = \"{dataRecord.CurrentRow.Cells[0].Value}\";");
-
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)

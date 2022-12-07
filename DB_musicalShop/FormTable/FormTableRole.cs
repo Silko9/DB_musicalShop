@@ -124,26 +124,33 @@ namespace DB_musicalShop
 
         private void buttonAddMusician_Click(object sender, EventArgs e)
         {
-            string[] musician = boxMusician.Text.Split(' ');
-            DataTable table = managerDB.SelectTable("SELECT * FROM musician WHERE " +
-                $"name_musician = \"{musician[0]}\" AND " +
-                $"surname_musician = \"{musician[1]}\" AND " +
-                $"patronymic_musician = \"{musician[2]}\";");
-            if (table.Rows.Count == 0)
+            try
             {
+                string[] musician = boxMusician.Text.Split(' ');
+                DataTable table = managerDB.SelectTable("SELECT * FROM musician WHERE " +
+                    $"name_musician = \"{musician[0]}\" AND " +
+                    $"surname_musician = \"{musician[1]}\" AND " +
+                    $"patronymic_musician = \"{musician[2]}\";");
+                if (table.Rows.Count == 0)
+                {
+                    MessageBox.Show("Такого музыканта нет в базе данных, добавьте его или выберите из списка существующего.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                DataRow row = table.Rows[0];
+                table = managerDB.SelectTable($"SELECT * FROM relation_musician_role WHERE id_role = {dataRole.CurrentRow.Cells[0].Value} AND id_musician = {row["id_musician"]}");
+                if (table.Rows.Count > 0)
+                {
+                    MessageBox.Show("У данного музыканта уже есть данная роль.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                Query("INSERT INTO relation_musician_role " +
+                    "(id_role, id_musician) " +
+                    $"VALUES ({dataRole.CurrentRow.Cells[0].Value}, {row["id_musician"]})");
+            }
+            catch{
                 MessageBox.Show("Такого музыканта нет в базе данных, добавьте его или выберите из списка существующего.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            DataRow row = table.Rows[0];
-            table = managerDB.SelectTable($"SELECT * FROM relation_musician_role WHERE id_role = {dataRole.CurrentRow.Cells[0].Value} AND id_musician = {row["id_musician"]}");
-            if (table.Rows.Count > 0)
-            {
-                MessageBox.Show("У данного музыканта уже есть данная роль.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            Query("INSERT INTO relation_musician_role " +
-                "(id_role, id_musician) " +
-                $"VALUES ({dataRole.CurrentRow.Cells[0].Value}, {row["id_musician"]})");
         }
 
         private void buttonDeleteMusician_Click(object sender, EventArgs e)

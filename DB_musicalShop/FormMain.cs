@@ -17,13 +17,11 @@ namespace DB_musicalShop
         ManagerDB managerDB = new ManagerDB();
         FormTableMusician formTableMusician;
         FormTableRole formTableRole;
-        FormTableRelationRoleAndMusician formTableRelationRoleAndMusician;
         FormTableEnsemble formTableEnsemble;
         FormTableTypeEnseble formTableTypeEnseble;
         FormTableComposition formTableComposition;
         FormTablePerformance formTablePerformance;
         FormTableRecord formTableRecord;
-        FormTableRelationRecordAndPerformance formTableRelationRecordAndPerformance;
         FormTableLogging formTableLogging;
         public FormMain()
         {
@@ -33,14 +31,14 @@ namespace DB_musicalShop
             saveFileDialog1.Filter = "db files (*.db)|*.db|All files (*.*)|*.*";
             ButtonEnabled(false);
             //для теста
-            //if (!managerDB.CheckDB("C:\\SQLite\\s.db"))
-            //{
-            //    ButtonEnabled(false);
-            //    MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-            //label2.Text = "C:\\SQLite\\data.db";
-            //ButtonEnabled(true);
+            if (!managerDB.CheckDB("C:\\SQLite\\data.db"))
+            {
+                ButtonEnabled(false);
+                MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            label2.Text = "C:\\SQLite\\data.db";
+            ButtonEnabled(true);
             ////
         }
         private void ButtonEnabled(bool enabled)
@@ -51,8 +49,6 @@ namespace DB_musicalShop
             buttonViewTableMusician.Enabled = enabled;
             buttonViewTablePerformance.Enabled = enabled;
             buttonViewTableRecord.Enabled = enabled;
-            buttonViewTableRelationRecordAndPerformance.Enabled = enabled;
-            buttonViewTableRelationRoleAndMusician.Enabled = enabled;
             buttonViewTableRole.Enabled = enabled;
             buttonTypeEnseble.Enabled = enabled;
         }
@@ -100,13 +96,6 @@ namespace DB_musicalShop
             formTableRole = new FormTableRole(managerDB);
             formTableRole.Show();
         }
-        private void buttonViewTableRelationRoleAndMusician_Click(object sender, EventArgs e)
-        {
-            if (formTableRelationRoleAndMusician != null)
-                formTableRelationRoleAndMusician.Close();
-            formTableRelationRoleAndMusician = new FormTableRelationRoleAndMusician(managerDB);
-            formTableRelationRoleAndMusician.Show();
-        }
         private void buttonViewTableEnsemble_Click(object sender, EventArgs e)
         {
             if (formTableEnsemble != null)
@@ -141,13 +130,6 @@ namespace DB_musicalShop
                 formTableRecord.Close();
             formTableRecord = new FormTableRecord(managerDB);
             formTableRecord.Show();
-        }
-        private void buttonViewTableRelationRecordAndPerformance_Click(object sender, EventArgs e)
-        {
-            if (formTableRelationRecordAndPerformance != null)
-                formTableRelationRecordAndPerformance.Close();
-            formTableRelationRecordAndPerformance = new FormTableRelationRecordAndPerformance(managerDB);
-            formTableRelationRecordAndPerformance.Show();
         }
         private void buttonViewTableLogging_Click(object sender, EventArgs e)
         {

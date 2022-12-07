@@ -43,20 +43,27 @@
             this.boxComposition = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.dataTopRecord = new System.Windows.Forms.DataGridView();
             this.numericYear = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataTopRecord = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataPerformance = new System.Windows.Forms.DataGridView();
             this.boxPerformance = new System.Windows.Forms.ComboBox();
             this.buttonAddPerformance = new System.Windows.Forms.Button();
             this.buttonDeletePerformance = new System.Windows.Forms.Button();
+            this.number_record = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.retail_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wholesale_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.composition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sell_last = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sell_current = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericRetailPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericWholesalePrice)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTopRecord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericYear)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataPerformance)).BeginInit();
             this.SuspendLayout();
@@ -117,14 +124,24 @@
             // 
             // dataRecord
             // 
+            this.dataRecord.AllowUserToAddRows = false;
             this.dataRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.number_record,
+            this.retail_price,
+            this.wholesale_price,
+            this.composition,
+            this.sell_last,
+            this.sell_current,
+            this.count});
             this.dataRecord.Location = new System.Drawing.Point(9, 9);
             this.dataRecord.Margin = new System.Windows.Forms.Padding(2);
             this.dataRecord.Name = "dataRecord";
             this.dataRecord.ReadOnly = true;
+            this.dataRecord.RowHeadersVisible = false;
             this.dataRecord.RowHeadersWidth = 51;
             this.dataRecord.RowTemplate.Height = 24;
-            this.dataRecord.Size = new System.Drawing.Size(453, 400);
+            this.dataRecord.Size = new System.Drawing.Size(727, 400);
             this.dataRecord.TabIndex = 65;
             this.dataRecord.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -207,9 +224,10 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.buttonSearch);
+            this.groupBox1.Controls.Add(this.dataTopRecord);
             this.groupBox1.Controls.Add(this.numericYear);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(466, 9);
+            this.groupBox1.Location = new System.Drawing.Point(740, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -228,6 +246,18 @@
             this.buttonSearch.Text = "Поиск";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // dataTopRecord
+            // 
+            this.dataTopRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataTopRecord.Location = new System.Drawing.Point(4, 90);
+            this.dataTopRecord.Margin = new System.Windows.Forms.Padding(2);
+            this.dataTopRecord.Name = "dataTopRecord";
+            this.dataTopRecord.ReadOnly = true;
+            this.dataTopRecord.RowHeadersWidth = 51;
+            this.dataTopRecord.RowTemplate.Height = 24;
+            this.dataTopRecord.Size = new System.Drawing.Size(251, 295);
+            this.dataTopRecord.TabIndex = 81;
             // 
             // numericYear
             // 
@@ -256,18 +286,6 @@
             this.label5.Size = new System.Drawing.Size(25, 13);
             this.label5.TabIndex = 67;
             this.label5.Text = "Год";
-            // 
-            // dataTopRecord
-            // 
-            this.dataTopRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataTopRecord.Location = new System.Drawing.Point(473, 110);
-            this.dataTopRecord.Margin = new System.Windows.Forms.Padding(2);
-            this.dataTopRecord.Name = "dataTopRecord";
-            this.dataTopRecord.ReadOnly = true;
-            this.dataTopRecord.RowHeadersWidth = 51;
-            this.dataTopRecord.RowTemplate.Height = 24;
-            this.dataTopRecord.Size = new System.Drawing.Size(251, 295);
-            this.dataTopRecord.TabIndex = 81;
             // 
             // groupBox2
             // 
@@ -325,13 +343,59 @@
             this.buttonDeletePerformance.UseVisualStyleBackColor = true;
             this.buttonDeletePerformance.Click += new System.EventHandler(this.buttonDeletePerformance_Click);
             // 
+            // number_record
+            // 
+            this.number_record.HeaderText = "Номер пластинки";
+            this.number_record.Name = "number_record";
+            this.number_record.ReadOnly = true;
+            this.number_record.Width = 90;
+            // 
+            // retail_price
+            // 
+            this.retail_price.HeaderText = "Розничная цена";
+            this.retail_price.Name = "retail_price";
+            this.retail_price.ReadOnly = true;
+            this.retail_price.Width = 70;
+            // 
+            // wholesale_price
+            // 
+            this.wholesale_price.HeaderText = "Оптовая цена";
+            this.wholesale_price.Name = "wholesale_price";
+            this.wholesale_price.ReadOnly = true;
+            this.wholesale_price.Width = 70;
+            // 
+            // composition
+            // 
+            this.composition.HeaderText = "Произведение";
+            this.composition.Name = "composition";
+            this.composition.ReadOnly = true;
+            this.composition.Width = 200;
+            // 
+            // sell_last
+            // 
+            this.sell_last.HeaderText = "Продано за прошлый год";
+            this.sell_last.Name = "sell_last";
+            this.sell_last.ReadOnly = true;
+            // 
+            // sell_current
+            // 
+            this.sell_current.HeaderText = "Продано за текущий год";
+            this.sell_current.Name = "sell_current";
+            this.sell_current.ReadOnly = true;
+            // 
+            // count
+            // 
+            this.count.HeaderText = "Кол-во в наличие";
+            this.count.Name = "count";
+            this.count.ReadOnly = true;
+            this.count.Width = 70;
+            // 
             // FormTableRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(746, 689);
+            this.ClientSize = new System.Drawing.Size(1052, 689);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dataTopRecord);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.boxComposition);
             this.Controls.Add(this.numericWholesalePrice);
@@ -354,8 +418,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericWholesalePrice)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTopRecord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericYear)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataPerformance)).EndInit();
             this.ResumeLayout(false);
@@ -387,5 +451,12 @@
         private System.Windows.Forms.ComboBox boxPerformance;
         private System.Windows.Forms.Button buttonAddPerformance;
         private System.Windows.Forms.Button buttonDeletePerformance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn number_record;
+        private System.Windows.Forms.DataGridViewTextBoxColumn retail_price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wholesale_price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn composition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sell_last;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sell_current;
+        private System.Windows.Forms.DataGridViewTextBoxColumn count;
     }
 }

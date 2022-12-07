@@ -131,18 +131,6 @@
     <Compile Include="FormTable\FormTableRecord.Designer.cs">
       <DependentUpon>FormTableRecord.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTable\FormTableRelationRecordAndPerformance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTable\FormTableRelationRecordAndPerformance.Designer.cs">
-      <DependentUpon>FormTableRelationRecordAndPerformance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormTable\FormTableRelationRoleAndMusician.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTable\FormTableRelationRoleAndMusician.Designer.cs">
-      <DependentUpon>FormTableRelationRoleAndMusician.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormTable\FormTableRole.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,12 +166,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormTableRecord.resx">
       <DependentUpon>FormTableRecord.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTable\FormTableRelationRecordAndPerformance.resx">
-      <DependentUpon>FormTableRelationRecordAndPerformance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormTable\FormTableRelationRoleAndMusician.resx">
-      <DependentUpon>FormTableRelationRoleAndMusician.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormTableRole.resx">
       <DependentUpon>FormTableRole.cs</DependentUpon>

@@ -95,10 +95,32 @@ namespace DB_musicalShop
                 MessageBox.Show("Такой пластинки нет в базе данных. Создайте ее или выберите из списка.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+            DataRow row = table.Rows[0];
             string[] year = dateCreate.Text.Split(' ');
             int idOperation;
+            DataRow operation;
             if (boxTypeOfAction.Text == "Поступление") idOperation = 1;
-            else idOperation = 2;
+            else
+            {
+                idOperation = 2;
+                int[] record = new int[2];
+                for (int i = 0; i < 2; i++)
+                {
+                    table = managerDB.SelectTable("SELECT SUM(amount) AS count_record FROM logging WHERE " +
+                        $"number_record = \"{row["number_record"]}\" AND " +
+                        $"id_operation = {i + 1};");
+                    operation = table.Rows[0];
+                    if (operation["count_record"] == DBNull.Value) 
+                        record[i] = 0;
+                    else
+                        record[i] = Convert.ToInt32(operation["count_record"]);
+                }
+                if (record[0] < (record[1] + numericAmount.Value))
+                {
+                    MessageBox.Show("На складе недостаточно пластинок с данным номером");
+                    return;
+                }
+            }
             string commandText = $"INSERT INTO logging (number_record, id_operation, date_log, year, amount)" +
             $"VALUES(\"{boxNumberRecord.Text}\", {idOperation}, \"{dateCreate.Text}\", \"{year[2]}\", {numericAmount.Value});";
             Query(commandText);

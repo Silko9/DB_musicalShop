@@ -105,7 +105,7 @@ namespace DB_musicalShop
                 commandText = "CREATE TABLE logging (" +
                     "id_log INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                     "number_record VARCHAR(10) NOT NULL, " +
-                    "id_operation VARCHAR(10) NOT NULL, " +
+                    "id_operation INTEGER NOT NULL, " +
                     "date_log TEXT NOT NULL, " +
                     "year TEXT NOT NULL, " +
                     "amount INTEGER NOT NULL);";
@@ -248,45 +248,6 @@ namespace DB_musicalShop
             SQLiteDataReader sqlReader = Command.ExecuteReader();
             dt.Load(sqlReader);
             return dt;
-        }
-        public List<string> SelectList(string commandText)
-        {
-            List<string> result = new List<string>();
-            SQLiteCommand Command = new SQLiteCommand(commandText, connection);
-            SQLiteDataReader sqlReader = Command.ExecuteReader();
-            while (sqlReader.Read())
-                result.Add(sqlReader.GetString(0).ToString());
-            return result;
-        }
-        public int GetID(string str)
-        {
-            try
-            {
-                string id = "";
-                for (int i = 0; i < str.Length; i++)
-                    if (str[i] == '[')
-                    {
-                        i += 3;
-                        while (str[i] != ']')
-                        {
-                            id += str[i];
-                            i++;
-                        }
-                    }
-                return Convert.ToInt32(id);
-            }
-            catch
-            {
-                if (str != "") return Convert.ToInt32(str);
-                else return 0;
-            }
-        }
-        public bool IsMatch(string str)
-        {
-            Regex regex = new Regex(@"^[\w \s]+$");
-            if (!regex.IsMatch(str))
-                return false;
-            return true;
         }
     }
 }

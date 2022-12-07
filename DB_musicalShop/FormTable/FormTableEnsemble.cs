@@ -14,7 +14,7 @@ namespace DB_musicalShop
     public partial class FormTableEnsemble : Form
     {
         ManagerDB managerDB = new ManagerDB();
-        Table[] dataTable = new Table[3] { new Table("ID Ансамбль", 60), new Table("Название", 170), new Table("Тип Ансамбля", 160) };
+        Table[] dataTable = new Table[] { new Table("ID Ансамбль", 60), new Table("Название", 170), new Table("Тип Ансамбля", 160), new Table("Кол-во исполнений", 70) };
         public FormTableEnsemble(ManagerDB managerDB)
         {
             InitializeComponent();
@@ -28,11 +28,11 @@ namespace DB_musicalShop
             }
             dataMusician.RowHeadersVisible = false;
             dataMusician.AllowUserToAddRows = false;
-            dataMusician.Columns.Add("", "Музыкант");
+            dataMusician.Columns.Add("", "ФИО");
             dataMusician.Columns[0].Width = 200;
             dataPerformance.RowHeadersVisible = false;
             dataPerformance.AllowUserToAddRows = false;
-            dataPerformance.Columns.Add("", "Исполнение");
+            dataPerformance.Columns.Add("", "Произведение и дата");
             dataPerformance.Columns[0].Width = 200;
             UpdateTable();
         }
@@ -60,6 +60,8 @@ namespace DB_musicalShop
                 boxTypeEnsemble.Items.Add(Convert.ToString(row["name_type_ensemble"]));
             }
             DataTable table = managerDB.SelectTable("SELECT * FROM [ensemble]");
+            DataRow performanceRow;
+            DataTable performance;
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 row = table.Rows[i];
@@ -72,7 +74,10 @@ namespace DB_musicalShop
                         if (rowType["id_type_ensemble"].ToString() == row["id_type_ensemble"].ToString())
                             break;
                     }
-                    dataEnsemble.Rows.Add(row["id_ensemble"], row["name_ensemble"], rowType["name_type_ensemble"]);
+                    performance = managerDB.SelectTable("SELECT COUNT(id_performance) AS count_performance FROM performance " +
+                        $"WHERE id_ensemble = {row["id_ensemble"]}");
+                    performanceRow = performance.Rows[0];
+                    dataEnsemble.Rows.Add(row["id_ensemble"], row["name_ensemble"], rowType["name_type_ensemble"], performanceRow["count_performance"]);
                 }
                 catch
                 {
@@ -124,21 +129,22 @@ namespace DB_musicalShop
                 MessageBox.Show("Заполните все поля.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            DataTable table = managerDB.SelectTable($"SELECT * FROM type_ensemble WHERE name_type_ensemble = \"{boxTypeEnsemble.Text}\"");
-            if (table.Rows.Count == 0)
-            {
-                MessageBox.Show("Нету такого типа ансамбля, выберите из списка.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            DataTable table;
             if (dataEnsemble.CurrentRow.Cells[1].Value.ToString() != boxName.Text)
             {
                 table = managerDB.SelectTable("SELECT * FROM ensemble WHERE " +
                     $"name_ensemble = \"{boxName.Text}\";");
-                if (table.Rows.Count >= 0)
+                if (table.Rows.Count > 0)
                 {
                     MessageBox.Show("Уже есть такой Ансамбль", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+            }
+            table = managerDB.SelectTable($"SELECT * FROM type_ensemble WHERE name_type_ensemble = \"{boxTypeEnsemble.Text}\"");
+            if (table.Rows.Count == 0)
+            {
+                MessageBox.Show("Нету такого типа ансамбля, выберите из списка.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             DataRow row = table.Rows[0];
             string commandText = $"UPDATE [ensemble] SET " +
