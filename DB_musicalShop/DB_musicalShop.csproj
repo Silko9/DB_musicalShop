@@ -95,6 +95,24 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryComposition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryComposition.Designer.cs">
+      <DependentUpon>FormQueryComposition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryPerformance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryPerformance.Designer.cs">
+      <DependentUpon>FormQueryPerformance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormЙQueryRelationRecordPerformance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormЙQueryRelationRecordPerformance.Designer.cs">
+      <DependentUpon>FormЙQueryRelationRecordPerformance.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTable\FormTableComposition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +166,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryComposition.resx">
+      <DependentUpon>FormQueryComposition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryPerformance.resx">
+      <DependentUpon>FormQueryPerformance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormЙQueryRelationRecordPerformance.resx">
+      <DependentUpon>FormЙQueryRelationRecordPerformance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormTableComposition.resx">
       <DependentUpon>FormTableComposition.cs</DependentUpon>
