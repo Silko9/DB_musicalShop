@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using DB_musicalShop.FormTable;
 
 
 namespace DB_musicalShop
@@ -23,6 +24,7 @@ namespace DB_musicalShop
         FormTablePerformance formTablePerformance;
         FormTableRecord formTableRecord;
         FormTableLogging formTableLogging;
+        FormTopSell formTopSell;
         public FormMain()
         {
             InitializeComponent();
@@ -31,15 +33,15 @@ namespace DB_musicalShop
             saveFileDialog1.Filter = "db files (*.db)|*.db|All files (*.*)|*.*";
             ButtonEnabled(false);
             //для теста
-            if (!managerDB.CheckDB("C:\\SQLite\\data.db"))
-            {
-                ButtonEnabled(false);
-                MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            label2.Text = "C:\\SQLite\\data.db";
-            ButtonEnabled(true);
-            ////
+            //if (!managerDB.CheckDB("C:\\SQLite\\data.db"))
+            //{
+            //    ButtonEnabled(false);
+            //    MessageBox.Show("Файл не соотвествует требованию приложения.\nВыберите другую или создайте новую базу данных.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+            //label2.Text = "C:\\SQLite\\data.db";
+            //ButtonEnabled(true);
+            //
         }
         private void ButtonEnabled(bool enabled)
         {
@@ -141,6 +143,14 @@ namespace DB_musicalShop
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             managerDB.Close();
+        }
+
+        private void buttonTopSell_Click(object sender, EventArgs e)
+        {
+            if (formTopSell != null)
+                formTopSell.Close();
+            formTopSell = new FormTopSell(managerDB);
+            formTopSell.Show();
         }
     }
 }

@@ -16,8 +16,9 @@ namespace DB_musicalShop
 {
     public class ManagerDB
     {
-        public SQLiteConnection connection;
-        public string path;
+        private SQLiteConnection connection;
+        private string path;
+        public string Path { get { return path; } }
         
         public ManagerDB()
         {
@@ -224,7 +225,7 @@ namespace DB_musicalShop
             }
             return data;
         }
-        static byte[] GetBytes(SQLiteDataReader reader)
+        private static byte[] GetBytes(SQLiteDataReader reader)
         {
             byte[] bDate = new byte[1024];
             long lRead = 0;
@@ -235,8 +236,8 @@ namespace DB_musicalShop
                 {
                     byte[] bRead = new byte[lRead];
                     Buffer.BlockCopy(bDate, 0, bRead, 0, (int)lRead);
-                    memorystream.Write(bRead, 0, bRead.Length); lOffset +=
-                    lRead;
+                    memorystream.Write(bRead, 0, bRead.Length); 
+                    lOffset += lRead;
                 }
                 return memorystream.ToArray();
             }

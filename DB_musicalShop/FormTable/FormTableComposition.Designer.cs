@@ -40,8 +40,8 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataRecord = new System.Windows.Forms.DataGridView();
-            this.dataPerformance = new System.Windows.Forms.DataGridView();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataPerformance = new System.Windows.Forms.DataGridView();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataComposition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataRecord)).BeginInit();
@@ -105,6 +105,7 @@
             this.Column5});
             this.dataComposition.Location = new System.Drawing.Point(9, 9);
             this.dataComposition.Margin = new System.Windows.Forms.Padding(2);
+            this.dataComposition.MultiSelect = false;
             this.dataComposition.Name = "dataComposition";
             this.dataComposition.ReadOnly = true;
             this.dataComposition.RowHeadersVisible = false;
@@ -113,6 +114,7 @@
             this.dataComposition.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataComposition.Size = new System.Drawing.Size(781, 400);
             this.dataComposition.TabIndex = 63;
+            this.dataComposition.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataComposition_CellClick);
             // 
             // id_composition
             // 
@@ -164,6 +166,7 @@
             this.Column6});
             this.dataRecord.Location = new System.Drawing.Point(794, 9);
             this.dataRecord.Margin = new System.Windows.Forms.Padding(2);
+            this.dataRecord.MultiSelect = false;
             this.dataRecord.Name = "dataRecord";
             this.dataRecord.ReadOnly = true;
             this.dataRecord.RowHeadersVisible = false;
@@ -173,6 +176,13 @@
             this.dataRecord.Size = new System.Drawing.Size(153, 199);
             this.dataRecord.TabIndex = 34;
             // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Пластинки";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 130;
+            // 
             // dataPerformance
             // 
             this.dataPerformance.AllowUserToAddRows = false;
@@ -181,21 +191,17 @@
             this.Column7});
             this.dataPerformance.Location = new System.Drawing.Point(794, 212);
             this.dataPerformance.Margin = new System.Windows.Forms.Padding(2);
+            this.dataPerformance.MultiSelect = false;
             this.dataPerformance.Name = "dataPerformance";
             this.dataPerformance.ReadOnly = true;
+            this.dataPerformance.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dataPerformance.RowHeadersVisible = false;
             this.dataPerformance.RowHeadersWidth = 51;
             this.dataPerformance.RowTemplate.Height = 24;
             this.dataPerformance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataPerformance.Size = new System.Drawing.Size(153, 197);
             this.dataPerformance.TabIndex = 34;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Пластинки";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 130;
+            this.dataPerformance.TabStop = false;
             // 
             // Column7
             // 
@@ -219,6 +225,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormTableComposition";
             this.Text = "Произведения";
+            this.Shown += new System.EventHandler(this.FormTableComposition_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataComposition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataRecord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataPerformance)).EndInit();

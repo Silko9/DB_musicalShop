@@ -45,6 +45,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonTopSell = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -52,10 +53,10 @@
             // 
             // buttonOpenDB
             // 
-            this.buttonOpenDB.Location = new System.Drawing.Point(12, 220);
-            this.buttonOpenDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonOpenDB.Location = new System.Drawing.Point(9, 179);
+            this.buttonOpenDB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOpenDB.Name = "buttonOpenDB";
-            this.buttonOpenDB.Size = new System.Drawing.Size(125, 58);
+            this.buttonOpenDB.Size = new System.Drawing.Size(94, 47);
             this.buttonOpenDB.TabIndex = 14;
             this.buttonOpenDB.Text = "Открыть файл базы данных";
             this.buttonOpenDB.UseVisualStyleBackColor = true;
@@ -63,10 +64,10 @@
             // 
             // buttonCreateNewDB
             // 
-            this.buttonCreateNewDB.Location = new System.Drawing.Point(143, 220);
-            this.buttonCreateNewDB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonCreateNewDB.Location = new System.Drawing.Point(107, 179);
+            this.buttonCreateNewDB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonCreateNewDB.Name = "buttonCreateNewDB";
-            this.buttonCreateNewDB.Size = new System.Drawing.Size(125, 58);
+            this.buttonCreateNewDB.Size = new System.Drawing.Size(94, 47);
             this.buttonCreateNewDB.TabIndex = 15;
             this.buttonCreateNewDB.Text = "Создать новую базу данных";
             this.buttonCreateNewDB.UseVisualStyleBackColor = true;
@@ -74,10 +75,10 @@
             // 
             // buttonTypeEnseble
             // 
-            this.buttonTypeEnseble.Location = new System.Drawing.Point(5, 97);
-            this.buttonTypeEnseble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonTypeEnseble.Location = new System.Drawing.Point(4, 79);
+            this.buttonTypeEnseble.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonTypeEnseble.Name = "buttonTypeEnseble";
-            this.buttonTypeEnseble.Size = new System.Drawing.Size(139, 73);
+            this.buttonTypeEnseble.Size = new System.Drawing.Size(104, 59);
             this.buttonTypeEnseble.TabIndex = 36;
             this.buttonTypeEnseble.Text = "Таблица тип ансамблей";
             this.buttonTypeEnseble.UseVisualStyleBackColor = true;
@@ -85,10 +86,10 @@
             // 
             // buttonViewTableLogging
             // 
-            this.buttonViewTableLogging.Location = new System.Drawing.Point(6, 97);
-            this.buttonViewTableLogging.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonViewTableLogging.Location = new System.Drawing.Point(4, 79);
+            this.buttonViewTableLogging.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonViewTableLogging.Name = "buttonViewTableLogging";
-            this.buttonViewTableLogging.Size = new System.Drawing.Size(137, 73);
+            this.buttonViewTableLogging.Size = new System.Drawing.Size(103, 59);
             this.buttonViewTableLogging.TabIndex = 34;
             this.buttonViewTableLogging.Text = "Таблица учет";
             this.buttonViewTableLogging.UseVisualStyleBackColor = true;
@@ -96,10 +97,10 @@
             // 
             // buttonViewTableRecord
             // 
-            this.buttonViewTableRecord.Location = new System.Drawing.Point(5, 20);
-            this.buttonViewTableRecord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonViewTableRecord.Location = new System.Drawing.Point(4, 16);
+            this.buttonViewTableRecord.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonViewTableRecord.Name = "buttonViewTableRecord";
-            this.buttonViewTableRecord.Size = new System.Drawing.Size(139, 73);
+            this.buttonViewTableRecord.Size = new System.Drawing.Size(104, 59);
             this.buttonViewTableRecord.TabIndex = 32;
             this.buttonViewTableRecord.Text = "Таблица пластинок";
             this.buttonViewTableRecord.UseVisualStyleBackColor = true;
@@ -107,10 +108,10 @@
             // 
             // buttonViewTablePerformance
             // 
-            this.buttonViewTablePerformance.Location = new System.Drawing.Point(149, 97);
-            this.buttonViewTablePerformance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonViewTablePerformance.Location = new System.Drawing.Point(112, 79);
+            this.buttonViewTablePerformance.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonViewTablePerformance.Name = "buttonViewTablePerformance";
-            this.buttonViewTablePerformance.Size = new System.Drawing.Size(139, 73);
+            this.buttonViewTablePerformance.Size = new System.Drawing.Size(104, 59);
             this.buttonViewTablePerformance.TabIndex = 31;
             this.buttonViewTablePerformance.Text = "Таблица исполнений";
             this.buttonViewTablePerformance.UseVisualStyleBackColor = true;
@@ -118,10 +119,10 @@
             // 
             // buttonViewTableComposition
             // 
-            this.buttonViewTableComposition.Location = new System.Drawing.Point(149, 20);
-            this.buttonViewTableComposition.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonViewTableComposition.Location = new System.Drawing.Point(112, 16);
+            this.buttonViewTableComposition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonViewTableComposition.Name = "buttonViewTableComposition";
-            this.buttonViewTableComposition.Size = new System.Drawing.Size(139, 73);
+            this.buttonViewTableComposition.Size = new System.Drawing.Size(104, 59);
             this.buttonViewTableComposition.TabIndex = 30;
             this.buttonViewTableComposition.Text = "Таблица произведения";
             this.buttonViewTableComposition.UseVisualStyleBackColor = true;
@@ -129,10 +130,10 @@
             // 
             // buttonViewTableEnsemble
             // 
-            this.buttonViewTableEnsemble.Location = new System.Drawing.Point(5, 20);
-            this.buttonViewTableEnsemble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonViewTableEnsemble.Location = new System.Drawing.Point(4, 16);
+            this.buttonViewTableEnsemble.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonViewTableEnsemble.Name = "buttonViewTableEnsemble";
-            this.buttonViewTableEnsemble.Size = new System.Drawing.Size(139, 73);
+            this.buttonViewTableEnsemble.Size = new System.Drawing.Size(104, 59);
             this.buttonViewTableEnsemble.TabIndex = 29;
             this.buttonViewTableEnsemble.Text = "Таблица ансамбли";
             this.buttonViewTableEnsemble.UseVisualStyleBackColor = true;
@@ -140,10 +141,10 @@
             // 
             // buttonViewTableRole
             // 
-            this.buttonViewTableRole.Location = new System.Drawing.Point(5, 97);
-            this.buttonViewTableRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonViewTableRole.Location = new System.Drawing.Point(4, 79);
+            this.buttonViewTableRole.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonViewTableRole.Name = "buttonViewTableRole";
-            this.buttonViewTableRole.Size = new System.Drawing.Size(139, 73);
+            this.buttonViewTableRole.Size = new System.Drawing.Size(104, 59);
             this.buttonViewTableRole.TabIndex = 26;
             this.buttonViewTableRole.Text = "Таблица роли";
             this.buttonViewTableRole.UseVisualStyleBackColor = true;
@@ -151,10 +152,10 @@
             // 
             // buttonViewTableMusician
             // 
-            this.buttonViewTableMusician.Location = new System.Drawing.Point(5, 20);
-            this.buttonViewTableMusician.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonViewTableMusician.Location = new System.Drawing.Point(4, 16);
+            this.buttonViewTableMusician.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonViewTableMusician.Name = "buttonViewTableMusician";
-            this.buttonViewTableMusician.Size = new System.Drawing.Size(139, 73);
+            this.buttonViewTableMusician.Size = new System.Drawing.Size(104, 59);
             this.buttonViewTableMusician.TabIndex = 25;
             this.buttonViewTableMusician.Text = "Таблица музыканты";
             this.buttonViewTableMusician.UseVisualStyleBackColor = true;
@@ -167,29 +168,31 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(275, 241);
+            this.label1.Location = new System.Drawing.Point(206, 196);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 16);
+            this.label1.Size = new System.Drawing.Size(103, 13);
             this.label1.TabIndex = 37;
             this.label1.Text = "Путь базы данных:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(408, 241);
+            this.label2.Location = new System.Drawing.Point(306, 196);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 16);
+            this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 38;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.buttonViewTableMusician);
             this.groupBox1.Controls.Add(this.buttonViewTableRole);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(9, 10);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(151, 175);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(113, 142);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Музыканты";
@@ -198,11 +201,11 @@
             // 
             this.groupBox2.Controls.Add(this.buttonViewTableEnsemble);
             this.groupBox2.Controls.Add(this.buttonTypeEnseble);
-            this.groupBox2.Location = new System.Drawing.Point(169, 12);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Location = new System.Drawing.Point(127, 10);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(151, 175);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(113, 142);
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ансамбли";
@@ -213,20 +216,32 @@
             this.groupBox3.Controls.Add(this.buttonViewTablePerformance);
             this.groupBox3.Controls.Add(this.buttonViewTableComposition);
             this.groupBox3.Controls.Add(this.buttonViewTableLogging);
-            this.groupBox3.Location = new System.Drawing.Point(326, 12);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Location = new System.Drawing.Point(244, 10);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(296, 175);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Size = new System.Drawing.Size(222, 142);
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Пластинки";
             // 
+            // buttonTopSell
+            // 
+            this.buttonTopSell.Location = new System.Drawing.Point(356, 165);
+            this.buttonTopSell.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTopSell.Name = "buttonTopSell";
+            this.buttonTopSell.Size = new System.Drawing.Size(110, 44);
+            this.buttonTopSell.TabIndex = 82;
+            this.buttonTopSell.Text = "Топ продаж";
+            this.buttonTopSell.UseVisualStyleBackColor = true;
+            this.buttonTopSell.Click += new System.EventHandler(this.buttonTopSell_Click);
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 293);
+            this.ClientSize = new System.Drawing.Size(478, 238);
+            this.Controls.Add(this.buttonTopSell);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -234,7 +249,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonCreateNewDB);
             this.Controls.Add(this.buttonOpenDB);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormMain";
             this.Text = "Главная";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
@@ -265,6 +280,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button buttonTopSell;
     }
 }
 

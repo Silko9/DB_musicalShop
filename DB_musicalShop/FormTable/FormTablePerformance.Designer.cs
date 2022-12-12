@@ -33,18 +33,18 @@
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.dataPerformance = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.boxCircumstances_execution = new System.Windows.Forms.RichTextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataRecord = new System.Windows.Forms.DataGridView();
-            this.buttonDeleteRecord = new System.Windows.Forms.Button();
-            this.buttonAddRecord = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.boxCircumstances_execution = new System.Windows.Forms.RichTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataRecord = new System.Windows.Forms.DataGridView();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonDeleteRecord = new System.Windows.Forms.Button();
+            this.buttonAddRecord = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataPerformance)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataRecord)).BeginInit();
@@ -106,6 +106,7 @@
             this.Column5});
             this.dataPerformance.Location = new System.Drawing.Point(9, 9);
             this.dataPerformance.Margin = new System.Windows.Forms.Padding(2);
+            this.dataPerformance.MultiSelect = false;
             this.dataPerformance.Name = "dataPerformance";
             this.dataPerformance.ReadOnly = true;
             this.dataPerformance.RowHeadersVisible = false;
@@ -115,6 +116,42 @@
             this.dataPerformance.Size = new System.Drawing.Size(617, 400);
             this.dataPerformance.TabIndex = 48;
             this.dataPerformance.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID Исполнения";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 80;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Дата исполнения";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 110;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Ансамбль";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 200;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Произведение";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Column5";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
+            this.Column5.Width = 5;
             // 
             // label1
             // 
@@ -156,6 +193,7 @@
             this.Column6});
             this.dataRecord.Location = new System.Drawing.Point(5, 18);
             this.dataRecord.Margin = new System.Windows.Forms.Padding(2);
+            this.dataRecord.MultiSelect = false;
             this.dataRecord.Name = "dataRecord";
             this.dataRecord.ReadOnly = true;
             this.dataRecord.RowHeadersVisible = false;
@@ -163,6 +201,13 @@
             this.dataRecord.RowTemplate.Height = 24;
             this.dataRecord.Size = new System.Drawing.Size(182, 131);
             this.dataRecord.TabIndex = 34;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Номер пластинки";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Width = 150;
             // 
             // buttonDeleteRecord
             // 
@@ -186,49 +231,6 @@
             this.buttonAddRecord.UseVisualStyleBackColor = true;
             this.buttonAddRecord.Click += new System.EventHandler(this.buttonAddRecord_Click);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID Исполнения";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 80;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Дата исполнения";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 110;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Ансамбль";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 200;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Произведение";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Visible = false;
-            this.Column5.Width = 5;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Номер пластинки";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Width = 150;
-            // 
             // FormTablePerformance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +247,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormTablePerformance";
             this.Text = "Таблица исполнений";
+            this.Shown += new System.EventHandler(this.FormTablePerformance_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataPerformance)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataRecord)).EndInit();

@@ -16,24 +16,26 @@ namespace DB_musicalShop.FormTable.FormAddOrUpdate
         string[] data;
         public FormQueryComposition(ManagerDB managerDB, string[] data)
         {
+            Initialize(managerDB);
+            this.data = data;
+            this.Text = "Изменение";
+            button.Text = "Изменить";
+            boxName.Text = data[1];
+            boxNameAuthor.Text = data[2];
+            boxSurname.Text = data[3];
+            boxPatronymic.Text = data[4];
+            dateCreate.Text = data[5];
+        }
+        public FormQueryComposition(ManagerDB managerDB)
+        {
+            Initialize(managerDB);
+            this.Text = "Добавление";
+            button.Text = "Добавить";
+        }
+        private void Initialize(ManagerDB managerDB)
+        {
             InitializeComponent();
             this.managerDB = managerDB;
-            this.data = data;
-            if (data == null)
-            {
-                this.Text = "Добавление";
-                button.Text = "Добавить";
-            }
-            else
-            {
-                this.Text = "Изменение";
-                button.Text = "Изменить";
-                boxName.Text = data[1];
-                boxNameAuthor.Text = data[2];
-                boxSurname.Text = data[3];
-                boxPatronymic.Text = data[4];
-                dateCreate.Text = data[5];
-            }
         }
         private void button_Click(object sender, EventArgs e)
         {

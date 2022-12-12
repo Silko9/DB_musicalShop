@@ -19,9 +19,25 @@ namespace DB_musicalShop.FormTable.FormQuery
         DataRow rowEnsemble = null;
         public FormQueryPerformance(ManagerDB managerDB, string[] data)
         {
+            Initialize(managerDB);
+            this.data = data;
+            this.Text = "Изменение";
+            button.Text = "Изменить";
+            boxEnsemble.Text = data[2];
+            boxComposition.Text = data[3];
+            dateCreate.Text = data[1];
+            boxCircumstances_execution.Text = data[4];
+        }
+        public FormQueryPerformance(ManagerDB managerDB)
+        {
+            Initialize(managerDB);
+            this.Text = "Добавление";
+            button.Text = "Добавить";
+        }
+        private void Initialize(ManagerDB managerDB)
+        {
             InitializeComponent();
             this.managerDB = managerDB;
-            this.data = data;
             DataTable ensemble = managerDB.SelectTable("SELECT * FROM ensemble;");
             DataTable composition = managerDB.SelectTable("SELECT * FROM composition;");
             DataRow row;
@@ -35,22 +51,7 @@ namespace DB_musicalShop.FormTable.FormQuery
                 row = composition.Rows[i];
                 boxComposition.Items.Add(Convert.ToString(row["name_composition"]));
             }
-            if (data == null)
-            {
-                this.Text = "Добавление";
-                button.Text = "Добавить";
-            }
-            else
-            {
-                this.Text = "Изменение";
-                button.Text = "Изменить";
-                boxEnsemble.Text = data[2];
-                boxComposition.Text = data[3];
-                dateCreate.Text = data[1];
-                boxCircumstances_execution.Text = data[4];
-            }
         }
-
         private void button_Click(object sender, EventArgs e)
         {
             if (data == null)

@@ -38,12 +38,14 @@ namespace DB_musicalShop
         {
             managerDB.Query(command);
             UpdateTable();
+            LoadData();
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            formQueryComposition = new FormQueryComposition(managerDB, null);
+            formQueryComposition = new FormQueryComposition(managerDB);
             formQueryComposition.ShowDialog();
             UpdateTable();
+            LoadData();
         }
         private void buttonChange_Click(object sender, EventArgs e)
         {
@@ -54,6 +56,7 @@ namespace DB_musicalShop
             formQueryComposition = new FormQueryComposition(managerDB, data);
             formQueryComposition.ShowDialog();
             UpdateTable();
+            LoadData();
         }
         private void buttonDelete_Click(object sender, EventArgs e)
         {
@@ -66,6 +69,7 @@ namespace DB_musicalShop
             {
                 MessageBox.Show("Невозможно удалить запись \"Произведение\", пока она используется хотя бы в одной записи таблиц \"Исполнения\" и \"Пластинки\"", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateTable();
+                LoadData();
                 return;
             }
             Query($"DELETE FROM composition WHERE id_composition = {id};");
@@ -73,6 +77,41 @@ namespace DB_musicalShop
         private void buttonUpdateTable_Click(object sender, EventArgs e)
         {
             UpdateTable();
-        }       
+            LoadData();
+        }
+
+        private void dataComposition_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadData();
+        }
+        private void LoadData()
+        {
+            //загрузка пластинки в data
+            dataRecord.Rows.Clear();
+            DataTable table = managerDB.SelectTable($"SELECT number_record FROM record WHERE id_composition = {dataComposition.CurrentRow.Cells[0].Value}");
+            DataRow row;
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                row = table.Rows[i];
+                dataRecord.Rows.Add(row["number_record"]);
+            }
+            //загрузка исполнений в data
+            dataPerformance.Rows.Clear();
+            table = managerDB.SelectTable($"SELECT id_ensemble, date_performance FROM performance WHERE id_composition = {dataComposition.CurrentRow.Cells[0].Value}");
+            DataRow ensembleRow;
+            DataTable ensemble;
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                row = table.Rows[i];
+                ensemble = managerDB.SelectTable($"SELECT name_ensemble FROM ensemble WHERE id_ensemble = {row["id_ensemble"]}");
+                ensembleRow = ensemble.Rows[0];
+                dataPerformance.Rows.Add($"{ensembleRow["name_ensemble"]} {row["date_performance"]}");
+            }
+        }
+
+        private void FormTableComposition_Shown(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }

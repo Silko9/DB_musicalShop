@@ -101,17 +101,59 @@
     <Compile Include="FormTable\FormQuery\FormQueryComposition.Designer.cs">
       <DependentUpon>FormQueryComposition.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryEnsemble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryEnsemble.Designer.cs">
+      <DependentUpon>FormQueryEnsemble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryLogging.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryLogging.Designer.cs">
+      <DependentUpon>FormQueryLogging.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryMusician.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryMusician.Designer.cs">
+      <DependentUpon>FormQueryMusician.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTable\FormQuery\FormQueryPerformance.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormTable\FormQuery\FormQueryPerformance.Designer.cs">
       <DependentUpon>FormQueryPerformance.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTable\FormQuery\FormЙQueryRelationRecordPerformance.cs">
+    <Compile Include="FormTable\FormQuery\FormQueryRecord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTable\FormQuery\FormЙQueryRelationRecordPerformance.Designer.cs">
-      <DependentUpon>FormЙQueryRelationRecordPerformance.cs</DependentUpon>
+    <Compile Include="FormTable\FormQuery\FormQueryRecord.Designer.cs">
+      <DependentUpon>FormQueryRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryRelationEnsembleMusician.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryRelationEnsembleMusician.Designer.cs">
+      <DependentUpon>FormQueryRelationEnsembleMusician.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryRelationMusicianRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryRelationMusicianRole.Designer.cs">
+      <DependentUpon>FormQueryRelationMusicianRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryRelationRecordPerformance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryRelationRecordPerformance.Designer.cs">
+      <DependentUpon>FormQueryRelationRecordPerformance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryTypeEnsemble.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryTypeEnsemble.Designer.cs">
+      <DependentUpon>FormQueryTypeEnsemble.cs</DependentUpon>
     </Compile>
     <Compile Include="FormTable\FormTableComposition.cs">
       <SubType>Form</SubType>
@@ -161,6 +203,12 @@
     <Compile Include="FormTable\FormTableTypeEnseble.Designer.cs">
       <DependentUpon>FormTableTypeEnseble.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTable\FormTopSell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormTopSell.Designer.cs">
+      <DependentUpon>FormTopSell.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManagerDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,11 +218,32 @@
     <EmbeddedResource Include="FormTable\FormQuery\FormQueryComposition.resx">
       <DependentUpon>FormQueryComposition.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryEnsemble.resx">
+      <DependentUpon>FormQueryEnsemble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryLogging.resx">
+      <DependentUpon>FormQueryLogging.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryMusician.resx">
+      <DependentUpon>FormQueryMusician.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormQuery\FormQueryPerformance.resx">
       <DependentUpon>FormQueryPerformance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormTable\FormQuery\FormЙQueryRelationRecordPerformance.resx">
-      <DependentUpon>FormЙQueryRelationRecordPerformance.cs</DependentUpon>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryRecord.resx">
+      <DependentUpon>FormQueryRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryRelationEnsembleMusician.resx">
+      <DependentUpon>FormQueryRelationEnsembleMusician.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryRelationMusicianRole.resx">
+      <DependentUpon>FormQueryRelationMusicianRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryRelationRecordPerformance.resx">
+      <DependentUpon>FormQueryRelationRecordPerformance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryTypeEnsemble.resx">
+      <DependentUpon>FormQueryTypeEnsemble.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormTableComposition.resx">
       <DependentUpon>FormTableComposition.cs</DependentUpon>
@@ -199,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormTableTypeEnseble.resx">
       <DependentUpon>FormTableTypeEnseble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormTopSell.resx">
+      <DependentUpon>FormTopSell.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

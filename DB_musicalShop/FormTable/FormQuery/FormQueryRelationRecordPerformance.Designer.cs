@@ -1,6 +1,6 @@
 ﻿namespace DB_musicalShop.FormTable.FormQuery
 {
-    partial class FormЙQueryRelationRecordPerformance
+    partial class FormQueryRelationRecordPerformance
     {
         /// <summary>
         /// Required designer variable.
@@ -82,7 +82,7 @@
             this.button.UseVisualStyleBackColor = true;
             this.button.Click += new System.EventHandler(this.button_Click);
             // 
-            // FormЙQueryRelationRecordPerformance
+            // FormQueryRelationRecordPerformance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,7 +92,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.boxPerformance);
             this.Controls.Add(this.boxRecord);
-            this.Name = "FormЙQueryRelationRecordPerformance";
+            this.Name = "FormQueryRelationRecordPerformance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавление связи";
             this.ResumeLayout(false);

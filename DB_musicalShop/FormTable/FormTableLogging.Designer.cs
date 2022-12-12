@@ -28,44 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.boxNumberRecord = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.buttonUpdateTable = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.boxTypeOfAction = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dateCreate = new System.Windows.Forms.DateTimePicker();
-            this.numericAmount = new System.Windows.Forms.NumericUpDown();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericAmount)).BeginInit();
             this.SuspendLayout();
-            // 
-            // boxNumberRecord
-            // 
-            this.boxNumberRecord.FormattingEnabled = true;
-            this.boxNumberRecord.Location = new System.Drawing.Point(457, 25);
-            this.boxNumberRecord.Name = "boxNumberRecord";
-            this.boxNumberRecord.Size = new System.Drawing.Size(179, 21);
-            this.boxNumberRecord.TabIndex = 51;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(456, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 13);
-            this.label2.TabIndex = 50;
-            this.label2.Text = "Номер пластинки";
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(457, 365);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(255, 461);
             this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
             this.buttonUpdateTable.Size = new System.Drawing.Size(182, 44);
@@ -76,7 +54,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(457, 184);
+            this.buttonAdd.Location = new System.Drawing.Point(9, 413);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(182, 44);
@@ -87,7 +65,7 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(457, 232);
+            this.buttonChange.Location = new System.Drawing.Point(9, 461);
             this.buttonChange.Margin = new System.Windows.Forms.Padding(2);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(182, 44);
@@ -98,7 +76,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(457, 280);
+            this.buttonDelete.Location = new System.Drawing.Point(255, 413);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(182, 44);
@@ -107,131 +85,91 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(457, 134);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 44;
-            this.label1.Text = "Кол-во";
-            // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.dataGridView1.Location = new System.Drawing.Point(9, 9);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(446, 400);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(428, 400);
             this.dataGridView1.TabIndex = 43;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // boxTypeOfAction
+            // Column1
             // 
-            this.boxTypeOfAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.boxTypeOfAction.FormattingEnabled = true;
-            this.boxTypeOfAction.Location = new System.Drawing.Point(457, 64);
-            this.boxTypeOfAction.Name = "boxTypeOfAction";
-            this.boxTypeOfAction.Size = new System.Drawing.Size(179, 21);
-            this.boxTypeOfAction.TabIndex = 53;
+            this.Column1.HeaderText = "ID Записи";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 50;
             // 
-            // label3
+            // Column2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(456, 48);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
-            this.label3.TabIndex = 52;
-            this.label3.Text = "Тип действия";
+            this.Column2.HeaderText = "Номер пластинки";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 90;
             // 
-            // label5
+            // Column3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(456, 91);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 13);
-            this.label5.TabIndex = 64;
-            this.label5.Text = "Дата";
+            this.Column3.HeaderText = "Операция";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 80;
             // 
-            // dateCreate
+            // Column4
             // 
-            this.dateCreate.Location = new System.Drawing.Point(457, 106);
-            this.dateCreate.Margin = new System.Windows.Forms.Padding(2);
-            this.dateCreate.Name = "dateCreate";
-            this.dateCreate.Size = new System.Drawing.Size(179, 20);
-            this.dateCreate.TabIndex = 63;
+            this.Column4.HeaderText = "Дата";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 120;
             // 
-            // numericAmount
+            // Column5
             // 
-            this.numericAmount.Location = new System.Drawing.Point(457, 149);
-            this.numericAmount.Margin = new System.Windows.Forms.Padding(2);
-            this.numericAmount.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericAmount.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericAmount.Name = "numericAmount";
-            this.numericAmount.Size = new System.Drawing.Size(177, 20);
-            this.numericAmount.TabIndex = 65;
-            this.numericAmount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.Column5.HeaderText = "Кол-во";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 60;
             // 
             // FormTableLogging
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 415);
-            this.Controls.Add(this.numericAmount);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateCreate);
-            this.Controls.Add(this.boxTypeOfAction);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.boxNumberRecord);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(449, 510);
             this.Controls.Add(this.buttonUpdateTable);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonChange);
             this.Controls.Add(this.buttonDelete);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormTableLogging";
             this.Text = "Таблица учета";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericAmount)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox boxNumberRecord;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonUpdateTable;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonChange;
         private System.Windows.Forms.Button buttonDelete;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox boxTypeOfAction;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateCreate;
-        private System.Windows.Forms.NumericUpDown numericAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }
