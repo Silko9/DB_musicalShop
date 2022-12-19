@@ -149,6 +149,12 @@
     <Compile Include="FormTable\FormQuery\FormQueryRelationRecordPerformance.Designer.cs">
       <DependentUpon>FormQueryRelationRecordPerformance.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTable\FormQuery\FormQueryRole.Designer.cs">
+      <DependentUpon>FormQueryRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormTable\FormQuery\FormQueryTypeEnsemble.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormQuery\FormQueryRelationRecordPerformance.resx">
       <DependentUpon>FormQueryRelationRecordPerformance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTable\FormQuery\FormQueryRole.resx">
+      <DependentUpon>FormQueryRole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormTable\FormQuery\FormQueryTypeEnsemble.resx">
       <DependentUpon>FormQueryTypeEnsemble.cs</DependentUpon>

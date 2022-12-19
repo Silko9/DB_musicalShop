@@ -33,9 +33,9 @@
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.dataTypeEnsemble = new System.Windows.Forms.DataGridView();
-            this.dataEnsemble = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataEnsemble = new System.Windows.Forms.DataGridView();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataTypeEnsemble)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataEnsemble)).BeginInit();
@@ -43,10 +43,10 @@
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(233, 367);
-            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(311, 452);
+            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
-            this.buttonUpdateTable.Size = new System.Drawing.Size(182, 44);
+            this.buttonUpdateTable.Size = new System.Drawing.Size(243, 54);
             this.buttonUpdateTable.TabIndex = 40;
             this.buttonUpdateTable.Text = "Обновить таблицу";
             this.buttonUpdateTable.UseVisualStyleBackColor = true;
@@ -54,10 +54,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(233, 223);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAdd.Location = new System.Drawing.Point(311, 274);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(182, 44);
+            this.buttonAdd.Size = new System.Drawing.Size(243, 54);
             this.buttonAdd.TabIndex = 39;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -65,10 +65,10 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(233, 271);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonChange.Location = new System.Drawing.Point(311, 334);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(182, 44);
+            this.buttonChange.Size = new System.Drawing.Size(243, 54);
             this.buttonChange.TabIndex = 38;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
@@ -76,10 +76,10 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(233, 319);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDelete.Location = new System.Drawing.Point(311, 393);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(182, 44);
+            this.buttonDelete.Size = new System.Drawing.Size(243, 54);
             this.buttonDelete.TabIndex = 37;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -92,8 +92,8 @@
             this.dataTypeEnsemble.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            this.dataTypeEnsemble.Location = new System.Drawing.Point(9, 11);
-            this.dataTypeEnsemble.Margin = new System.Windows.Forms.Padding(2);
+            this.dataTypeEnsemble.Location = new System.Drawing.Point(12, 14);
+            this.dataTypeEnsemble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataTypeEnsemble.MultiSelect = false;
             this.dataTypeEnsemble.Name = "dataTypeEnsemble";
             this.dataTypeEnsemble.ReadOnly = true;
@@ -101,31 +101,14 @@
             this.dataTypeEnsemble.RowHeadersWidth = 51;
             this.dataTypeEnsemble.RowTemplate.Height = 24;
             this.dataTypeEnsemble.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataTypeEnsemble.Size = new System.Drawing.Size(220, 400);
+            this.dataTypeEnsemble.Size = new System.Drawing.Size(293, 492);
             this.dataTypeEnsemble.TabIndex = 34;
             this.dataTypeEnsemble.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // dataEnsemble
-            // 
-            this.dataEnsemble.AllowUserToAddRows = false;
-            this.dataEnsemble.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataEnsemble.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column3});
-            this.dataEnsemble.Location = new System.Drawing.Point(234, 11);
-            this.dataEnsemble.Margin = new System.Windows.Forms.Padding(2);
-            this.dataEnsemble.MultiSelect = false;
-            this.dataEnsemble.Name = "dataEnsemble";
-            this.dataEnsemble.ReadOnly = true;
-            this.dataEnsemble.RowHeadersVisible = false;
-            this.dataEnsemble.RowHeadersWidth = 51;
-            this.dataEnsemble.RowTemplate.Height = 24;
-            this.dataEnsemble.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataEnsemble.Size = new System.Drawing.Size(190, 208);
-            this.dataEnsemble.TabIndex = 34;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "ID Тип ансамбля";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 70;
@@ -133,28 +116,50 @@
             // Column2
             // 
             this.Column2.HeaderText = "Название";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 130;
             // 
+            // dataEnsemble
+            // 
+            this.dataEnsemble.AllowUserToAddRows = false;
+            this.dataEnsemble.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataEnsemble.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column3});
+            this.dataEnsemble.Location = new System.Drawing.Point(312, 14);
+            this.dataEnsemble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataEnsemble.MultiSelect = false;
+            this.dataEnsemble.Name = "dataEnsemble";
+            this.dataEnsemble.ReadOnly = true;
+            this.dataEnsemble.RowHeadersVisible = false;
+            this.dataEnsemble.RowHeadersWidth = 51;
+            this.dataEnsemble.RowTemplate.Height = 24;
+            this.dataEnsemble.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataEnsemble.Size = new System.Drawing.Size(253, 256);
+            this.dataEnsemble.TabIndex = 34;
+            // 
             // Column3
             // 
             this.Column3.HeaderText = "Ансамбль";
+            this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Width = 170;
             // 
             // FormTableTypeEnseble
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 418);
+            this.ClientSize = new System.Drawing.Size(591, 514);
             this.Controls.Add(this.dataEnsemble);
             this.Controls.Add(this.buttonUpdateTable);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonChange);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.dataTypeEnsemble);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormTableTypeEnseble";
             this.Text = "Таблица типы ансамблей";
             this.Shown += new System.EventHandler(this.FormTableTypeEnseble_Shown);

@@ -35,41 +35,42 @@
             // 
             // button
             // 
-            this.button.Location = new System.Drawing.Point(11, 59);
-            this.button.Margin = new System.Windows.Forms.Padding(2);
+            this.button.Location = new System.Drawing.Point(15, 73);
+            this.button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(182, 44);
+            this.button.Size = new System.Drawing.Size(243, 54);
             this.button.TabIndex = 42;
             this.button.UseVisualStyleBackColor = true;
             this.button.Click += new System.EventHandler(this.button_Click);
             // 
             // boxName
             // 
-            this.boxName.Location = new System.Drawing.Point(11, 23);
-            this.boxName.Margin = new System.Windows.Forms.Padding(2);
+            this.boxName.Location = new System.Drawing.Point(15, 28);
+            this.boxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boxName.MaxLength = 15;
             this.boxName.Name = "boxName";
-            this.boxName.Size = new System.Drawing.Size(182, 20);
+            this.boxName.Size = new System.Drawing.Size(241, 22);
             this.boxName.TabIndex = 41;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(11, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(98, 16);
             this.label1.TabIndex = 40;
             this.label1.Text = "Тип ансамбля";
             // 
             // FormQueryTypeEnsemble
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(204, 119);
+            this.ClientSize = new System.Drawing.Size(272, 146);
             this.Controls.Add(this.button);
             this.Controls.Add(this.boxName);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormQueryTypeEnsemble";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormQueryTypeEnsemble";

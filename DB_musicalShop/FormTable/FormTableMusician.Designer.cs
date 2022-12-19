@@ -65,8 +65,8 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataMusician.Location = new System.Drawing.Point(237, 10);
-            this.dataMusician.Margin = new System.Windows.Forms.Padding(2);
+            this.dataMusician.Location = new System.Drawing.Point(316, 12);
+            this.dataMusician.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataMusician.MultiSelect = false;
             this.dataMusician.Name = "dataMusician";
             this.dataMusician.ReadOnly = true;
@@ -74,13 +74,14 @@
             this.dataMusician.RowHeadersWidth = 51;
             this.dataMusician.RowTemplate.Height = 24;
             this.dataMusician.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataMusician.Size = new System.Drawing.Size(482, 321);
+            this.dataMusician.Size = new System.Drawing.Size(643, 395);
             this.dataMusician.TabIndex = 0;
             this.dataMusician.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "ID Музыканта";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 70;
@@ -88,6 +89,7 @@
             // Column2
             // 
             this.Column2.HeaderText = "Имя";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 130;
@@ -95,6 +97,7 @@
             // Column3
             // 
             this.Column3.HeaderText = "Фамилия";
+            this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Width = 130;
@@ -102,6 +105,7 @@
             // Column4
             // 
             this.Column4.HeaderText = "Отчество";
+            this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.Width = 130;
@@ -109,20 +113,20 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DB_musicalShop.Properties.Resources.noname;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 49);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 60);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(224, 233);
+            this.pictureBox1.Size = new System.Drawing.Size(299, 287);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(609, 336);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDelete.Location = new System.Drawing.Point(812, 414);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(182, 44);
+            this.buttonDelete.Size = new System.Drawing.Size(243, 54);
             this.buttonDelete.TabIndex = 13;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -130,10 +134,10 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(423, 336);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonChange.Location = new System.Drawing.Point(564, 414);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(182, 44);
+            this.buttonChange.Size = new System.Drawing.Size(243, 54);
             this.buttonChange.TabIndex = 14;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
@@ -141,10 +145,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(237, 336);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAdd.Location = new System.Drawing.Point(316, 414);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(182, 44);
+            this.buttonAdd.Size = new System.Drawing.Size(243, 54);
             this.buttonAdd.TabIndex = 15;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -156,8 +160,8 @@
             this.dataRole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataRole.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5});
-            this.dataRole.Location = new System.Drawing.Point(5, 15);
-            this.dataRole.Margin = new System.Windows.Forms.Padding(2);
+            this.dataRole.Location = new System.Drawing.Point(7, 18);
+            this.dataRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataRole.MultiSelect = false;
             this.dataRole.Name = "dataRole";
             this.dataRole.ReadOnly = true;
@@ -165,12 +169,13 @@
             this.dataRole.RowHeadersWidth = 51;
             this.dataRole.RowTemplate.Height = 24;
             this.dataRole.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataRole.Size = new System.Drawing.Size(192, 131);
+            this.dataRole.Size = new System.Drawing.Size(256, 161);
             this.dataRole.TabIndex = 18;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Название роли";
+            this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             this.Column5.Width = 160;
@@ -181,8 +186,8 @@
             this.dataEnsemble.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataEnsemble.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column6});
-            this.dataEnsemble.Location = new System.Drawing.Point(5, 16);
-            this.dataEnsemble.Margin = new System.Windows.Forms.Padding(2);
+            this.dataEnsemble.Location = new System.Drawing.Point(7, 20);
+            this.dataEnsemble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataEnsemble.MultiSelect = false;
             this.dataEnsemble.Name = "dataEnsemble";
             this.dataEnsemble.ReadOnly = true;
@@ -190,22 +195,23 @@
             this.dataEnsemble.RowHeadersWidth = 51;
             this.dataEnsemble.RowTemplate.Height = 24;
             this.dataEnsemble.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataEnsemble.Size = new System.Drawing.Size(192, 131);
+            this.dataEnsemble.Size = new System.Drawing.Size(256, 161);
             this.dataEnsemble.TabIndex = 19;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Название ансамбля";
+            this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Width = 170;
             // 
             // buttonAddRole
             // 
-            this.buttonAddRole.Location = new System.Drawing.Point(201, 18);
-            this.buttonAddRole.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddRole.Location = new System.Drawing.Point(268, 22);
+            this.buttonAddRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAddRole.Name = "buttonAddRole";
-            this.buttonAddRole.Size = new System.Drawing.Size(182, 44);
+            this.buttonAddRole.Size = new System.Drawing.Size(243, 54);
             this.buttonAddRole.TabIndex = 24;
             this.buttonAddRole.Text = "Добавить";
             this.buttonAddRole.UseVisualStyleBackColor = true;
@@ -213,10 +219,10 @@
             // 
             // buttonAddEnsemble
             // 
-            this.buttonAddEnsemble.Location = new System.Drawing.Point(201, 18);
-            this.buttonAddEnsemble.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddEnsemble.Location = new System.Drawing.Point(268, 22);
+            this.buttonAddEnsemble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAddEnsemble.Name = "buttonAddEnsemble";
-            this.buttonAddEnsemble.Size = new System.Drawing.Size(182, 44);
+            this.buttonAddEnsemble.Size = new System.Drawing.Size(243, 54);
             this.buttonAddEnsemble.TabIndex = 25;
             this.buttonAddEnsemble.Text = "Добавить";
             this.buttonAddEnsemble.UseVisualStyleBackColor = true;
@@ -224,10 +230,10 @@
             // 
             // buttonDeleteRole
             // 
-            this.buttonDeleteRole.Location = new System.Drawing.Point(201, 66);
-            this.buttonDeleteRole.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDeleteRole.Location = new System.Drawing.Point(268, 81);
+            this.buttonDeleteRole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDeleteRole.Name = "buttonDeleteRole";
-            this.buttonDeleteRole.Size = new System.Drawing.Size(182, 44);
+            this.buttonDeleteRole.Size = new System.Drawing.Size(243, 54);
             this.buttonDeleteRole.TabIndex = 26;
             this.buttonDeleteRole.Text = "Удалить";
             this.buttonDeleteRole.UseVisualStyleBackColor = true;
@@ -235,10 +241,10 @@
             // 
             // buttonDeleteEnsemble
             // 
-            this.buttonDeleteEnsemble.Location = new System.Drawing.Point(201, 66);
-            this.buttonDeleteEnsemble.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDeleteEnsemble.Location = new System.Drawing.Point(268, 81);
+            this.buttonDeleteEnsemble.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDeleteEnsemble.Name = "buttonDeleteEnsemble";
-            this.buttonDeleteEnsemble.Size = new System.Drawing.Size(182, 44);
+            this.buttonDeleteEnsemble.Size = new System.Drawing.Size(243, 54);
             this.buttonDeleteEnsemble.TabIndex = 27;
             this.buttonDeleteEnsemble.Text = "Удалить";
             this.buttonDeleteEnsemble.UseVisualStyleBackColor = true;
@@ -246,10 +252,10 @@
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(795, 336);
-            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonUpdate.Location = new System.Drawing.Point(1060, 414);
+            this.buttonUpdate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(182, 44);
+            this.buttonUpdate.Size = new System.Drawing.Size(243, 54);
             this.buttonUpdate.TabIndex = 28;
             this.buttonUpdate.Text = "Обновить таблицу";
             this.buttonUpdate.UseVisualStyleBackColor = true;
@@ -260,9 +266,11 @@
             this.groupBox1.Controls.Add(this.dataRole);
             this.groupBox1.Controls.Add(this.buttonAddRole);
             this.groupBox1.Controls.Add(this.buttonDeleteRole);
-            this.groupBox1.Location = new System.Drawing.Point(724, 10);
+            this.groupBox1.Location = new System.Drawing.Point(965, 12);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(393, 156);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Size = new System.Drawing.Size(524, 192);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Роли";
@@ -272,18 +280,20 @@
             this.groupBox2.Controls.Add(this.dataEnsemble);
             this.groupBox2.Controls.Add(this.buttonAddEnsemble);
             this.groupBox2.Controls.Add(this.buttonDeleteEnsemble);
-            this.groupBox2.Location = new System.Drawing.Point(724, 172);
+            this.groupBox2.Location = new System.Drawing.Point(965, 212);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(393, 156);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(524, 192);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ансамбли";
             // 
             // FormTableMusician
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1129, 391);
+            this.ClientSize = new System.Drawing.Size(1505, 481);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonUpdate);
@@ -292,7 +302,8 @@
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataMusician);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormTableMusician";
             this.Text = "Таблица музыканты";
             this.Shown += new System.EventHandler(this.FormTableMusician_Shown);

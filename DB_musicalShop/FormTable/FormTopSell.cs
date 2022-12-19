@@ -25,15 +25,17 @@ namespace DB_musicalShop.FormTable
             int count;
             for (int i = 0; i < table.Rows.Count; i++)
             {
-                try
+                count = 0;
+                row = table.Rows[i];
+                countT = managerDB.SelectTable($"SELECT * FROM logging WHERE id_operation = 2 AND number_record = \"{row["number_record"]}\"");
+                for (int j = 0; j < countT.Rows.Count; j++)
                 {
-                    row = table.Rows[i];
-                    countT = managerDB.SelectTable($"SELECT SUM(amount) AS top FROM logging WHERE id_operation = 2 AND number_record = \"{row["number_record"]}\" AND year = {numericYear.Text}");
-                    rowCount = countT.Rows[0];
-                    count = Convert.ToInt32(rowCount["top"].ToString());
-                    dataTopRecord.Rows.Add(row["number_record"], count);
+                    rowCount = countT.Rows[j];
+                    if (rowCount["date_log"].ToString().Split(' ')[2] == numericYear.Value.ToString())
+                        count += Convert.ToInt32(rowCount["amount"].ToString());
                 }
-                catch { }
+                if(count > 0)
+                    dataTopRecord.Rows.Add(row["number_record"], count);
             }
             dataTopRecord.Sort(dataTopRecord.Columns[1], ListSortDirection.Descending);
         }
@@ -41,5 +43,6 @@ namespace DB_musicalShop.FormTable
         {
             UpdateTable();
         }
+
     }
 }

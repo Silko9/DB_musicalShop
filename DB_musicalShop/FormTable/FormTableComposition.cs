@@ -87,6 +87,7 @@ namespace DB_musicalShop
         private void LoadData()
         {
             //загрузка пластинки в data
+            if (dataComposition.Rows.Count == 0) return;
             dataRecord.Rows.Clear();
             DataTable table = managerDB.SelectTable($"SELECT number_record FROM record WHERE id_composition = {dataComposition.CurrentRow.Cells[0].Value}");
             DataRow row;

@@ -16,7 +16,6 @@ namespace DB_musicalShop.FormTable.FormQuery
         ManagerDB managerDB;
         string[] data;
         DataTable table;
-        string[] year;
         int idOperation;
         public FormQueryLogging(ManagerDB managerDB, string[] data)
         {
@@ -59,8 +58,8 @@ namespace DB_musicalShop.FormTable.FormQuery
             if (data == null)
             {
                 if (CheckRecord()) return;
-                string commandText = $"INSERT INTO logging (number_record, id_operation, date_log, year, amount)" +
-                $"VALUES(\"{boxNumberRecord.Text}\", {idOperation}, \"{dateCreate.Text}\", \"{year[2]}\", {numericAmount.Value});";
+                string commandText = $"INSERT INTO logging (number_record, id_operation, date_log, amount)" +
+                $"VALUES(\"{boxNumberRecord.Text}\", {idOperation}, \"{dateCreate.Text}\", {numericAmount.Value});";
                 managerDB.Query(commandText);
                 if (MessageBox.Show("Запись добавлена.\nДобавить еще?", "Информация", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.No)
                     this.Close();
@@ -72,7 +71,6 @@ namespace DB_musicalShop.FormTable.FormQuery
                 $"number_record = \"{boxNumberRecord.Text}\", " +
                 $"id_operation = {idOperation}, " +
                 $"date_log = \"{dateCreate.Text}\", " +
-                $"year = \"{year[2]}\", " +
                 $"amount = {numericAmount.Value} " +
                 $"WHERE id_log = {data[0]};";
                 managerDB.Query(commandText);
@@ -94,7 +92,6 @@ namespace DB_musicalShop.FormTable.FormQuery
                 return true;
             }
             DataRow row = table.Rows[0];
-            year = dateCreate.Text.Split(' ');
             DataRow operation;
             if (boxTypeOfAction.Text == "Поступление") idOperation = 1;
             else

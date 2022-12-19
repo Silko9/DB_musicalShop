@@ -50,10 +50,10 @@
             // 
             // buttonUpdateTable
             // 
-            this.buttonUpdateTable.Location = new System.Drawing.Point(567, 413);
-            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonUpdateTable.Location = new System.Drawing.Point(756, 508);
+            this.buttonUpdateTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonUpdateTable.Name = "buttonUpdateTable";
-            this.buttonUpdateTable.Size = new System.Drawing.Size(182, 44);
+            this.buttonUpdateTable.Size = new System.Drawing.Size(243, 54);
             this.buttonUpdateTable.TabIndex = 69;
             this.buttonUpdateTable.Text = "Обновить таблицу";
             this.buttonUpdateTable.UseVisualStyleBackColor = true;
@@ -61,10 +61,10 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(9, 413);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAdd.Location = new System.Drawing.Point(12, 508);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(182, 44);
+            this.buttonAdd.Size = new System.Drawing.Size(243, 54);
             this.buttonAdd.TabIndex = 68;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -72,10 +72,10 @@
             // 
             // buttonChange
             // 
-            this.buttonChange.Location = new System.Drawing.Point(195, 413);
-            this.buttonChange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonChange.Location = new System.Drawing.Point(260, 508);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(182, 44);
+            this.buttonChange.Size = new System.Drawing.Size(243, 54);
             this.buttonChange.TabIndex = 67;
             this.buttonChange.Text = "Изменить";
             this.buttonChange.UseVisualStyleBackColor = true;
@@ -83,10 +83,10 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(381, 413);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDelete.Location = new System.Drawing.Point(508, 508);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(182, 44);
+            this.buttonDelete.Size = new System.Drawing.Size(243, 54);
             this.buttonDelete.TabIndex = 66;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
@@ -103,8 +103,8 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dataComposition.Location = new System.Drawing.Point(9, 9);
-            this.dataComposition.Margin = new System.Windows.Forms.Padding(2);
+            this.dataComposition.Location = new System.Drawing.Point(12, 11);
+            this.dataComposition.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataComposition.MultiSelect = false;
             this.dataComposition.Name = "dataComposition";
             this.dataComposition.ReadOnly = true;
@@ -112,13 +112,14 @@
             this.dataComposition.RowHeadersWidth = 51;
             this.dataComposition.RowTemplate.Height = 24;
             this.dataComposition.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataComposition.Size = new System.Drawing.Size(781, 400);
+            this.dataComposition.Size = new System.Drawing.Size(1041, 492);
             this.dataComposition.TabIndex = 63;
             this.dataComposition.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataComposition_CellClick);
             // 
             // id_composition
             // 
             this.id_composition.HeaderText = "ID Произведения";
+            this.id_composition.MinimumWidth = 6;
             this.id_composition.Name = "id_composition";
             this.id_composition.ReadOnly = true;
             this.id_composition.Width = 90;
@@ -126,6 +127,7 @@
             // Column1
             // 
             this.Column1.HeaderText = "Название произведения";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 170;
@@ -133,6 +135,7 @@
             // Column2
             // 
             this.Column2.HeaderText = "Имя автора";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 130;
@@ -140,6 +143,7 @@
             // Column3
             // 
             this.Column3.HeaderText = "Фамилия автора";
+            this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Width = 130;
@@ -147,6 +151,7 @@
             // Column4
             // 
             this.Column4.HeaderText = "Отчество автора";
+            this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.Width = 130;
@@ -154,6 +159,7 @@
             // Column5
             // 
             this.Column5.HeaderText = "Дата создания";
+            this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             this.Column5.Width = 110;
@@ -164,8 +170,8 @@
             this.dataRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column6});
-            this.dataRecord.Location = new System.Drawing.Point(794, 9);
-            this.dataRecord.Margin = new System.Windows.Forms.Padding(2);
+            this.dataRecord.Location = new System.Drawing.Point(1059, 11);
+            this.dataRecord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataRecord.MultiSelect = false;
             this.dataRecord.Name = "dataRecord";
             this.dataRecord.ReadOnly = true;
@@ -173,12 +179,13 @@
             this.dataRecord.RowHeadersWidth = 51;
             this.dataRecord.RowTemplate.Height = 24;
             this.dataRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataRecord.Size = new System.Drawing.Size(153, 199);
+            this.dataRecord.Size = new System.Drawing.Size(204, 245);
             this.dataRecord.TabIndex = 34;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Пластинки";
+            this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Width = 130;
@@ -189,8 +196,8 @@
             this.dataPerformance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataPerformance.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column7});
-            this.dataPerformance.Location = new System.Drawing.Point(794, 212);
-            this.dataPerformance.Margin = new System.Windows.Forms.Padding(2);
+            this.dataPerformance.Location = new System.Drawing.Point(1059, 261);
+            this.dataPerformance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataPerformance.MultiSelect = false;
             this.dataPerformance.Name = "dataPerformance";
             this.dataPerformance.ReadOnly = true;
@@ -199,22 +206,23 @@
             this.dataPerformance.RowHeadersWidth = 51;
             this.dataPerformance.RowTemplate.Height = 24;
             this.dataPerformance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataPerformance.Size = new System.Drawing.Size(153, 197);
+            this.dataPerformance.Size = new System.Drawing.Size(204, 242);
             this.dataPerformance.TabIndex = 34;
             this.dataPerformance.TabStop = false;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "Исполнения";
+            this.Column7.MinimumWidth = 6;
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             this.Column7.Width = 130;
             // 
             // FormTableComposition
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 464);
+            this.ClientSize = new System.Drawing.Size(1277, 571);
             this.Controls.Add(this.dataPerformance);
             this.Controls.Add(this.dataRecord);
             this.Controls.Add(this.buttonUpdateTable);
@@ -222,7 +230,8 @@
             this.Controls.Add(this.buttonChange);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.dataComposition);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormTableComposition";
             this.Text = "Произведения";
             this.Shown += new System.EventHandler(this.FormTableComposition_Shown);

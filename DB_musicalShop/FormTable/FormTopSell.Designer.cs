@@ -44,8 +44,8 @@
             this.dataTopRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            this.dataTopRecord.Location = new System.Drawing.Point(11, 36);
-            this.dataTopRecord.Margin = new System.Windows.Forms.Padding(2);
+            this.dataTopRecord.Location = new System.Drawing.Point(15, 44);
+            this.dataTopRecord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataTopRecord.MultiSelect = false;
             this.dataTopRecord.Name = "dataTopRecord";
             this.dataTopRecord.ReadOnly = true;
@@ -53,12 +53,13 @@
             this.dataTopRecord.RowHeadersWidth = 51;
             this.dataTopRecord.RowTemplate.Height = 24;
             this.dataTopRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataTopRecord.Size = new System.Drawing.Size(251, 295);
+            this.dataTopRecord.Size = new System.Drawing.Size(335, 363);
             this.dataTopRecord.TabIndex = 84;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Номер пластинки";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 150;
@@ -66,21 +67,22 @@
             // Column2
             // 
             this.Column2.HeaderText = "Продано";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 70;
             // 
             // numericYear
             // 
-            this.numericYear.Location = new System.Drawing.Point(57, 12);
-            this.numericYear.Margin = new System.Windows.Forms.Padding(2);
+            this.numericYear.Location = new System.Drawing.Point(76, 15);
+            this.numericYear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericYear.Maximum = new decimal(new int[] {
             3000,
             0,
             0,
             0});
             this.numericYear.Name = "numericYear";
-            this.numericYear.Size = new System.Drawing.Size(205, 20);
+            this.numericYear.Size = new System.Drawing.Size(273, 22);
             this.numericYear.TabIndex = 82;
             this.numericYear.Value = new decimal(new int[] {
             2022,
@@ -92,21 +94,22 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 12);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(15, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(25, 13);
+            this.label5.Size = new System.Drawing.Size(30, 16);
             this.label5.TabIndex = 83;
             this.label5.Text = "Год";
             // 
             // FormTopSell
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 341);
+            this.ClientSize = new System.Drawing.Size(364, 420);
             this.Controls.Add(this.dataTopRecord);
             this.Controls.Add(this.numericYear);
             this.Controls.Add(this.label5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormTopSell";
             this.Text = "Лидеры продаж";
             ((System.ComponentModel.ISupportInitialize)(this.dataTopRecord)).EndInit();

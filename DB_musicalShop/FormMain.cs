@@ -24,7 +24,6 @@ namespace DB_musicalShop
         FormTablePerformance formTablePerformance;
         FormTableRecord formTableRecord;
         FormTableLogging formTableLogging;
-        FormTopSell formTopSell;
         public FormMain()
         {
             InitializeComponent();
@@ -143,14 +142,6 @@ namespace DB_musicalShop
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             managerDB.Close();
-        }
-
-        private void buttonTopSell_Click(object sender, EventArgs e)
-        {
-            if (formTopSell != null)
-                formTopSell.Close();
-            formTopSell = new FormTopSell(managerDB);
-            formTopSell.Show();
         }
     }
 }

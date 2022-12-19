@@ -44,104 +44,100 @@
             // boxComposition
             // 
             this.boxComposition.FormattingEnabled = true;
-            this.boxComposition.Location = new System.Drawing.Point(11, 156);
-            this.boxComposition.Margin = new System.Windows.Forms.Padding(2);
+            this.boxComposition.Location = new System.Drawing.Point(15, 192);
+            this.boxComposition.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boxComposition.Name = "boxComposition";
-            this.boxComposition.Size = new System.Drawing.Size(183, 21);
+            this.boxComposition.Size = new System.Drawing.Size(243, 24);
             this.boxComposition.TabIndex = 87;
             // 
             // numericWholesalePrice
             // 
             this.numericWholesalePrice.DecimalPlaces = 2;
-            this.numericWholesalePrice.Location = new System.Drawing.Point(11, 111);
-            this.numericWholesalePrice.Margin = new System.Windows.Forms.Padding(2);
+            this.numericWholesalePrice.Location = new System.Drawing.Point(15, 137);
+            this.numericWholesalePrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericWholesalePrice.Maximum = new decimal(new int[] {
             999999,
             0,
             0,
             0});
             this.numericWholesalePrice.Name = "numericWholesalePrice";
-            this.numericWholesalePrice.Size = new System.Drawing.Size(182, 20);
+            this.numericWholesalePrice.Size = new System.Drawing.Size(243, 22);
             this.numericWholesalePrice.TabIndex = 86;
             // 
             // numericRetailPrice
             // 
             this.numericRetailPrice.DecimalPlaces = 2;
-            this.numericRetailPrice.Location = new System.Drawing.Point(11, 67);
-            this.numericRetailPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.numericRetailPrice.Location = new System.Drawing.Point(15, 82);
+            this.numericRetailPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericRetailPrice.Maximum = new decimal(new int[] {
             999999,
             0,
             0,
             0});
             this.numericRetailPrice.Name = "numericRetailPrice";
-            this.numericRetailPrice.Size = new System.Drawing.Size(182, 20);
+            this.numericRetailPrice.Size = new System.Drawing.Size(243, 22);
             this.numericRetailPrice.TabIndex = 85;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 141);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(15, 174);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.Size = new System.Drawing.Size(105, 16);
             this.label4.TabIndex = 84;
             this.label4.Text = "Произведение";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 96);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(12, 118);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
+            this.label2.Size = new System.Drawing.Size(114, 16);
             this.label2.TabIndex = 83;
             this.label2.Text = "Розничная цена";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 52);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(15, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.Size = new System.Drawing.Size(98, 16);
             this.label1.TabIndex = 82;
             this.label1.Text = "Оптовая цена";
             // 
             // boxNumberRecord
             // 
-            this.boxNumberRecord.Location = new System.Drawing.Point(11, 24);
-            this.boxNumberRecord.Margin = new System.Windows.Forms.Padding(2);
+            this.boxNumberRecord.Location = new System.Drawing.Point(15, 30);
+            this.boxNumberRecord.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boxNumberRecord.MaxLength = 10;
             this.boxNumberRecord.Name = "boxNumberRecord";
-            this.boxNumberRecord.Size = new System.Drawing.Size(183, 20);
+            this.boxNumberRecord.Size = new System.Drawing.Size(243, 22);
             this.boxNumberRecord.TabIndex = 81;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 9);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(15, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 13);
+            this.label3.Size = new System.Drawing.Size(122, 16);
             this.label3.TabIndex = 80;
             this.label3.Text = "Номер пластинки";
             // 
             // button
             // 
-            this.button.Location = new System.Drawing.Point(11, 181);
-            this.button.Margin = new System.Windows.Forms.Padding(2);
+            this.button.Location = new System.Drawing.Point(15, 223);
+            this.button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(182, 44);
+            this.button.Size = new System.Drawing.Size(243, 54);
             this.button.TabIndex = 88;
             this.button.UseVisualStyleBackColor = true;
             this.button.Click += new System.EventHandler(this.button_Click);
             // 
             // FormQueryRecord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(203, 231);
+            this.ClientSize = new System.Drawing.Size(271, 284);
             this.Controls.Add(this.button);
             this.Controls.Add(this.boxComposition);
             this.Controls.Add(this.numericWholesalePrice);
@@ -151,6 +147,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.boxNumberRecord);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormQueryRecord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormQueryRecord";

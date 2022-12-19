@@ -38,110 +38,10 @@ namespace DB_musicalShop
             try
             {
                 connection = new SQLiteConnection($@"Data Source={path}; Version=3;");
-                connection.Open();
-                string commandText = "CREATE TABLE type_ensemble (" +
-                    "id_type_ensemble INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "name_type_ensemble VARCHAR(15) NOT NULL);";
-                Query(commandText);
-                commandText = "CREATE TABLE ensemble (" +
-                    "id_ensemble INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "name_ensemble VARCHAR(20) NOT NULL," +
-                    "id_type_ensemble INTEGER NOT NULL);";
-                Query(commandText);
-                commandText = "CREATE TABLE role (" +
-                    "id_role INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "name_role VARCHAR(15) NOT NULL);";
-                Query(commandText);
-                commandText = "CREATE TABLE musician (" +
-                    "id_musician INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "name_musician VARCHAR(15) NOT NULL," +
-                    "surname_musician VARCHAR(15) NOT NULL," +
-                    "patronymic_musician VARCHAR(15)," +
-                    "phote_musician BLOB);";
-                Query(commandText);
-                commandText = "CREATE TABLE relation_musician_role (" +
-                    "id_musician INTEGER NOT NULL," +
-                    "id_role INTEGER NOT NULL, " +
-                    "CONSTRAINT id_relation_role_musician PRIMARY KEY (id_musician, id_role));";
-                Query(commandText);
-                commandText = "CREATE TABLE relation_musician_ensemble (" +
-                    "id_musician INTEGER NOT NULL," +
-                    "id_ensemble INTEGER NOT NULL, " +
-                    "CONSTRAINT id_relation_ensemble_musician PRIMARY KEY (id_musician, id_ensemble));";
-                Query(commandText);
-                commandText = "CREATE TABLE composition (" +
-                    "id_composition INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "name_composition VARCHAR(20) NOT NULL, " +
-                    "name_author VARCHAR(15) NOT NULL, " +
-                    "surname_author VARCHAR(15) NOT NULL, " +
-                    "patronymic_author VARCHAR(15), " +
-                    "date_create TEXT NOT NULL);";
-                Query(commandText);
-                commandText = "CREATE TABLE performance (" +
-                    "id_performance INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "date_performance TEXT NOT NULL, " +
-                    "id_ensemble INTEGER NOT NULL, " +
-                    "id_composition INTEGER NOT NULL, " +
-                    "circumstances_execution VARCHAR(200));";
-                Query(commandText);
-                commandText = "CREATE TABLE record (" +
-                    "number_record VARCHAR(10) PRIMARY KEY NOT NULL," +
-                    "retail_price DOUBLE NOT NULL, " +
-                    "wholesale_price DOUBLE NOT NULL, " +
-                    "id_composition INTEGER NOT NULL);";
-                Query(commandText);
-                commandText = "CREATE TABLE relation_record_performance (" +
-                    "number_record VARCHAR(10) NOT NULL," +
-                    "id_performance INTEGER NOT NULL, " +
-                    "CONSTRAINT id_relation_record_performance PRIMARY KEY (number_record, id_performance));";
-                Query(commandText);
-                commandText = "CREATE TABLE operation (" +
-                    "id_operation INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "name_operation VARCHAR(15) NOT NULL);";
-                Query(commandText);
-                commandText = "INSERT INTO operation (name_operation) VALUES(\"Поступление\");";
-                Query(commandText);
-                commandText = "INSERT INTO operation (name_operation) VALUES(\"Продажа\");";
-                Query(commandText);
-                commandText = "CREATE TABLE logging (" +
-                    "id_log INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
-                    "number_record VARCHAR(10) NOT NULL, " +
-                    "id_operation INTEGER NOT NULL, " +
-                    "date_log TEXT NOT NULL, " +
-                    "year TEXT NOT NULL, " +
-                    "amount INTEGER NOT NULL);";
-                Query(commandText);
-                commandText = "CREATE TRIGGER delete_musician BEFORE DELETE ON musician " +
-                    "BEGIN " +
-                    "DELETE FROM relation_musician_role WHERE id_musician = OLD.id_musician; " +
-                    "DELETE FROM relation_musician_ensemble WHERE id_musician = OLD.id_musician; " +
-                    "END;";
-                Query(commandText);
-                commandText = "CREATE TRIGGER delete_role BEFORE DELETE ON role " +
-                    "BEGIN " +
-                    "DELETE FROM relation_musician_role WHERE id_role = OLD.id_role; " +
-                    "END;";
-                Query(commandText);
-                commandText = "CREATE TRIGGER delete_ensemble BEFORE DELETE ON ensemble " +
-                    "BEGIN " +
-                    "DELETE FROM relation_musician_ensemble WHERE id_ensemble = OLD.id_ensemble; " +
-                    "END;";
-                Query(commandText);
-                commandText = "CREATE TRIGGER delete_record BEFORE DELETE ON record " +
-                    "BEGIN " +
-                    "DELETE FROM relation_record_performance WHERE number_record = OLD.number_record; " +
-                    "END;";
-                Query(commandText);
-                commandText = "CREATE TRIGGER delete_performance BEFORE DELETE ON performance " +
-                    "BEGIN " +
-                    "DELETE FROM relation_record_performance WHERE id_performance = OLD.id_performance; " +
-                    "END;";
-                Query(commandText);
-                commandText = "CREATE TRIGGER update_record AFTER UPDATE ON record " +
-                    "BEGIN " +
-                    "UPDATE relation_record_performance SET number_record = NEW.number_record WHERE number_record = OLD.number_record; " +
-                    "UPDATE logging SET number_record = NEW.number_record WHERE number_record = OLD.number_record; " +
-                    "END;";
+                Open();
+                StreamReader streamReader = new StreamReader("createDB.txt");
+                string commandText = streamReader.ReadToEnd();
+                streamReader.Close();
                 Query(commandText);
                 return 0;
             }
@@ -156,29 +56,24 @@ namespace DB_musicalShop
             try
             {
                 connection = new SQLiteConnection($@"Data Source={path}; Version=3;");
-                connection.Open();
-                string commandText = "SELECT id_type_ensemble FROM type_ensemble ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT name_type_ensemble FROM type_ensemble ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT id_ensemble FROM ensemble ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT name_ensemble FROM ensemble ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT id_role FROM role ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT name_role FROM role ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT id_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT name_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT surname_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT patronymic_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
-                commandText = "SELECT phote_musician FROM musician ORDER BY rowid ASC LIMIT 1;";
-                Query(commandText);
+                Open();
+                StreamReader streamReader = new StreamReader("checkDB.txt");
+                string[] check = streamReader.ReadToEnd().Split('\n');
+                for (int i = 0; i < check.Length - 1; i++)
+                {
+                    check[i] = check[i].Remove(check[i].Length - 1);
+                }
+                streamReader.Close();
+                DataTable table = SelectTable("select name from sqlite_master;");
+                string tableStr = "";
+                DataRow row;
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    row = table.Rows[i];
+                    tableStr = row["name"].ToString();
+                    if (tableStr != check[i])
+                        return false;
+                }
                 return true;
             }
             catch
@@ -192,7 +87,8 @@ namespace DB_musicalShop
         }
         public void Close()
         {
-            connection.Close();
+            if(connection != null)
+                connection.Close();
         }
         public void Query(string commandText)
         {

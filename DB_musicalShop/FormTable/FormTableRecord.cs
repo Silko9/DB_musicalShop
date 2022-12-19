@@ -19,6 +19,7 @@ namespace DB_musicalShop
         ManagerDB managerDB = new ManagerDB();
         FormQueryRecord formQueryRecord;
         FormQueryRelationRecordPerformance formQueryRelationRecordPerformance;
+        FormTopSell formTopSell;
         public FormTableRecord(ManagerDB managerDB)
         {
             InitializeComponent();
@@ -32,55 +33,64 @@ namespace DB_musicalShop
             DataRow row;
             DataRow rowComposition;
             DataTable count;
-            DataRow sellLastRow;
-            DataRow sellCurrentRow;
-            DataRow sellRow;
-            DataRow receiptsRow;
+            int sellLast;
+            int sellCurrent;
+            int sell;
+            int receipts;
+            int sum;
+            DataRow countRow;
             DataTable table = managerDB.SelectTable("SELECT * FROM record");
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 row = table.Rows[i];
+                rowComposition = composition.Rows[0];
+                for (int j = 0; j < composition.Rows.Count; j++)
+                {
+                    rowComposition = composition.Rows[j];
+                    if (rowComposition["id_composition"].ToString() == row["id_composition"].ToString())
+                        break;
+                }
                 try
                 {
-                    rowComposition = composition.Rows[0];
-                    for (int j = 0; j < composition.Rows.Count; j++)
-                    {
-                        rowComposition = composition.Rows[j];
-                        if (rowComposition["id_composition"].ToString() == row["id_composition"].ToString())
-                            break;
-                    }
                     int year = DateTime.Now.Year;
-                    count = managerDB.SelectTable("SELECT SUM(amount) AS count FROM logging WHERE " +
-                        $"number_record = \"{row["number_record"]}\" AND " +
-                        "id_operation = 2 AND " +
-                        $"year = \"{year - 1}\"");
-                    sellLastRow = count.Rows[0];
-                    if (sellLastRow["count"] == DBNull.Value)
-                        sellLastRow["count"] = "0";
-                    count = managerDB.SelectTable("SELECT SUM(amount) AS count FROM logging WHERE " +
-                        $"number_record = \"{row["number_record"]}\" AND " +
-                        "id_operation = 2 AND " +
-                        $"year = \"{year}\"");
-                    sellCurrentRow = count.Rows[0];
-                    if (sellCurrentRow["count"] == DBNull.Value)
-                        sellCurrentRow["count"] = "0";
-                    count = managerDB.SelectTable("SELECT SUM(amount) AS count FROM logging WHERE " +
+                    count = managerDB.SelectTable("SELECT * FROM logging WHERE " +
                         $"number_record = \"{row["number_record"]}\" AND " +
                         "id_operation = 2");
-                    sellRow = count.Rows[0];
-                    if (sellRow["count"] == DBNull.Value)
-                        sellRow["count"] = "0";
-                    count = managerDB.SelectTable("SELECT SUM(amount) AS count FROM logging WHERE " +
+                    sum = 0;
+                    for (int j = 0; j < count.Rows.Count; j++)
+                    {
+                        countRow = count.Rows[j];
+                        if (countRow["date_log"].ToString().Split(' ')[2] == (year - 1).ToString())
+                            sum += Convert.ToInt32(countRow["amount"].ToString());
+                    }
+                    sellLast = sum;
+                    sum = 0;
+                    for (int j = 0; j < count.Rows.Count; j++)
+                    {
+                        countRow = count.Rows[j];
+                        if (countRow["date_log"].ToString().Split(' ')[2] == (year).ToString())
+                            sum += Convert.ToInt32(countRow["amount"].ToString());
+                    }
+                    sellCurrent = sum;
+                    count = managerDB.SelectTable("SELECT SUM(amount) AS receipts FROM logging WHERE " +
                         $"number_record = \"{row["number_record"]}\" AND " +
                         "id_operation = 1");
-                    receiptsRow = count.Rows[0];
-                    if (receiptsRow["count"] == DBNull.Value)
-                        receiptsRow["count"] = "0";
-                    dataRecord.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], rowComposition["name_composition"], sellLastRow["count"], sellCurrentRow["count"], Convert.ToInt32(receiptsRow["count"]) - Convert.ToInt32(sellRow["count"]));
+                    countRow = count.Rows[0];
+                    if (countRow["receipts"] != DBNull.Value)
+                        receipts = Convert.ToInt32(countRow["receipts"].ToString());
+                    else receipts = 0;
+                    count = managerDB.SelectTable("SELECT SUM(amount) AS sell FROM logging WHERE " +
+                        $"number_record = \"{row["number_record"]}\" AND " +
+                        "id_operation = 2");
+                    countRow = count.Rows[0];
+                    if (countRow["sell"] != DBNull.Value)
+                        sell = Convert.ToInt32(countRow["sell"].ToString());
+                    else sell = 0;
+                    dataRecord.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], rowComposition["name_composition"], sellLast, sellCurrent, receipts - sell);
                 }
                 catch
                 {
-                    dataRecord.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], row["id_composition"]);
+                    dataRecord.Rows.Add(row["number_record"], row["retail_price"], row["wholesale_price"], rowComposition["name_composition"]);
                 }
             }
             dataPerformance.Rows.Clear();
@@ -205,6 +215,12 @@ namespace DB_musicalShop
         private void FormTableRecord_Shown(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void buttonTopSell_Click(object sender, EventArgs e)
+        {
+            formTopSell = new FormTopSell(managerDB);
+            formTopSell.ShowDialog();
         }
     }
 }

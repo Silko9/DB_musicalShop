@@ -43,20 +43,20 @@
             // 
             // button
             // 
-            this.button.Location = new System.Drawing.Point(11, 364);
-            this.button.Margin = new System.Windows.Forms.Padding(2);
+            this.button.Location = new System.Drawing.Point(15, 448);
+            this.button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(182, 44);
+            this.button.Size = new System.Drawing.Size(243, 54);
             this.button.TabIndex = 37;
             this.button.UseVisualStyleBackColor = true;
             this.button.Click += new System.EventHandler(this.button_Click);
             // 
             // buttonOpenImage
             // 
-            this.buttonOpenImage.Location = new System.Drawing.Point(11, 316);
-            this.buttonOpenImage.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonOpenImage.Location = new System.Drawing.Point(15, 389);
+            this.buttonOpenImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonOpenImage.Name = "buttonOpenImage";
-            this.buttonOpenImage.Size = new System.Drawing.Size(182, 44);
+            this.buttonOpenImage.Size = new System.Drawing.Size(243, 54);
             this.buttonOpenImage.TabIndex = 36;
             this.buttonOpenImage.Text = "Открыть картинку";
             this.buttonOpenImage.UseVisualStyleBackColor = true;
@@ -64,68 +64,65 @@
             // 
             // boxSurname
             // 
-            this.boxSurname.Location = new System.Drawing.Point(11, 64);
-            this.boxSurname.Margin = new System.Windows.Forms.Padding(2);
+            this.boxSurname.Location = new System.Drawing.Point(15, 79);
+            this.boxSurname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boxSurname.MaxLength = 15;
             this.boxSurname.Name = "boxSurname";
-            this.boxSurname.Size = new System.Drawing.Size(182, 20);
+            this.boxSurname.Size = new System.Drawing.Size(241, 22);
             this.boxSurname.TabIndex = 35;
             // 
             // boxPatronymic
             // 
-            this.boxPatronymic.Location = new System.Drawing.Point(11, 108);
-            this.boxPatronymic.Margin = new System.Windows.Forms.Padding(2);
+            this.boxPatronymic.Location = new System.Drawing.Point(15, 133);
+            this.boxPatronymic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boxPatronymic.MaxLength = 15;
             this.boxPatronymic.Name = "boxPatronymic";
-            this.boxPatronymic.Size = new System.Drawing.Size(182, 20);
+            this.boxPatronymic.Size = new System.Drawing.Size(241, 22);
             this.boxPatronymic.TabIndex = 34;
             // 
             // boxName
             // 
-            this.boxName.Location = new System.Drawing.Point(11, 18);
-            this.boxName.Margin = new System.Windows.Forms.Padding(2);
+            this.boxName.Location = new System.Drawing.Point(15, 22);
+            this.boxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.boxName.MaxLength = 15;
             this.boxName.Name = "boxName";
-            this.boxName.Size = new System.Drawing.Size(182, 20);
+            this.boxName.Size = new System.Drawing.Size(241, 22);
             this.boxName.TabIndex = 33;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 94);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(15, 116);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.Size = new System.Drawing.Size(70, 16);
             this.label3.TabIndex = 32;
             this.label3.Text = "Отчество";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 49);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(15, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.Size = new System.Drawing.Size(66, 16);
             this.label2.TabIndex = 31;
             this.label2.Text = "Фамилия";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 5);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(15, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(33, 16);
             this.label1.TabIndex = 30;
             this.label1.Text = "Имя";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DB_musicalShop.Properties.Resources.noname;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 132);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 162);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(182, 180);
+            this.pictureBox1.Size = new System.Drawing.Size(243, 222);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
@@ -136,9 +133,9 @@
             // 
             // FormQueryMusician
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(205, 416);
+            this.ClientSize = new System.Drawing.Size(273, 512);
             this.Controls.Add(this.button);
             this.Controls.Add(this.buttonOpenImage);
             this.Controls.Add(this.boxSurname);
@@ -148,6 +145,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormQueryMusician";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormQueryMusician";

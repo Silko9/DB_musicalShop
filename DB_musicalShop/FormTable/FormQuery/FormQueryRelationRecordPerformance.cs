@@ -24,12 +24,14 @@ namespace DB_musicalShop.FormTable.FormQuery
             this.managerDB = managerDB;
             this.data = data;
             this.isRecord = isRecord;
+            DataTable composition = managerDB.SelectTable($"SELECT * FROM composition WHERE name_composition = \"{data[3]}\"");
+            DataRow compositionRow = composition.Rows[0];
             if (isRecord)
             {
                 boxRecord.Text = data[0];
                 boxPerformance.Items.Clear(); //загрузка исполнений в box
                 DataTable table = managerDB.SelectTable($"SELECT id_performance FROM relation_record_performance WHERE number_record = \"{data[0]}\"");
-                DataTable performance = managerDB.SelectTable("SELECT * FROM performance");
+                DataTable performance = managerDB.SelectTable($"SELECT * FROM performance WHERE id_composition = {compositionRow["id_composition"]}");
                 DataRow row;
                 DataRow rowPerformance;
                 DataTable ensemble;
@@ -58,7 +60,7 @@ namespace DB_musicalShop.FormTable.FormQuery
                 boxPerformance.Text = $"{data[2]} {data[3]} {data[1]}";
                 DataTable table = managerDB.SelectTable($"SELECT number_record FROM relation_record_performance WHERE id_performance = {data[0]}");
                 DataRow row;
-                DataTable record = managerDB.SelectTable($"SELECT number_record FROM record");
+                DataTable record = managerDB.SelectTable($"SELECT number_record FROM record WHERE id_composition = \"{compositionRow["id_composition"]}\"");
                 DataRow rowRecord;
                 bool flag;
                 for (int i = 0; i < record.Rows.Count; i++)
